@@ -10,7 +10,7 @@ function open(p){pic=p;filled=new Set(load(p.id));$('#home').style.display='none
  const W=$('#wrap'),sz=Math.min(W.clientWidth,W.clientHeight);A.setAttribute('width',sz);A.setAttribute('height',sz);sc=1;tx=(W.clientWidth-sz)/2;ty=(W.clientHeight-sz)/2;xf();
  p.regions.forEach((r,i)=>{const e=mk('path',{d:r.d,'data-number':r.n,'data-i':i,fill:filled.has(i)?p.palette[r.n-1]:'#fff'},A);e.onclick=()=>tap(e,i,r.n)});
  const L=labels(A,p);p.regions.forEach((r,i)=>{if(!filled.has(i)&&L[i]){const[x,y,m]=L[i],t=mk('text',{x,y,id:'t'+i},A);t.textContent=r.n;const fs=Math.min(9,Math.max(2.5,m*1.1));t.style.fontSize=fs+'px';if(m<5)t.classList.add('sm')}});
- const pal=$('#pal');pal.innerHTML='';p.palette.forEach((c,i)=>{const b=document.createElement('div');b.className='sw';b.style.background=c;b.textContent=i+1;b.style.color=lum(c)?'#000':'#fff';b.onclick=()=>pick(i+1);pal.appendChild(b)});pick(1);prog();requestAnimationFrame(fit)}
+ const pal=$('#pal');pal.innerHTML='';p.palette.forEach((c,i)=>{const b=document.createElement('div');b.className='sw';b.style.background=c;b.textContent=i+1;b.style.color=lum(c)?'#000':'#fff';b.style.setProperty('--c',c);lum(c)&&b.classList.add('light');b.onclick=()=>{pick(i+1);sparkle(b,c)};pal.appendChild(b)});pick(1);prog();requestAnimationFrame(fit)}
 function fit(){if(!pic||$('#game').style.display=='none')return;const W=$('#wrap'),A=$('#art'),sz=Math.min(W.clientWidth,W.clientHeight);A.setAttribute('width',sz);A.setAttribute('height',sz);sc=1;tx=(W.clientWidth-sz)/2;ty=(W.clientHeight-sz)/2;xf()}
 addEventListener('resize',fit);addEventListener('orientationchange',()=>setTimeout(fit,300));
 // Label at the visible point of each region farthest from its edges (handles rings, covered backgrounds)
@@ -21,6 +21,8 @@ function labels(A,p){const vb=p.viewBox.split(/[ ,]+/).map(Number),S=1,G=Math.ce
  const r2=Math.SQRT2;for(let y=0;y<H;y++)for(let x=0;x<G;x++){const j=y*G+x,o=own[j];if(x&&own[j-1]==o)d[j]=Math.min(d[j],d[j-1]+1);if(y&&own[j-G]==o)d[j]=Math.min(d[j],d[j-G]+1);if(x&&y&&own[j-G-1]==o)d[j]=Math.min(d[j],d[j-G-1]+r2);if(y&&x<G-1&&own[j-G+1]==o)d[j]=Math.min(d[j],d[j-G+1]+r2)}
  for(let y=H-1;y>=0;y--)for(let x=G-1;x>=0;x--){const j=y*G+x,o=own[j];if(x<G-1&&own[j+1]==o)d[j]=Math.min(d[j],d[j+1]+1);if(y<H-1&&own[j+G]==o)d[j]=Math.min(d[j],d[j+G]+1);if(x<G-1&&y<H-1&&own[j+G+1]==o)d[j]=Math.min(d[j],d[j+G+1]+r2);if(y<H-1&&x&&own[j+G-1]==o)d[j]=Math.min(d[j],d[j+G-1]+r2)}
  const best=[];for(let j=0;j<G*H;j++){const o=own[j];if(o>=0&&(!best[o]||d[j]>best[o][2]))best[o]=[vb[0]+(j%G+.5)*S,vb[1]+((j/G|0)+.5)*S,d[j]*S]}return best}
+function sparkle(b,c){if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;const r=b.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2;
+ for(let k=0;k<10;k++){const s=document.createElement('i'),a=k/10*6.283+Math.random()*.5,d=34+Math.random()*18;s.className='spk';s.style.cssText=`left:${x}px;top:${y}px;background:${k%2?c:'#fff'};box-shadow:0 0 6px ${c};--dx:${Math.cos(a)*d}px;--dy:${Math.sin(a)*d}px`;document.body.appendChild(s);setTimeout(()=>s.remove(),600)}}
 function lum(c){const n=parseInt(c.slice(1),16);return((n>>16)*.3+(n>>8&255)*.59+(n&255)*.11)>140}
 function pick(n){sel=n;[...$('#pal').children].forEach((b,i)=>b.classList.toggle('sel',i+1==n))}
 function tap(e,i,n){if(moved||filled.has(i))return;if(n!=sel){const t=$('#t'+i);t&&(t.style.fill='#d6336c',setTimeout(()=>t.style.fill='',700));
