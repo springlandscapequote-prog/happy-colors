@@ -6,7 +6,7 @@ h1{text-align:center;color:#d6336c;margin:12px}#picker{display:grid;grid-templat
 #game{display:none;flex-direction:column;position:fixed;inset:0;height:100vh;height:100dvh;overflow:hidden}#top,#pal{flex:0 0 auto}#top{padding-top:max(8px,env(safe-area-inset-top))}#top{display:flex;align-items:center;gap:8px;padding:8px}
 #back{width:48px;height:48px;border-radius:50%;background:#fff;box-shadow:0 2px 8px #0003;padding:0}button{font-size:18px;border:0;border-radius:12px;padding:8px 12px;background:#ffd6e7}#bar{flex:1;height:12px;background:#eee;border-radius:6px}#fill{height:100%;width:0;background:#51cf66;border-radius:6px}
 #wrap{flex:1 1 0;min-height:0;overflow:hidden;position:relative;background:#fff;touch-action:none}#art{position:absolute;left:0;top:0;transform-origin:0 0}
-#art path{stroke:#333;stroke-width:.6}#art text{font-size:7px;text-anchor:middle;dominant-baseline:central;pointer-events:none;fill:#555}
+#art path{stroke:#333;stroke-width:.6;stroke-linejoin:round;vector-effect:non-scaling-stroke;stroke-width:1.2px}#art{shape-rendering:geometricPrecision}#art text{font-size:7px;text-anchor:middle;dominant-baseline:central;pointer-events:none;fill:#555}
 .hint{animation:blink .6s 2}@keyframes blink{50%{fill:#ffe066}}
 #pal{display:flex;gap:8px;overflow-x:auto;overflow-y:hidden;padding:10px 10px max(10px,env(safe-area-inset-bottom));background:#f2f2f2;box-shadow:0 -1px 0 #0001;gap:14px;-webkit-overflow-scrolling:touch}.sw{flex:0 0 60px;min-width:60px;height:60px;border-radius:50%;border:3px solid transparent;box-shadow:none;font-weight:500;font-size:24px;display:flex;align-items:center;justify-content:center}
 .sw.sel{border-color:#333;box-shadow:0 0 0 3px #fff inset}.sw.done{opacity:.35}
