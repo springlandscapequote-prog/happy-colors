@@ -66,4 +66,27 @@ W.addEventListener('pointermove',e=>{if(!pts.has(e.pointerId))return;const o=pts
  else{const dx=e.clientX-o[0],dy=e.clientY-o[1];if(Math.abs(dx)+Math.abs(dy)>2&&sc>1){tx+=dx;ty+=dy;xf();moved=true}}});
 ['pointerup','pointercancel'].forEach(t=>W.addEventListener(t,e=>{pts.delete(e.pointerId);if(!pts.size)setTimeout(()=>moved=false,50)}));
 W.addEventListener('wheel',e=>{e.preventDefault();zoom(e.deltaY<0?1.2:1/1.2)});
-$('#reset').onclick=fit;$('#reset').addEventListener('pointerdown',e=>e.stopPropagation());$('#zin').onclick=()=>zoom(1.4);$('#zout').onclick=()=>zoom(1/1.4);$('#back').onclick=()=>home();press($('#hback'),()=>welcome());press($('#again'),()=>{$('#yay').style.display='none';erase(pic.id);open(pic)});press($('#ok'),()=>{$('#yay').style.display='none';home()});press($('#askyes'),()=>askYes&&askYes());press($('#askno'),()=>askNo&&askNo());$('#ask').addEventListener('click',e=>{if(e.target===$('#ask')&&askNo)askNo()});welcome();
+$('#reset').onclick=fit;$('#reset').addEventListener('pointerdown',e=>e.stopPropagation());$('#zin').onclick=()=>zoom(1.4);$('#zout').onclick=()=>zoom(1/1.4);$('#back').onclick=()=>home();press($('#hback'),()=>welcome());press($('#again'),()=>{$('#yay').style.display='none';erase(pic.id);open(pic)});press($('#ok'),()=>{$('#yay').style.display='none';home()});press($('#askyes'),()=>askYes&&askYes());press($('#askno'),()=>askNo&&askNo());$('#ask').addEventListener('click',e=>{if(e.target===$('#ask')&&askNo)askNo()});
+// ---- Suggest a picture ----
+const SG_CHIPS=[['animals','🐶 Animals'],['nature','🌈 Nature'],['vehicles','🚗 Vehicles'],['holidays','🎄 Holidays'],['fantasy','🏰 Fantasy'],['space','🚀 Space'],['other','✨ Something else']],SG_KEY='hc_suggestions';
+let sgPick='',sgAt=0,sgMem=null;
+function sgLoad(){if(sgMem)return sgMem;try{const v=JSON.parse(localStorage.getItem(SG_KEY)||'[]');return Array.isArray(v)?v:[]}catch(e){return[]}}
+function sgSave(list){sgMem=list;try{localStorage.setItem(SG_KEY,JSON.stringify(list))}catch(e){}}
+function sgClean(t){return String(t||'').replace(/<[^>]*>/g,'').replace(/[<>]/g,'').replace(/\s+/g,' ').trim().slice(0,60)}
+function sgBuild(){if($('#sug'))return;const d=document.createElement('div');d.id='sug';
+ d.innerHTML='<div class="box"><div id="sugForm"><div class="q">What should we color next?</div><div class="hint2">Pick one, and add an idea if you want!</div><div class="chips" id="sugChips"></div><input id="sugText" type="text" maxlength="60" placeholder="Optional: like a dinosaur" autocomplete="off" autocapitalize="sentences" aria-label="Your idea (optional)"><div id="sugNudge"></div><button type="button" id="sugSend" class="big">Send it! 🚀</button><button type="button" id="sugClose" class="big">Never mind</button></div><div id="sugThanks"><div class="em">🎉</div><div class="q">Thanks!</div><p style="font-size:20px;margin:6px 0">We\'ll try to draw it.</p><button type="button" id="sugOk" class="big" style="background:#51cf66;color:#fff">OK</button></div></div>';
+ document.body.appendChild(d);const C=$('#sugChips');
+ SG_CHIPS.forEach(([id,label])=>{const b=document.createElement('button');b.type='button';b.className='chip';b.textContent=label;b.setAttribute('data-id',id);press(b,()=>{if(Date.now()-sgAt<450)return;sgPick=sgPick==id?'':id;[...C.children].forEach(x=>x.classList.toggle('on',x.getAttribute('data-id')==sgPick));$('#sugNudge').textContent=''});C.appendChild(b)});
+ const closeIt=()=>{if(Date.now()-sgAt<450)return;d.style.display='none'};
+ press($('#sugClose'),closeIt);press($('#sugOk'),closeIt);d.addEventListener('click',e=>{if(e.target===d)closeIt()});
+ press($('#sugSend'),()=>{if(Date.now()-sgAt<450)return;const text=sgClean($('#sugText').value);if(!sgPick&&!text){$('#sugNudge').textContent='Pick one or type an idea!';return}
+  const item={when:new Date().toISOString(),category:sgPick,text:text};const list=sgLoad().slice(-199);list.push(item);sgSave(list);
+  try{if(typeof SUGGEST_URL!='undefined'&&SUGGEST_URL&&typeof fetch=='function'){const q=fetch(SUGGEST_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(item)});q&&q.catch&&q.catch(()=>{})}}catch(e){}
+  $('#sugForm').style.display='none';$('#sugThanks').style.display='block';sgAt=Date.now();sgList()})}
+function sgOpen(){sgBuild();sgPick='';sgAt=Date.now();$('#sugText').value='';$('#sugNudge').textContent='';[...$('#sugChips').children].forEach(x=>x.classList.remove('on'));$('#sugForm').style.display='block';$('#sugThanks').style.display='none';$('#sug').style.display='flex';$('#sug').scrollTop=0}
+function sgList(){const L=$('#sugList');if(!L)return;if(!/[?&]suggestions=1(&|$)/.test(location.search)){L.style.display='none';return}
+ L.style.display='block';L.innerHTML='';const h=document.createElement('h2');h.textContent='Saved ideas on this device';L.appendChild(h);const list=sgLoad();
+ if(!list.length){const r=document.createElement('div');r.className='row';r.textContent='No ideas saved yet.';L.appendChild(r)}
+ list.slice().reverse().forEach(it=>{const r=document.createElement('div');r.className='row';const sm=document.createElement('small');sm.textContent=String(it.when||'').replace('T',' ').slice(0,16)+' · '+(it.category||'(no category)');r.appendChild(sm);r.appendChild(document.createElement('br'));r.appendChild(document.createTextNode(it.text||'(no text)'));L.appendChild(r)})}
+if($('#sugBtn'))press($('#sugBtn'),sgOpen);
+welcome();sgList();
