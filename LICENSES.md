@@ -2,7 +2,7 @@
 
 Happy Colors is a private family app. Pictures that come from real photos use only public-domain or CC0 sources.
 
-## Mountain Lake Sunset (Easy and Hard, `pictures-real.js`)
+## Mountain Lake Sunset (Easy, Medium and Hard, `pictures-real.js`)
 
 - **Source photo:** "Lake McDonald Sunset 11.20.15", Glacier National Park, Montana, USA (taken 20 November 2015)
 - **Page:** https://commons.wikimedia.org/wiki/File:Lake_McDonald_Sunset_11_20_15_(23218648701).jpg
