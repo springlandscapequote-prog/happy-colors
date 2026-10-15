@@ -9,14 +9,25 @@ function press(el,fn){let sx,sy,id=null;el.addEventListener('pointerdown',e=>{sx
 function ensureUI(){const B=document.body;
  if(!$('#ask')){const d=document.createElement('div');d.id='ask';d.innerHTML='<div class="box"><div class="q">Start over?</div><p>This will erase your coloring on <b id="askname"></b>.</p><button type="button" id="askyes" class="big yes">Yes, start over</button><button type="button" id="askno" class="big no">No, keep it</button></div>';B.appendChild(d)}
  if(!$('#again')){const b=document.createElement('button');b.type='button';b.id='again';b.className='big';b.textContent='🎨 Color again';const ok=$('#ok');ok.parentNode.insertBefore(b,ok);ok.parentNode.insertBefore(document.createTextNode(' '),ok)}}
+if(!$('#welcome')&&!/[?&]r=/.test(location.search)){location.replace(location.pathname+'?r='+Date.now())}
 ensureUI();let askAt=0;
 function mk(t,a,p){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p&&p.appendChild(e);return e}
 function center(d){const s=mk('svg',{style:'position:absolute;visibility:hidden'},document.body),p=mk('path',{d},s),b=p.getBBox();s.remove();return[b.x+b.width/2,b.y+b.height/2,Math.min(b.width,b.height)]}
-function home(){clearTimeout(yayT);$('#yay').style.display='none';$('#game').style.display='none';$('#home').style.display='';const P=$('#picker');P.innerHTML='';
- PICTURES.forEach(p=>{const c=document.createElement('div');c.className='card';const f=new Set(load(p.id));const s=mk('svg',{viewBox:p.viewBox},c);
+let curCat=null;
+function pct(p){const f=load(p.id);return f.length&&f.length>=p.regions.length}
+function welcome(){clearTimeout(yayT);$('#yay').style.display='none';$('#game').style.display='none';$('#home').style.display='none';$('#welcome').style.display='';curCat=null;
+ const C=$('#cats');C.innerHTML='';const cats=CATEGORIES.slice(),known=new Set(cats.map(c=>c.id));
+ if(PICTURES.some(p=>!known.has(p.cat)))cats.push({id:'_more',name:'More Fun',emoji:'⭐',color:'#f06595'});
+ cats.forEach(c=>{const ps=PICTURES.filter(p=>c.id=='_more'?!known.has(p.cat):p.cat==c.id),done=ps.filter(pct).length,b=document.createElement('button');b.type='button';b.className='tile'+(ps.length?'':' empty');b.style.background=c.color;
+  b.innerHTML='<span class="em">'+c.emoji+'</span><span class="nm"></span><span class="ct"></span>';b.querySelector('.nm').textContent=c.name;
+  b.querySelector('.ct').textContent=ps.length?(done+' of '+ps.length+' done'):'Coming soon!';press(b,()=>home(c.id));C.appendChild(b)});scrollTo(0,0)}
+function home(c){if(typeof c=='string')curCat=c;if(curCat===null)return welcome();clearTimeout(yayT);$('#yay').style.display='none';$('#game').style.display='none';$('#welcome').style.display='none';$('#home').style.display='';
+ const cat=CATEGORIES.find(x=>x.id==curCat)||{name:'More Fun',emoji:'⭐'},known=new Set(CATEGORIES.map(x=>x.id)),list=PICTURES.filter(p=>curCat=='_more'?!known.has(p.cat):p.cat==curCat);$('#htitle').textContent=cat.emoji+' '+cat.name;const P=$('#picker');P.innerHTML='';
+ if(!list.length){P.innerHTML='<div class="soon"><span>'+cat.emoji+'</span>More pictures coming soon!</div>'}
+ list.forEach(p=>{const c=document.createElement('div');c.className='card';const f=new Set(load(p.id));const s=mk('svg',{viewBox:p.viewBox},c);
  p.regions.forEach((r,i)=>mk('path',{d:r.d,fill:f.has(i)?p.palette[r.n-1]:'#fff',stroke:'#999','stroke-width':.6},s));
  c.append(p.name+(f.size==p.regions.length?' ✅':''));c.onclick=e=>{if(e.target.closest&&e.target.closest('.so'))return;open(p)};
- if(f.size){const b=document.createElement('button');b.className='so';b.type='button';b.innerHTML='<span class="ar">↻</span> Start over';press(b,()=>ask(p));c.appendChild(b)}P.appendChild(c)})}
+ if(f.size){const b=document.createElement('button');b.className='so';b.type='button';b.innerHTML='<span class="ar">↻</span> Start over';press(b,()=>ask(p));c.appendChild(b)}P.appendChild(c)});scrollTo(0,0)}
 function ask(p,again){if($('#ask').style.display=='flex')return;askAt=Date.now();$('#askname').textContent=p.name;$('#ask').style.display='flex';askYes=()=>{if(Date.now()-askAt<450)return;$('#ask').style.display='none';erase(p.id);if(again)open(p);else home()};askNo=()=>{if(Date.now()-askAt<450)return;$('#ask').style.display='none'}}
 let askYes,askNo;
 function open(p){clearTimeout(yayT);$('#yay').style.display='none';delete document.body.dataset.complete;moved=false;pic=p;filled=new Set(load(p.id));$('#home').style.display='none';$('#game').style.display='flex';const A=$('#art');A.innerHTML='';A.setAttribute('viewBox',p.viewBox);
@@ -53,4 +64,4 @@ W.addEventListener('pointermove',e=>{if(!pts.has(e.pointerId))return;const o=pts
  else{const dx=e.clientX-o[0],dy=e.clientY-o[1];if(Math.abs(dx)+Math.abs(dy)>2&&sc>1){tx+=dx;ty+=dy;xf();moved=true}}});
 ['pointerup','pointercancel'].forEach(t=>W.addEventListener(t,e=>{pts.delete(e.pointerId);if(!pts.size)setTimeout(()=>moved=false,50)}));
 W.addEventListener('wheel',e=>{e.preventDefault();zoom(e.deltaY<0?1.2:1/1.2)});
-$('#reset').onclick=fit;$('#reset').addEventListener('pointerdown',e=>e.stopPropagation());$('#zin').onclick=()=>zoom(1.4);$('#zout').onclick=()=>zoom(1/1.4);$('#back').onclick=home;press($('#again'),()=>{$('#yay').style.display='none';erase(pic.id);open(pic)});press($('#ok'),()=>{$('#yay').style.display='none';home()});press($('#askyes'),()=>askYes&&askYes());press($('#askno'),()=>askNo&&askNo());$('#ask').addEventListener('click',e=>{if(e.target===$('#ask')&&askNo)askNo()});home();
+$('#reset').onclick=fit;$('#reset').addEventListener('pointerdown',e=>e.stopPropagation());$('#zin').onclick=()=>zoom(1.4);$('#zout').onclick=()=>zoom(1/1.4);$('#back').onclick=()=>home();press($('#hback'),()=>welcome());press($('#again'),()=>{$('#yay').style.display='none';erase(pic.id);open(pic)});press($('#ok'),()=>{$('#yay').style.display='none';home()});press($('#askyes'),()=>askYes&&askYes());press($('#askno'),()=>askNo&&askNo());$('#ask').addEventListener('click',e=>{if(e.target===$('#ask')&&askNo)askNo()});welcome();
