@@ -1,13 +1,24 @@
 const $=s=>document.querySelector(s),NS='http://www.w3.org/2000/svg';let pic,sel=1,filled,sc=1,tx=0,ty=0;
 const key=id=>'hc_'+id,mem={},load=id=>{if(id in mem)return mem[id];try{return JSON.parse(localStorage.getItem(key(id))||'[]')}catch(e){return[]}},save=(id,v)=>{mem[id]=v;try{localStorage.setItem(key(id),JSON.stringify(v))}catch(e){}},erase=id=>{mem[id]=[];try{localStorage.removeItem(key(id))}catch(e){}};let yayT;
+let lastFire=0;
+// Works with touch, mouse, pen and keyboard: fires on pointerup (if the finger stayed put) or on click, never twice, and swallows the ghost click that follows
+document.addEventListener('click',e=>{if(Date.now()-lastFire<350){e.stopPropagation();e.preventDefault()}},true);
+function press(el,fn){let sx,sy,id=null;el.addEventListener('pointerdown',e=>{sx=e.clientX;sy=e.clientY;id=e.pointerId});
+ el.addEventListener('pointerup',e=>{if(id!==e.pointerId)return;id=null;if(Math.abs(e.clientX-sx)<12&&Math.abs(e.clientY-sy)<12){lastFire=Date.now();e.stopPropagation();fn(e)}});
+ el.addEventListener('pointercancel',()=>{id=null});el.addEventListener('click',e=>{e.stopPropagation();fn(e)})}
+function ensureUI(){const B=document.body;
+ if(!$('#ask')){const d=document.createElement('div');d.id='ask';d.innerHTML='<div class="box"><div class="q">Start over?</div><p>This will erase your coloring on <b id="askname"></b>.</p><button type="button" id="askyes" class="big yes">Yes, start over</button><button type="button" id="askno" class="big no">No, keep it</button></div>';B.appendChild(d)}
+ if(!$('#again')){const b=document.createElement('button');b.type='button';b.id='again';b.className='big';b.textContent='🎨 Color again';const ok=$('#ok');ok.parentNode.insertBefore(b,ok);ok.parentNode.insertBefore(document.createTextNode(' '),ok)}}
+ensureUI();let askAt=0;
 function mk(t,a,p){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);p&&p.appendChild(e);return e}
 function center(d){const s=mk('svg',{style:'position:absolute;visibility:hidden'},document.body),p=mk('path',{d},s),b=p.getBBox();s.remove();return[b.x+b.width/2,b.y+b.height/2,Math.min(b.width,b.height)]}
 function home(){clearTimeout(yayT);$('#yay').style.display='none';$('#game').style.display='none';$('#home').style.display='';const P=$('#picker');P.innerHTML='';
  PICTURES.forEach(p=>{const c=document.createElement('div');c.className='card';const f=new Set(load(p.id));const s=mk('svg',{viewBox:p.viewBox},c);
  p.regions.forEach((r,i)=>mk('path',{d:r.d,fill:f.has(i)?p.palette[r.n-1]:'#fff',stroke:'#999','stroke-width':.6},s));
- c.append(p.name+(f.size==p.regions.length?' ✅':''));c.onclick=()=>open(p);
- if(f.size){const b=document.createElement('button');b.className='so';b.type='button';b.innerHTML='<span class="ar">↻</span> Start over';b.onclick=e=>{e.stopPropagation();ask(p)};c.appendChild(b)}P.appendChild(c)})}
-function ask(p,again){$('#askname').textContent=p.name;$('#ask').style.display='flex';$('#askyes').onclick=()=>{$('#ask').style.display='none';erase(p.id);if(again)open(p);else home()};$('#askno').onclick=()=>{$('#ask').style.display='none'};$('#askyes').focus&&$('#askno').focus()}
+ c.append(p.name+(f.size==p.regions.length?' ✅':''));c.onclick=e=>{if(e.target.closest&&e.target.closest('.so'))return;open(p)};
+ if(f.size){const b=document.createElement('button');b.className='so';b.type='button';b.innerHTML='<span class="ar">↻</span> Start over';press(b,()=>ask(p));c.appendChild(b)}P.appendChild(c)})}
+function ask(p,again){if($('#ask').style.display=='flex')return;askAt=Date.now();$('#askname').textContent=p.name;$('#ask').style.display='flex';askYes=()=>{if(Date.now()-askAt<450)return;$('#ask').style.display='none';erase(p.id);if(again)open(p);else home()};askNo=()=>{if(Date.now()-askAt<450)return;$('#ask').style.display='none'}}
+let askYes,askNo;
 function open(p){clearTimeout(yayT);$('#yay').style.display='none';delete document.body.dataset.complete;moved=false;pic=p;filled=new Set(load(p.id));$('#home').style.display='none';$('#game').style.display='flex';const A=$('#art');A.innerHTML='';A.setAttribute('viewBox',p.viewBox);
  const W=$('#wrap'),sz=Math.min(W.clientWidth,W.clientHeight);A.setAttribute('width',sz);A.setAttribute('height',sz);sc=1;tx=(W.clientWidth-sz)/2;ty=(W.clientHeight-sz)/2;xf();
  p.regions.forEach((r,i)=>{const e=mk('path',{d:r.d,'data-number':r.n,'data-i':i,fill:filled.has(i)?p.palette[r.n-1]:'#fff'},A);e.onclick=()=>tap(e,i,r.n)});
@@ -42,4 +53,4 @@ W.addEventListener('pointermove',e=>{if(!pts.has(e.pointerId))return;const o=pts
  else{const dx=e.clientX-o[0],dy=e.clientY-o[1];if(Math.abs(dx)+Math.abs(dy)>2&&sc>1){tx+=dx;ty+=dy;xf();moved=true}}});
 ['pointerup','pointercancel'].forEach(t=>W.addEventListener(t,e=>{pts.delete(e.pointerId);if(!pts.size)setTimeout(()=>moved=false,50)}));
 W.addEventListener('wheel',e=>{e.preventDefault();zoom(e.deltaY<0?1.2:1/1.2)});
-$('#reset').onclick=fit;$('#reset').addEventListener('pointerdown',e=>e.stopPropagation());$('#zin').onclick=()=>zoom(1.4);$('#zout').onclick=()=>zoom(1/1.4);$('#back').onclick=home;$('#again').onclick=()=>{$('#yay').style.display='none';erase(pic.id);open(pic)};$('#ok').onclick=()=>{$('#yay').style.display='none';home()};home();
+$('#reset').onclick=fit;$('#reset').addEventListener('pointerdown',e=>e.stopPropagation());$('#zin').onclick=()=>zoom(1.4);$('#zout').onclick=()=>zoom(1/1.4);$('#back').onclick=home;press($('#again'),()=>{$('#yay').style.display='none';erase(pic.id);open(pic)});press($('#ok'),()=>{$('#yay').style.display='none';home()});press($('#askyes'),()=>askYes&&askYes());press($('#askno'),()=>askNo&&askNo());$('#ask').addEventListener('click',e=>{if(e.target===$('#ask')&&askNo)askNo()});home();
