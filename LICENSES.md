@@ -13,4 +13,8 @@ Happy Colors is a private family app. Pictures that come from real photos use on
 
 ## Everything else
 
-Other pictures (stars, butterfly, garden, winter house, puppy, rainbow, ocean, castle, sunflower mandala) are drawn in code by this project and have no outside sources.
+Other pictures (stars, butterfly, garden, winter house, puppy, rainbow, ocean, castle, sunflower mandala, bus, fire truck, owl, Christmas tree, rainbow castle, rocket) are drawn in code by this project and have no outside sources.
+
+## Daily pictures (`pictures-daily.js`)
+
+Happy Snowman, Planet Parade and all later daily pictures are original drawings made in code for this project (no outside images or photos), released as CC0 / original work of this project. Any daily picture that is traced from an outside photo gets its own section above with page URL, author, license and changes. Full list: `PICTURE_LOG.md`. Procedure: `DAILY_RUN.md`.

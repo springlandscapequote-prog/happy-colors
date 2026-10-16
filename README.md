@@ -9,3 +9,6 @@ Append an object to `PICTURES` in `pictures.js`:
  regions:[{n:1,d:'M0,0h200v200h-200Z'}, {n:2,d:circ(100,100,40)}]}
 ```
 `n` = color number, `d` = SVG path (helpers: `rect`, `circ`, `star`, `petals`). Later regions draw on top. Rendered paths get `data-number`. Use a unique `id` (it keys saved progress).
+
+## Daily pictures
+New pictures are added every day in `pictures-daily.js`; the procedure is in `DAILY_RUN.md`, the list of all pictures in `PICTURE_LOG.md`, helper/test scripts in `tools/`.

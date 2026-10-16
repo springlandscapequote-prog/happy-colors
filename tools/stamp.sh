@@ -4,7 +4,7 @@
 # and the ?v= on the <script> tags in index.html. Safe to run any number of times (same files -> same stamp).
 set -e
 cd "$(dirname "$0")/.."
-FILES=$(git ls-files | grep -Ev '^(version\.js|version\.json|index\.html|README\.md|LICENSES\.md|UPDATE\.md|release\.sh|tools/|\.github/)' | sort)
+FILES=$(git ls-files | grep -Ev '^(version\.js|version\.json|index\.html|README\.md|LICENSES\.md|UPDATE\.md|DAILY_RUN\.md|PICTURE_LOG\.md|release\.sh|tools/|\.github/)' | sort)
 H=$( ( sed 's/?v=[A-Za-z0-9._-]*/?v=X/g' index.html; for f in $FILES; do printf '%s\n' "$f"; cat "$f"; done ) | sha256sum | cut -c1-10 )
 printf "var APP_VERSION='%s';\n" "$H" > version.js
 printf '{"v":"%s"}\n' "$H" > version.json
