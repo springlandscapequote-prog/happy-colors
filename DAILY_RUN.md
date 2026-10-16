@@ -64,7 +64,7 @@ cd /workspace/happy-colors/repo && git add -A && git commit -m "Daily pictures Y
 Verify (wait up to ~3 min, poll every 20 s):
 ```
 curl -s "https://springlandscapequote-prog.github.io/happy-colors/version.json?t=$(date +%s)"            # must differ from the OLD version
-curl -s "https://springlandscapequote-prog.github.io/happy-colors/pictures-daily.js?t=$(date +%s)" | grep -c "id:'<id>'"   # new ids are live
+curl -s "https://springlandscapequote-prog.github.io/happy-colors/pictures-daily.js?t=$(date +%s)" | grep -c "add('<id>'"   # new ids are live (add() takes the id as its first argument)
 ```
 Then run `daily_test.py` once with `quick` against the LIVE URL (`https://springlandscapequote-prog.github.io/happy-colors/`) and check the new pictures open.
 Also report the Suggest button status: `curl -s .../config.js` (SUGGEST_URL empty = suggestions stay on the device only).
