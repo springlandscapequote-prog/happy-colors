@@ -91,7 +91,8 @@ Clean up: `kill $(cat /tmp/hc_server.pid)`, make sure no Playwright browser (`pg
 
 ## Idea backlog (tick when used)
 - [x] 2026-10-15 Happy Snowman (Easy, Holidays) / Planet Parade (Hard, Space)
+- [x] 2026-10-16 Busy Harbor (Hard, Vehicles) / Rainbow Unicorn (Easy, Fantasy)
 - Design tip learned: a Hard picture still needs several big regions (>=10 units across) so numbers show at 1x zoom; add large background shapes (nebula, hills, clouds) and thick bands, not only tiny details. Check `visible@1x` in the test output (aim for 25+ for Hard, 12+ for Easy/Medium).
-- Hard: Peacock Parade (animals), Busy Harbor with boats (vehicles), Gingerbread Village (holidays), Dragon & Castle Mountain (fantasy), Jungle Treehouse (animals/nature), Garden Bugs (animals)
-- Medium: Fish Bowl / Seahorse (animals), Sailboat Bay (vehicles), Unicorn Meadow (fantasy), Gift Sleigh (holidays), Moon Base with rover (space), Hot Air Balloons (vehicles)
-- Easy: Sailboat (vehicles), Unicorn (fantasy), Jack-o-lantern smile (holidays), Turtle (animals), Fish (animals), Spaceship UFO (space), Fairy Mushroom House (fantasy), Valentine heart (holidays)
+- Hard: Peacock Parade (animals), Gingerbread Village (holidays), Dragon & Castle Mountain (fantasy), Jungle Treehouse (animals/nature), Garden Bugs (animals), Snow Day Sledding Hill (holidays), Wizard Tower Library (fantasy), Train Station with steam train (vehicles)
+- Medium: Fish Bowl / Seahorse (animals), Sailboat Bay (vehicles), Unicorn Meadow (fantasy), Gift Sleigh (holidays), Moon Base with rover (space), Hot Air Balloons (vehicles), Pumpkin Patch with hay bales (holidays), Penguin Family on ice (animals), Dragon Egg Nest (fantasy)
+- Easy: Sailboat (vehicles; Busy Harbor already has a small one, so make it a close-up), Jack-o-lantern smile (holidays), Turtle (animals), Fish (animals), Spaceship UFO (space), Fairy Mushroom House (fantasy), Valentine heart (holidays), Tractor (vehicles), Friendly Whale (animals), Magic Wand & Stars (fantasy)
