@@ -141,4 +141,68 @@
   r.push(R(7,poly([[108,168],[198,168],[190,188],[118,188]])),R(2,poly([[109.6,172],[196.4,172],[195.2,175],[110.8,175]])));
   [[124,181],[140,181],[156,181],[172,181]].forEach(([x,y])=>r.push(R(11,circ(x,y,4))));
   add('harbor','Busy Harbor','hard','vehicles',['#a5d8ff','#ffffff','#ffd43b','#69db7c','#1c7ed6','#4dabf7','#e03131','#ff922b','#8d5524','#adb5bd','#343a40','#9775fa','#2f9e44','#f783ac'],r)})();
+
+ // ===== 2026-10-17  Peacock Parade (Hard, Animals) =====
+ (function(){const r=[],cx=100,cy=150,P=(a,d)=>[cx+d*Math.cos(a),cy+d*Math.sin(a)],D=Math.PI/180;
+  r.push(R(1,rect(0,0,200,200)),R(3,circ(184,16,12)));
+  r.push(R(2,ell(26,20,20,8)),R(2,ell(150,10,16,6)),R(2,ell(20,76,16,7)),R(2,ell(180,72,16,7)));
+  r.push(R(4,'M0,150Q50,128 100,142T200,136V200H0Z'));
+  // tail fan backing (one big area behind the feathers)
+  r.push(R(6,`M${cx-98},${cy}A98,98 0 0 1 ${cx+98},${cy}Z`));
+  // outer row of tail feathers with eyes
+  for(let i=0;i<9;i++){const a=(-166+i*19)*D,[x,y]=P(a,66),[ex,ey]=P(a,i==4?86:80);
+   r.push(R(i%2?7:14,poly(rell(x,y,32,12.5,a,0,6.2832))));
+   r.push(R(3,poly(rell(ex,ey,10.5,8.5,a,0,6.2832))),R(8,poly(rell(ex,ey,7,5.6,a,0,6.2832))),R(i%2?10:9,poly(rell(ex-1.2*Math.cos(a),ey-1.2*Math.sin(a),3.4,2.8,a,0,6.2832))))}
+  // inner row
+  for(let i=0;i<8;i++){const a=(-157+i*19)*D,[x,y]=P(a,42),[ex,ey]=P(a,52);
+   r.push(R(i%2?14:7,poly(rell(x,y,22,10,a,0,6.2832))));
+   r.push(R(3,poly(rell(ex,ey,7.5,6,a,0,6.2832))),R(i%2?9:10,poly(rell(ex,ey,3.8,3,a,0,6.2832))))}
+  // grass in front of the tail
+  r.push(R(5,'M0,160Q50,150 100,158T200,154V200H0Z'));
+  // legs + feet
+  r.push(R(11,rect(90,150,4,22)),R(11,rect(104,150,4,22)),R(11,poly([[84,172],[96,170],[96,175],[84,176]])),R(11,poly([[102,170],[114,172],[114,176],[102,175]])));
+  // body, wing, neck, head
+  r.push(R(9,ell(99,138,17,20)));
+  r.push(R(7,poly(rell(92,142,8,15,.25,0,6.2832))));
+  r.push(R(9,'M96,122Q90,104 96,88Q100,80 108,82Q112,90 106,104Q104,114 108,124Z'));
+  r.push(R(9,circ(104,84,9)));
+  r.push(R(2,ell(106,82,4,3)),R(13,circ(107,82,1.9)));
+  r.push(R(11,poly([[111,85],[121,88],[111,91]])));
+  // crest
+  [[97,73],[104,71],[111,73]].forEach(([x,y])=>r.push(R(8,circ(x,y,3))));
+  // flowers in the grass
+  [[24,178],[60,190],[148,186],[182,172]].forEach(([x,y],i)=>r.push(R(i%2?12:2,star(x,y,8,5)),R(3,circ(x,y,3))));
+  add('peacock','Peacock Parade','hard','animals',['#a5d8ff','#ffffff','#ffd43b','#b2f2bb','#51cf66','#2b8a3e','#20c997','#22b8cf','#1c64d6','#5f3dc4','#ff922b','#f783ac','#343a40','#94d82d'],r)})();
+
+ // ===== 2026-10-17  Pumpkin Patch (Medium, Holidays & Winter) =====
+ (function(){const r=[],T=6.2832;
+  r.push(R(1,rect(0,0,200,200)),R(3,circ(26,24,14)));
+  r.push(R(2,ell(84,22,20,8)),R(2,ell(122,12,14,6)));
+  r.push(R(4,'M0,100Q50,80 100,94T200,88V200H0Z'));
+  // autumn tree (behind the fence)
+  r.push(R(9,rect(160,58,10,56)));
+  r.push(R(6,circ(165,46,27)),R(10,circ(147,56,11)),R(3,circ(184,50,10)),R(10,circ(164,26,10)),R(3,circ(158,62,8)));
+  // fence: rails first, posts on top
+  r.push(R(9,rect(0,102,200,6)),R(9,rect(0,116,200,6)));
+  [86,118,148,184].forEach(x=>r.push(R(11,rect(x,94,6,32))));
+  // field
+  r.push(R(5,'M0,128Q100,118 200,128V200H0Z'));
+  r.push(R(12,'M0,188Q100,180 200,188V200H0Z'));
+  // hay bales with straps
+  [[4,110],[40,110],[22,88]].forEach(([x,y])=>{r.push(R(3,rect(x,y,36,22)),R(11,rect(x+8,y,4,22)),R(11,rect(x+24,y,4,22)))});
+  // vine leaves on the ground
+  [[66,150,.5],[132,146,-.6],[20,152,-.3],[180,150,.4]].forEach(([x,y,a])=>r.push(R(8,poly(rell(x,y,10,5,a,0,T)))));
+  // pumpkins: back lobes first, middle lobe on top, then stem + leaf
+  const pk=(x,y,w,h,s)=>{
+   r.push(R(7,ell(x-w*.55,y,w*.6,h)),R(7,ell(x+w*.55,y,w*.6,h)));
+   if(s>1)r.push(R(6,ell(x-w*.28,y,w*.55,h*1.05)),R(6,ell(x+w*.28,y,w*.55,h*1.05)));
+   r.push(R(s>1?7:6,ell(x,y,w*.45,h*1.1)));
+   r.push(R(13,poly([[x-2.4,y-h*1.1+1],[x-1.6,y-h*1.1-7],[x+3,y-h*1.1-8],[x+2.4,y-h*1.1+1]])));
+   if(s>0)r.push(R(8,poly(rell(x+9,y-h*1.1-3,7,3.4,-.5,0,T))))};
+  pk(100,162,24,20,2);
+  pk(44,166,18,14,1);pk(158,166,18,14,1);
+  pk(72,184,12,9,0);pk(130,186,12,9,0);
+  // falling leaves
+  [[56,52,.6,10],[112,64,-.4,6],[194,92,.9,10],[16,72,-.8,3]].forEach(([x,y,a,c])=>r.push(R(c,poly(rell(x,y,6,3.2,a,0,T)))));
+  add('pumpkinpatch','Pumpkin Patch','medium','holidays',['#a5d8ff','#ffffff','#ffd43b','#c0eb75','#a9714b','#ff922b','#e8590c','#2f9e44','#8d5524','#e03131','#e0a458','#69db7c','#5c940d'],r)})();
 })();
