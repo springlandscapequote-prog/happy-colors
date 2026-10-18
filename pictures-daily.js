@@ -205,4 +205,98 @@
   // falling leaves
   [[56,52,.6,10],[112,64,-.4,6],[194,92,.9,10],[16,72,-.8,3]].forEach(([x,y,a,c])=>r.push(R(c,poly(rell(x,y,6,3.2,a,0,T)))));
   add('pumpkinpatch','Pumpkin Patch','medium','holidays',['#a5d8ff','#ffffff','#ffd43b','#c0eb75','#a9714b','#ff922b','#e8590c','#2f9e44','#8d5524','#e03131','#e0a458','#69db7c','#5c940d'],r)})();
+
+ // ===== 2026-10-18  Dragon & Castle Mountain (Hard, Fantasy & Castles) =====
+ (function(){const r=[],T=6.2832;
+  r.push(R(1,rect(0,0,200,200)));
+  r.push(R(4,circ(176,24,17)),R(3,circ(176,24,11)));
+  r.push(R(2,ell(32,20,22,8)),R(2,ell(98,14,18,7)),R(2,ell(140,10,13,5)));
+  // far mountains with snow caps
+  r.push(R(5,poly([[0,112],[20,84],[44,98],[84,42],[112,86],[134,68],[170,96],[200,84],[200,140],[0,140]])));
+  r.push(R(2,poly([[84,42],[95.2,59.5],[89,56],[84,62],[78,56],[71.4,57.5]])));
+  // hills: meadow, castle hill, front hill
+  r.push(R(10,'M0,120Q70,104 130,118T200,112V200H0Z'));
+  r.push(R(11,'M0,104Q40,90 80,102Q104,110 118,126L118,200H0Z'));
+  r.push(R(9,'M0,160Q60,140 120,154T200,148V200H0Z'));
+  // winding path from the castle gate
+  r.push(R(15,'M32,100Q42,120 26,136Q12,152 30,172L46,172Q30,152 44,136Q56,118 42,100Z'));
+  // castle
+  r.push(R(7,rect(14,70,44,30)),R(7,rect(21,64,5,6)),R(7,rect(46,64,5,6)));
+  r.push(R(7,rect(4,58,16,42)),R(7,rect(52,58,16,42)),R(7,rect(28,52,16,20)));
+  r.push(R(12,poly([[2,58],[12,38],[22,58]])),R(12,poly([[50,58],[60,38],[70,58]])),R(12,poly([[25,52],[36,32],[47,52]])));
+  r.push(R(3,poly([[12,39],[12,27],[22,32]])),R(13,poly([[36,33],[36,21],[46,26]])));
+  r.push(R(14,'M29,100V88a7,7 0 0 1 14,0V100Z'));
+  r.push(R(6,rect(9,66,6,9)),R(6,rect(57,66,6,9)),R(6,circ(36,60,3.4)));
+  // pine trees
+  [[80,108],[98,118],[66,116]].forEach(([x,y],i)=>{const s=i==2?.8:1;
+   r.push(R(14,rect(x-2.5,y-8*s,5,8*s)),R(11,poly([[x,y-34*s],[x+11*s,y-16*s],[x-11*s,y-16*s]])),R(i==2?10:11,poly([[x,y-26*s],[x+13*s,y-8*s],[x-13*s,y-8*s]])))});
+  // ---- friendly dragon ----
+  // tail with spade tip
+  r.push(R(16,'M160,168Q198,176 192,138L183,139Q186,162 158,158Z'));
+  r.push(R(12,poly([[187.5,122],[199,142],[176,142]])));
+  // wing (three membranes between the finger bones)
+  const A=[150,110],W=[[112,56],[140,36],[174,38],[196,72]];
+  for(let i=0;i<3;i++){const a=W[i],b=W[i+1],c=[A[0]+.55*((a[0]+b[0])/2-A[0]),A[1]+.55*((a[1]+b[1])/2-A[1])];
+   r.push(R(i%2?4:13,`M${A[0]},${A[1]}L${a[0]},${a[1]}Q${f(c[0])},${f(c[1])} ${b[0]},${b[1]}Z`))}
+  // back spikes (partly behind the neck and body)
+  [[145.5,86.9,-.6],[152,97.5,-.6],[159.5,107.9,-.7],[166.9,113.8,-1.1],[177.9,122.7,-.7],[183.6,136.8,-.2]].forEach(([x,y,a])=>{
+   const ux=Math.cos(a),uy=Math.sin(a),tx=-uy,ty=ux;r.push(R(12,poly([[x+tx*6,y+ty*6],[x+ux*11,y+uy*11],[x-tx*6,y-ty*6]])))});
+  // body, belly, neck
+  r.push(R(16,ell(158,142,26,30)));
+  r.push(R(16,'M144,124Q134,100 124,84L140,76Q150,98 168,118Z'));
+  r.push(R(3,ell(148,148,14,22)));
+  [132,142,152,162].forEach(y=>r.push(R(4,ell(148,y,(y==132||y==162)?8:11,3.4))));
+  // legs and arm
+  r.push(R(16,ell(174,160,12,15)),R(16,ell(166,178,15,5.5)));
+  [[156,180],[162,182],[168,182]].forEach(([x,y])=>r.push(R(2,circ(x,y,2.3))));
+  r.push(R(16,poly(rell(134,142,6,12,.5,0,T))),R(16,circ(128,152,5)));
+  // horns, head, snout
+  r.push(R(3,poly([[126,66],[134,46],[138,64]])),R(3,poly([[114,68],[112,50],[123,64]])));
+  r.push(R(16,ell(124,76,16,13)),R(9,ell(108,83,11,8)));
+  r.push(R(6,circ(103,80,2.3)),R(6,circ(110,79,2.3)));
+  r.push(R(2,ell(127,71,5,5.5)),R(6,circ(126,71,2.7)),R(13,circ(120,85,3.2)));
+  // little smoke puffs (a friendly dragon)
+  r.push(R(7,circ(93,74,4)),R(7,circ(85,65,5.5)));
+  // treasure
+  [[110,176],[119,180],[128,176],[114,170],[124,170]].forEach(([x,y])=>r.push(R(3,circ(x,y,4.4))));
+  r.push(R(13,poly([[119,158],[124,163],[119,168],[114,163]])));
+  // rocks and flowers
+  r.push(R(8,ell(84,166,9,5)),R(8,ell(186,186,10,6)));
+  [[14,186],[56,190],[80,184],[150,194]].forEach(([x,y],i)=>r.push(R(i%2?12:13,star(x,y,7.5,4.5)),R(3,circ(x,y,2.6))));
+  add('dragonmountain','Dragon & Castle Mountain','hard','fantasy',['#a5d8ff','#ffffff','#ffd43b','#ff922b','#b197fc','#5f3dc4','#dee2e6','#adb5bd','#b2f2bb','#69db7c','#2b8a3e','#fa5252','#f783ac','#a9714b','#e0a458','#20c997'],r)})();
+
+ // ===== 2026-10-18  Moon Base (Medium, Space) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)));
+  // Earth in the sky
+  r.push(R(9,circ(40,40,20)),R(10,poly([[28,30],[38,24],[44,32],[36,42],[26,40]])),R(10,poly([[44,44],[54,40],[57,50],[48,56]])),R(2,ell(46,26,7,2.6)));
+  // stars and a shooting star
+  [[92,14],[124,34],[150,12],[188,44],[78,54],[12,80],[108,76],[166,72]].forEach(([x,y],i)=>r.push(R(i%2?2:3,star(x,y,5.5,2.4))));
+  r.push(R(4,poly([[135,51],[145,61],[180,26]])),R(3,circ(140,56,5.5)));
+  // moon hills and ground
+  r.push(R(7,'M0,120Q40,98 80,112T160,104T200,100V200H0Z'));
+  r.push(R(6,'M0,146Q60,132 120,142T200,136V200H0Z'));
+  r.push(R(8,ell(146,114,10,3.6)),R(8,ell(18,122,9,3.6)));
+  r.push(R(8,ell(40,180,17,6.5)),R(7,ell(40,181,10,3.6)),R(8,ell(150,186,14,5)),R(8,ell(98,192,10,4)),R(8,ell(188,160,9,3.6)));
+  // solar panels on a stand
+  r.push(R(8,rect(20,116,4,22)));
+  r.push(R(13,poly([[4,104],[16,103],[17,118],[5,119]])),R(11,poly([[16,103],[28,102],[29,117],[17,118]])),R(13,poly([[28,102],[40,101],[41,116],[29,117]])));
+  // main dome with windows and door
+  r.push(R(2,'M50,128A30,30 0 0 1 110,128Z'),R(5,rect(46,128,68,10)));
+  r.push(R(11,circ(62,118,4.5)),R(11,circ(80,106,4.5)),R(11,circ(98,118,4.5)));
+  r.push(R(12,'M74,138V126a6,6 0 0 1 12,0V138Z'));
+  // tunnel and small dome with antenna
+  r.push(R(7,rect(110,126,26,9)));
+  r.push(R(8,rect(150.5,96,4,20)),R(2,poly(rell(146,94,11,5,-.5,0,3.1416))),R(12,circ(155,90,3.2)));
+  r.push(R(2,'M136,130A16,16 0 0 1 168,130Z'),R(5,rect(134,130,36,8)),R(11,circ(152,123,4)));
+  // base flag with a star
+  r.push(R(8,rect(178,96,4,48)),R(5,rect(182,97,17,14)),R(3,star(190.5,104,5.5,2.4)));
+  // rover
+  r.push(R(8,rect(158,128,3.6,22)),R(12,circ(159.8,125,4)));
+  r.push(R(2,poly([[118,150],[124,138],[150,138],[156,150]])),R(11,poly([[127,141.5],[147,141.5],[151,148],[123,148]])));
+  r.push(R(4,rect(110,150,56,14)),R(3,circ(113.5,155,2.6)));
+  [118,138,158].forEach(x=>r.push(R(8,circ(x,168,7.5)),R(3,circ(x,168,3.2))));
+  // moon rocks
+  r.push(R(7,ell(66,160,7,4)),R(7,ell(184,186,8,4.5)),R(7,ell(10,164,6,3.8)));
+  add('moonbase','Moon Base','medium','space',['#24305e','#ffffff','#ffd43b','#ff922b','#b197fc','#f1f3f5','#ced4da','#868e96','#339af0','#51cf66','#a5d8ff','#fa5252','#3b5bdb'],r)})();
 })();
