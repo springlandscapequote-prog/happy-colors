@@ -14,6 +14,15 @@ DAY=$(date +%F); mkdir -p /workspace/happy-colors/daily/$DAY
 curl -s https://springlandscapequote-prog.github.io/happy-colors/version.json     # remember the OLD live version
 ```
 
+## Collect suggestions (do this first, every run; also at least every 6 hours if you can)
+Kids' ideas from the "Suggest a picture" button arrive in a free ntfy.sh topic (see README.md; ntfy keeps them only ~12 h).
+```
+cd /workspace/happy-colors/repo && python3 tools/pull_suggestions.py      # writes /workspace/happy-colors/suggestions-new.json (+ appends suggestions-all.csv backup)
+```
+- The **main agent** appends the rows of `suggestions-new.json` (`[when_pacific, category, idea]`) to the Google Sheet "Happy Colors - Picture Suggestions" (id 1acjcZZAUS20Q6eAut7pa5Ru04p-VoBT3OVe4a0z-sEQ, tab Sheet1) with the Sheets connector. The script itself never writes to the Sheet. Append before the next run (the next run overwrites `suggestions-new.json`; `suggestions-all.csv` keeps everything).
+- Never commit `suggestions-*` files. Report how many new ideas were collected/added.
+- **Prefer Gabriela's suggested ideas** (and other kids' ideas that are kid-friendly and not duplicates) when choosing the day's pictures in step (b). Credit them in `PICTURE_LOG.md` as `idea from Gabriela's suggestion` (or `idea from a kid's suggestion`).
+
 ## (a) Read the picture log
 Read `PICTURE_LOG.md` (every picture ever added) and look at the live grid of counts per category and level, which is printed at the top of every `tools/daily_test.py` run.
 Grid format: `Animals: E:2 M:1 H:0`. Categories (ids in `pictures.js` `CATEGORIES`):
@@ -21,6 +30,7 @@ Grid format: `Animals: E:2 M:1 H:0`. Categories (ids in `pictures.js` `CATEGORIE
 (every picture automatically also appears in Math Colors with equations, that is expected and tested).
 
 ## (b) Pick 2 new ideas (no duplicates)
+- First look at the new suggestions (Collect suggestions step above): a fitting, new, kid-friendly suggestion wins over the backlog.
 - Check names AND subjects in `PICTURE_LOG.md` / `pictures.js` / `pictures-real.js` / `pictures-daily.js` (e.g. no second "Fire Truck", "Owl", "Rocket", "Castle", "Snowman", "Planets").
 - Choose the 2 thinnest (category, level) slots, in two **different categories**. Goal: over time every category has several Easy, Medium and Hard.
   Rotation: fill the lowest total first; Hard is thinnest overall, so most days include one Hard or Medium plus one Easy/Medium. Never two Hard on one day (Hard takes the longest).
@@ -67,7 +77,7 @@ curl -s "https://springlandscapequote-prog.github.io/happy-colors/version.json?t
 curl -s "https://springlandscapequote-prog.github.io/happy-colors/pictures-daily.js?t=$(date +%s)" | grep -c "add('<id>'"   # new ids are live (add() takes the id as its first argument)
 ```
 Then run `daily_test.py` once with `quick` against the LIVE URL (`https://springlandscapequote-prog.github.io/happy-colors/`) and check the new pictures open.
-Also report the Suggest button status: `curl -s .../config.js` (SUGGEST_URL empty = suggestions stay on the device only).
+Also report the Suggest button status: `curl -s .../config.js` (SUGGEST_URL = the ntfy.sh topic; empty = suggestions stay on the device only).
 
 ## (g) Screenshots
 `daily_test.py` saves to `/workspace/happy-colors/daily/YYYY-MM-DD/`: `<id>-picker.png` (category list with the card), `<id>-unfilled.png`, `<id>-partly-colored.png`, `<id>-finished.png`, `<id>-zoomed.png` (iPhone 390x664).
