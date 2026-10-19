@@ -299,4 +299,97 @@
   // moon rocks
   r.push(R(7,ell(66,160,7,4)),R(7,ell(184,186,8,4.5)),R(7,ell(10,164,6,3.8)));
   add('moonbase','Moon Base','medium','space',['#24305e','#ffffff','#ffd43b','#ff922b','#b197fc','#f1f3f5','#ced4da','#868e96','#339af0','#51cf66','#a5d8ff','#fa5252','#3b5bdb'],r)})();
+
+ // ===== 2026-10-19  Gingerbread Village (Hard, Holidays & Winter) =====
+ (function(){const r=[],T=6.2832;
+  r.push(R(1,rect(0,0,200,200)));
+  r.push(R(3,circ(180,20,12)));
+  r.push(R(2,ell(30,18,20,8)),R(2,ell(96,12,16,6)),R(2,ell(140,26,14,6)));
+  [[62,34],[118,44],[12,48],[160,52],[82,36]].forEach(([x,y])=>r.push(R(2,star(x,y,5,2.2))));
+  // snowy hills and pine trees far behind
+  r.push(R(4,'M0,98Q50,72 100,88T200,80V200H0Z'));
+  [[30,66],[174,62]].forEach(([x,y])=>r.push(R(10,poly([[x,y-26],[x+13,y-4],[x-13,y-4]])),R(9,poly([[x,y-14],[x+16,y+14],[x-16,y+14]]))));
+  r.push(R(2,'M0,118Q60,104 120,114T200,110V200H0Z'));
+  // a gingerbread house: walls, roof, icing edges, candies
+  const house=(x0,x1,yb,yr,peak,roofC,doorC,wide)=>{const w=x1-x0,cx=(x0+x1)/2,ov=8;
+   r.push(R(5,rect(x0,yr,w,yb-yr)));
+   r.push(R(roofC,poly([[x0-ov,yr+4],[cx,peak],[x1+ov,yr+4]])));
+   // icing along both roof edges
+   const ex=(ax,ay,bx,by,t)=>{const dx=bx-ax,dy=by-ay,L=Math.hypot(dx,dy),nx=-dy/L*t,ny=dx/L*t;return poly([[ax,ay],[bx,by],[bx+nx,by+ny],[ax+nx,ay+ny]])};
+   r.push(R(2,ex(x0-ov,yr+4,cx,peak,-5)),R(2,ex(cx,peak,x1+ov,yr+4,-5)));
+   return {cx,w}};
+  // left house
+  let h=house(10,50,156,116,84,11,7);
+  r.push(R(2,rect(10,116,40,5)));
+  r.push(R(3,rect(16,126,12,12)),R(2,rect(14,138,16,4)));
+  r.push(R(7,'M34,156V140a6,6 0 0 1 12,0V156Z'));
+  r.push(R(8,circ(30,104,4.5)),R(9,circ(20,110,3.6)),R(13,circ(40,110,3.6)));
+  r.push(R(12,circ(16,148,3)),R(8,circ(27,150,3)));
+  // right house
+  h=house(150,192,156,114,82,12,8);
+  r.push(R(2,rect(150,114,42,5)));
+  r.push(R(3,rect(174,124,12,12)),R(2,rect(172,136,16,4)));
+  r.push(R(8,'M155,156V138a6,6 0 0 1 12,0V156Z'));
+  r.push(R(7,circ(171,102,4.5)),R(11,circ(160,108,3.6)),R(13,circ(182,108,3.6)));
+  r.push(R(11,circ(178,148,3)),R(7,circ(187,150,3)));
+  // big middle house with chimney (chimney behind the roof)
+  r.push(R(6,rect(116,50,12,30)),R(2,rect(114,46,16,6)));
+  house(62,138,152,92,46,8,7);
+  r.push(R(7,circ(100,72,8)),R(2,circ(100,72,3.6)));
+  [[80,82],[120,82],[92,58],[108,58]].forEach(([x,y],i)=>r.push(R([9,11,13,12][i],circ(x,y,4))));
+  r.push(R(2,'M62,92H138V98Q131,103 124,98Q117,103 110,98Q103,103 96,98Q89,103 82,98Q75,103 68,98Q65,101 62,98Z'));
+  r.push(R(3,rect(70,106,16,16)),R(3,rect(114,106,16,16)),R(2,rect(68,122,20,4)),R(2,rect(112,122,20,4)));
+  r.push(R(2,'M88,146V124a12,12 0 0 1 24,0V146Z'),R(13,'M92,146V125a8,8 0 0 1 16,0V146Z'),R(14,circ(104,134,2)));
+  r.push(R(12,rect(62,140,26,8)),R(12,rect(112,140,26,8)));
+  [[69,144,8],[81,144,7],[119,144,7],[131,144,8]].forEach(([x,y,c])=>r.push(R(c,circ(x,y,2.6))));
+  // snowy ground and candy path
+  r.push(R(2,'M0,156Q50,150 100,154T200,152V200H0Z'));
+  [[100,160,8],[94,171,11],[104,182,12],[96,194,8]].forEach(([x,y,c])=>r.push(R(c,ell(x,y,9,4.5))));
+  // gumdrop bushes in front of the houses
+  [[56,156,9],[144,156,9],[6,160,7],[196,160,11]].forEach(([x,y,c])=>r.push(R(c,`M${x-8},${y}A8,9 0 0 1 ${x+8},${y}Z`)));
+  // gingerbread friend (legs and arms first)
+  const gx=58,gy=172;
+  r.push(R(5,poly(rell(gx-5,gy+14,4.5,9,.3,0,T))),R(5,poly(rell(gx+5,gy+14,4.5,9,-.3,0,T))));
+  r.push(R(5,poly(rell(gx-10,gy-2,9,4.5,-.5,0,T))),R(5,poly(rell(gx+10,gy-2,9,4.5,.5,0,T))));
+  r.push(R(5,ell(gx,gy+3,9,11)),R(5,circ(gx,gy-14,8)));
+  r.push(R(14,circ(gx-3,gy-16,1.9)),R(14,circ(gx+3,gy-16,1.9)),R(7,ell(gx,gy-10,3.4,1.9)));
+  [-3,3,9].forEach(d=>r.push(R(2,circ(gx,gy+d,2.2))));
+  // candy cane post
+  r.push(R(2,rect(146,152,8,40)));
+  [158,170,182].forEach(y=>r.push(R(7,rect(146,y,8,5))));
+  r.push(R(7,'M146,152A12,12 0 0 1 170,152L162,152A4,4 0 0 0 154,152Z'));
+  // lollipop
+  r.push(R(6,rect(178,166,4,30)),R(8,circ(180,164,11)),R(3,circ(180,164,7)),R(2,circ(180,164,3)));
+  add('gingerbread','Gingerbread Village','hard','holidays',['#a5d8ff','#ffffff','#ffd43b','#dbe4ff','#d9883e','#8d5524','#fa5252','#f783ac','#51cf66','#2b8a3e','#b197fc','#63e6be','#ff922b','#343a40'],r)})();
+
+ // ===== 2026-10-19  Hot Air Balloons (Medium, Vehicles) =====
+ (function(){const r=[],T=6.2832;
+  // balloon envelope (round top, tapered bottom); kx squeezes it sideways to make the stripes
+  const env=(cx,cy,s,kx)=>{const X=d=>f(cx+d*s*kx),Y=d=>f(cy+d*s);return `M${X(-1)},${Y(0)}A${f(s*kx)},${f(s)} 0 0 1 ${X(1)},${Y(0)}Q${X(1)},${Y(.85)} ${X(.32)},${Y(1.28)}L${X(-.32)},${Y(1.28)}Q${X(-1)},${Y(.85)} ${X(-1)},${Y(0)}Z`};
+  const balloon=(cx,cy,s,cols,skirt,bask)=>{
+   [1,.62,.26].forEach((k,i)=>{if(cols[i])r.push(R(cols[i],env(cx,cy,s,k)))});
+   const y0=cy+s*1.28,hw=s*.32,sh=Math.max(s*.18,5),bw=Math.max(s*.5,10),bh=Math.max(s*.32,7);
+   r.push(R(skirt,poly([[cx-hw,y0],[cx+hw,y0],[cx+hw*.75,y0+sh],[cx-hw*.75,y0+sh]])));
+   if(bask)r.push(R(10,rect(f(cx-bw/2),f(y0+sh),f(bw),f(bh))));
+   if(s>=20)r.push(R(13,rect(f(cx-bw/2-1),f(y0+sh),f(bw+2),4)))};
+  r.push(R(1,rect(0,0,200,200)));
+  r.push(R(3,circ(26,24,14)));
+  r.push(R(2,ell(160,18,22,8)),R(2,ell(70,36,18,7)),R(2,ell(64,112,18,7)),R(2,ell(16,92,16,6)));
+  [[126,20],[140,28]].forEach(([x,y])=>r.push(R(14,poly([[x-7,y-1],[x-3.5,y-4.5],[x,y-1.5],[x+3.5,y-4.5],[x+7,y-1],[x+3.5,y],[x,y+2.6],[x-3.5,y]]))));
+  // hills, fields, river
+  r.push(R(9,'M0,146Q40,124 90,138T200,130V200H0Z'));
+  r.push(R(4,'M0,164Q60,148 120,160T200,156V200H0Z'));
+  r.push(R(12,'M0,182Q50,172 100,180T200,176V200H0Z'));
+  r.push(R(6,'M118,160Q132,170 120,182L136,182Q146,170 134,159Z'));
+  // trees
+  [[22,150],[156,154],[184,148]].forEach(([x,y])=>r.push(R(10,rect(x-2,y,4,10)),R(5,circ(x,y-4,7))));
+  // little barn
+  r.push(R(7,rect(54,146,22,16)),R(10,poly([[51,147],[65,135],[79,147]])),R(2,rect(61,152,8,10)));
+  // balloons: far small one first, big front one last
+  balloon(160,44,15,[11,2,null],3,true);
+  balloon(42,58,20,[8,3,8],7,true);
+  balloon(156,92,13,[6,2,6],3,true);
+  balloon(104,46,30,[7,3,6],8,true);
+  r.push(R(2,star(104,40,7,3)));
+  add('balloons','Hot Air Balloons','medium','vehicles',['#a5d8ff','#ffffff','#ffd43b','#94d82d','#2f9e44','#339af0','#fa5252','#ff922b','#69db7c','#a9714b','#9775fa','#d8f5a2','#8d5524','#495057'],r)})();
 })();
