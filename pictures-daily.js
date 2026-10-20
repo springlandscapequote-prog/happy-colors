@@ -392,4 +392,58 @@
   balloon(104,46,30,[7,3,6],8,true);
   r.push(R(2,star(104,40,7,3)));
   add('balloons','Hot Air Balloons','medium','vehicles',['#a5d8ff','#ffffff','#ffd43b','#94d82d','#2f9e44','#339af0','#fa5252','#ff922b','#69db7c','#a9714b','#9775fa','#d8f5a2','#8d5524','#495057'],r)})();
+
+ // ===== 2026-10-20  Penguin Family (Medium, Animals) =====
+ (function(){const r=[],T=6.2832;
+  // generic cartoon penguin: flippers first (behind the body), then body, belly, feet, head and face
+  const peng=(cx,cy,s)=>{const S=v=>f(v*s);
+   r.push(R(4,poly(rell(cx-21*s,cy-4*s,6*s,19*s,.38,0,T))),R(4,poly(rell(cx+21*s,cy-4*s,6*s,19*s,-.38,0,T))));
+   r.push(R(4,ell(cx,cy,S(22),S(36))),R(2,ell(cx,cy+S(8),S(15),S(27))),R(13,ell(cx,cy-S(18),S(12),S(5))));
+   r.push(R(5,ell(cx-S(9),cy+S(36),S(9),Math.max(S(4),3.5))),R(5,ell(cx+S(9),cy+S(36),S(9),Math.max(S(4),3.5))));
+   r.push(R(4,circ(cx,cy-S(40),S(17))),R(2,circ(cx-S(6),cy-S(40),S(7))),R(2,circ(cx+S(6),cy-S(40),S(7))));
+   r.push(R(10,circ(cx-S(12),cy-S(34),Math.max(S(2.8),2.2))),R(10,circ(cx+S(12),cy-S(34),Math.max(S(2.8),2.2))));
+   r.push(R(4,circ(cx-S(6),cy-S(41),Math.max(S(2.6),2.1))),R(4,circ(cx+S(6),cy-S(41),Math.max(S(2.6),2.1))));
+   r.push(R(5,poly([[cx-S(5),cy-S(35)],[cx+S(5),cy-S(35)],[cx,cy-S(27)]])))};
+  r.push(R(1,rect(0,0,200,200)),R(3,circ(30,28,14)));
+  r.push(R(2,ell(150,24,24,9)),R(2,ell(94,42,18,7)));
+  [[112,14],[190,62],[10,66]].forEach(([x,y])=>r.push(R(2,star(x,y,5,2.2))));
+  // sea with waves, floating iceberg and a jumping fish
+  r.push(R(6,rect(0,100,200,42)));
+  r.push(R(12,'M0,110Q25,105 50,110T100,110T150,110T200,110V116Q175,111 150,116T100,116T50,116T0,116Z'));
+  r.push(R(12,'M0,124Q25,119 50,124T100,124T150,124T200,124V130Q175,125 150,130T100,130T50,130T0,130Z'));
+  r.push(R(7,poly([[80,122],[90,92],[104,84],[116,96],[124,122]])),R(9,poly([[104,84],[116,96],[124,122],[106,122]])));
+  r.push(R(11,poly([[184,98],[196,90],[194,104]])),R(11,poly(rell(176,104,11,6,-.5,0,T))),R(4,circ(171,105,1.9)));
+  // ice floe and snow lumps
+  r.push(R(7,'M0,138Q50,130 100,136T200,132V200H0Z'));
+  r.push(R(2,ell(18,190,26,9)),R(2,ell(186,190,24,8)));
+  // dad, mom, chick
+  peng(56,132,1);
+  peng(148,140,.86);
+  const c=102;
+  r.push(R(5,ell(c-5,180,6,3.5)),R(5,ell(c+5,180,6,3.5)));
+  r.push(R(8,ell(c,166,13,14)),R(14,ell(c,171,8,8.5)),R(8,circ(c,144,13)),R(2,ell(c,147,11,9)));
+  r.push(R(4,circ(c-4,143.5,2)),R(4,circ(c+4,143.5,2)),R(5,poly([[c-3.6,147],[c+3.6,147],[c,152.5]])));
+  add('penguins','Penguin Family','medium','animals',['#a5d8ff','#ffffff','#ffd43b','#343a40','#ff922b','#339af0','#e7f5ff','#adb5bd','#99e9f2','#f783ac','#20c997','#1c7ed6','#ffc078','#e9ecef'],r)})();
+
+ // ===== 2026-10-20  Little Red Tractor (Easy, Vehicles) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(3,circ(172,30,16)));
+  r.push(R(2,ell(46,30,24,9)),R(2,ell(104,22,16,7)));
+  r.push(R(4,'M0,118Q50,98 100,114T200,106V200H0Z'));
+  r.push(R(10,rect(180,84,7,30)),R(5,circ(183,80,14)));
+  r.push(R(9,'M0,150Q100,138 200,150V200H0Z'));
+  r.push(R(10,'M0,182Q100,174 200,182V189Q100,181 0,189Z'));
+  // flowers in the field
+  [[112,180],[186,170],[36,184]].forEach(([x,y])=>r.push(R(6,circ(x,y,6.5)),R(3,circ(x,y,2.6))));
+  // round hay bale
+  r.push(R(3,circ(20,160,12)),R(9,circ(20,160,5)));
+  // tractor: exhaust and smoke behind, then cab, hood, wheels on top
+  r.push(R(7,rect(124,86,6,28)),R(2,circ(130,76,7)),R(2,circ(142,62,9)));
+  r.push(R(6,rect(54,72,46,64)));
+  r.push(R(7,rect(48,62,58,10)),R(8,rect(64,80,26,22)));
+  r.push(R(6,rect(96,112,70,32)),R(7,rect(158,116,8,24)),R(3,circ(156,108,5)));
+  r.push(R(6,'M34,142A38,38 0 0 1 110,142L104,142A32,32 0 0 0 40,142Z'));
+  r.push(R(7,circ(72,142,30)),R(3,circ(72,142,16)),R(6,circ(72,142,6)));
+  r.push(R(7,circ(146,158,16)),R(3,circ(146,158,8)),R(6,circ(146,158,3.2)));
+  add('tractor','Little Red Tractor','easy','vehicles',['#a5d8ff','#ffffff','#ffd43b','#8ce99a','#2f9e44','#fa5252','#343a40','#74c0fc','#d4a373','#8d5524'],r)})();
 })();
