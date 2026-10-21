@@ -446,4 +446,56 @@
   r.push(R(7,circ(72,142,30)),R(3,circ(72,142,16)),R(6,circ(72,142,6)));
   r.push(R(7,circ(146,158,16)),R(3,circ(146,158,8)),R(6,circ(146,158,3.2)));
   add('tractor','Little Red Tractor','easy','vehicles',['#a5d8ff','#ffffff','#ffd43b','#8ce99a','#2f9e44','#fa5252','#343a40','#74c0fc','#d4a373','#8d5524'],r)})();
+ // ===== 2026-10-21  Floating Astronaut (Easy, Space) =====
+ (function(){const r=[],T=6.2832;
+  // rounded rectangle
+  const rr=(x,y,w,h,q)=>`M${x+q},${y}H${x+w-q}A${q},${q} 0 0 1 ${x+w},${y+q}V${y+h-q}A${q},${q} 0 0 1 ${x+w-q},${y+h}H${x+q}A${q},${q} 0 0 1 ${x},${y+h-q}V${y+q}A${q},${q} 0 0 1 ${x+q},${y}Z`;
+  r.push(R(1,rect(0,0,200,200)));
+  [[24,24,7],[70,16,5],[186,98,6],[16,96,5],[178,150,6],[132,186,5]].forEach(([x,y,k])=>r.push(R(3,star(x,y,k,k*.42))));
+  // comet
+  r.push(R(9,poly([[118,18],[156,6],[160,26],[118,27]])),R(3,star(116,22,7,3)));
+  // big planet (bottom-left) and ringed planet (top-right)
+  r.push(R(7,circ(26,178,40)),R(8,band(26,178,40,150,161)),R(4,circ(46,186,6)));
+  r.push(R(6,poly(rell(170,52,26,6,-.3,0,T))),R(9,circ(170,52,13)));
+  // astronaut (generic, tinted visor - no face): antenna and backpack first
+  r.push(R(4,rect(98,24,4,12)),R(10,circ(100,23,4.5)));
+  r.push(R(4,rr(68,84,64,50,10)));
+  r.push(R(2,poly(rell(65,85,20,8,.785,0,T))),R(2,poly(rell(135,85,20,8,-.785,0,T))));
+  r.push(R(6,circ(49,69,7.5)),R(6,circ(151,69,7.5)));
+  r.push(R(2,rr(80,126,17,30,7)),R(2,rr(103,126,17,30,7)));
+  r.push(R(6,rr(76,150,24,13,5)),R(6,rr(100,150,24,13,5)));
+  r.push(R(2,rr(76,86,48,50,14)),R(4,rr(87,100,26,18,4)),R(10,circ(94,109,3.5)),R(5,circ(106,109,3.5)),R(6,rect(76,126,48,7)));
+  r.push(R(2,circ(100,62,28)),R(5,ell(100,64,20,15)),R(2,ell(92,57,6,3.5)));
+  add('astronaut','Floating Astronaut','easy','space',['#1c2541','#ffffff','#ffd43b','#ced4da','#4dabf7','#ff922b','#9775fa','#f783ac','#63e6be','#fa5252'],r)})();
+
+ // ===== 2026-10-21  Fairy Mushroom Village (Medium, Fantasy & Castles) =====
+ (function(){const r=[],T=6.2832;
+  const rr=(x,y,w,h,q)=>`M${x+q},${y}H${x+w-q}A${q},${q} 0 0 1 ${x+w},${y+q}V${y+h-q}A${q},${q} 0 0 1 ${x+w-q},${y+h}H${x+q}A${q},${q} 0 0 1 ${x},${y+h-q}V${y+q}A${q},${q} 0 0 1 ${x+q},${y}Z`;
+  r.push(R(1,rect(0,0,200,200)),R(3,circ(176,26,14)),R(2,ell(40,26,22,8)),R(2,ell(110,18,16,6)));
+  r.push(R(13,'M0,104Q50,80 100,98T200,90V200H0Z'));
+  r.push(R(8,rect(14,70,10,40)),R(5,circ(19,60,18)));
+  r.push(R(4,'M0,140Q100,126 200,140V200H0Z'));
+  r.push(R(14,'M86,200Q96,170 116,150L136,150Q116,172 112,200Z'));
+  // big red mushroom house
+  r.push(R(7,rr(112,92,36,58,8)),R(6,'M96,98Q98,50 130,48Q162,50 164,98Z'),R(2,ell(130,98,34,5)));
+  [[116,74,6],[138,62,5.5],[152,82,6],[128,86,4.5]].forEach(([x,y,k])=>r.push(R(2,circ(x,y,k))));
+  r.push(R(8,'M122,150V128A8,8 0 0 1 138,128V150Z'),R(3,circ(134,140,2.4)),R(3,circ(120,112,5.5)),R(11,circ(140,112,5.5)));
+  // small purple mushroom house
+  r.push(R(7,rr(46,112,24,40,6)),R(9,'M34,116Q36,82 58,82Q80,82 82,116Z'),R(2,ell(58,116,23,4)));
+  [[47,102,4.5],[64,94,4],[71,107,3.5]].forEach(([x,y,k])=>r.push(R(3,circ(x,y,k))));
+  r.push(R(12,'M52,152V138A6,6 0 0 1 64,138V152Z'),R(3,circ(58,126,4.5)));
+  // tiny orange mushroom house
+  r.push(R(7,rr(172,118,16,26,4)),R(12,'M164,121Q166,97 180,97Q194,97 196,121Z'),R(2,ell(180,121,16,3)));
+  r.push(R(2,circ(174,109,3.5)),R(2,circ(187,106,3.2)),R(8,'M176,144V135A4,4 0 0 1 184,135V144Z'));
+  // lantern by the path
+  r.push(R(8,rect(80,136,4,22)),R(3,circ(82,132,5)));
+  // little wild mushrooms
+  r.push(R(7,rect(33,164,6,10)),R(6,'M25,166Q36,151 47,166Z'),R(7,rect(159,160,6,10)),R(10,'M151,162Q162,147 173,162Z'));
+  // flowers
+  [[16,186,10],[66,180,11],[140,184,9],[186,170,10],[176,192,11]].forEach(([x,y,c])=>r.push(R(c,circ(x,y,6.5)),R(3,circ(x,y,2.6))));
+  // fireflies / sparkles
+  [[70,40],[146,36],[46,64],[190,80],[100,124]].forEach(([x,y])=>r.push(R(3,star(x,y,5,2.1))));
+  // butterflies
+  [[88,56,10,9],[186,58,9,11]].forEach(([x,y,a,b])=>r.push(R(a,poly(rell(x-5,y,6,8,-.4,0,T))),R(b,poly(rell(x+5,y,6,8,.4,0,T))),R(8,ell(x,y,2.2,6))));
+  add('mushroomvillage','Fairy Mushroom Village','medium','fantasy',['#a5d8ff','#ffffff','#ffd43b','#8ce99a','#2f9e44','#fa5252','#fff3bf','#a9714b','#9775fa','#f783ac','#4dabf7','#ff922b','#63e6be','#ffe8cc'],r)})();
 })();
