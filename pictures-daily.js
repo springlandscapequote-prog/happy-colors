@@ -498,4 +498,73 @@
   // butterflies
   [[88,56,10,9],[186,58,9,11]].forEach(([x,y,a,b])=>r.push(R(a,poly(rell(x-5,y,6,8,-.4,0,T))),R(b,poly(rell(x+5,y,6,8,.4,0,T))),R(8,ell(x,y,2.2,6))));
   add('mushroomvillage','Fairy Mushroom Village','medium','fantasy',['#a5d8ff','#ffffff','#ffd43b','#8ce99a','#2f9e44','#fa5252','#fff3bf','#a9714b','#9775fa','#f783ac','#4dabf7','#ff922b','#63e6be','#ffe8cc'],r)})();
+
+ // ===== 2026-10-22  Rainbow Kite Festival (Medium, Nature) =====
+ (function(){const r=[],T=6.2832;
+  // diamond kite split into 4 colored quarters + a tail of ribbon bows
+  const kite=(cx,cy,w,h1,h2,cs,bows)=>{const t=[cx,cy-h1],e=[cx+w,cy],b=[cx,cy+h2],l=[cx-w,cy],c=[cx,cy];
+   r.push(R(cs[0],poly([t,e,c])),R(cs[1],poly([e,b,c])),R(cs[2],poly([b,l,c])),R(cs[3],poly([l,t,c])));
+   tail(cx,cy+h2,bows)};
+  // wavy kite tail ribbon (4.4 wide) from (x0,y0) going down, with ribbon bows sitting on it
+  const tail=(x0,y0,bows)=>{const L=[],Rr=[],n=24,len=bows.length*12+8,X=t=>x0+5*Math.sin(t*len/9),Y=t=>y0+t*len;
+   for(let i=0;i<=n;i++){const t=i/n,x=X(t),y=Y(t),dx=X(t+.01)-x,dy=Y(t+.01)-y,d=Math.hypot(dx,dy),nx=-dy/d*2.2,ny=dx/d*2.2;L.push([x+nx,y+ny]);Rr.push([x-nx,y-ny])}
+   r.push(R(2,poly(L.concat(Rr.reverse()))));
+   bows.forEach((k,i)=>{const t=(i*12+10)/len,x=X(t),y=Y(t);r.push(R(k,poly(rell(x-5.5,y,5.5,4,.45,0,T))),R(k,poly(rell(x+5.5,y,5.5,4,-.45,0,T))))})};
+  r.push(R(1,rect(0,0,200,200)),R(3,circ(22,24,13)));
+  r.push(R(2,ell(98,28,15,6)),R(2,ell(184,30,14,6)),R(2,ell(24,74,13,5)));
+  r.push(R(4,'M0,120Q60,92 120,112T200,100V200H0Z'));
+  r.push(R(11,rect(178,96,8,26)),R(5,circ(182,90,15)));
+  r.push(R(5,'M0,148Q100,132 200,148V200H0Z'));
+  // picnic blanket (checkered) and basket
+  [[0,0,6],[1,0,2],[2,0,6],[0,1,2],[1,1,6],[2,1,2]].forEach(([i,j,k])=>r.push(R(k,rect(18+i*13,160+j*9,13,9))));
+  r.push(R(11,'M62,158A9,9 0 0 1 80,158L75,158A4,4 0 0 0 67,158Z'),R(11,rect(60,158,22,14)));
+  // rainbow delta kite (5 color sectors from the top point)
+  const ax=140,ay=16,bx=[108,120.8,133.6,146.4,159.2,172];[6,10,3,12,8].forEach((k,i)=>r.push(R(k,poly([[ax,ay],[bx[i],64],[bx[i+1],64]]))));
+  tail(140,64,[6,3,7]);
+  kite(58,52,20,22,36,[6,3,7,10],[8,3,6]);
+  kite(100,96,13,14,22,[8,12,3,9],[10,7]);
+  // flowers in the meadow
+  [[110,176,10],[142,186,3],[168,168,8],[188,190,6],[30,190,9]].forEach(([x,y,c])=>r.push(R(c,circ(x,y,6.5)),R(c==3?9:3,circ(x,y,2.6))));
+  // butterflies
+  [[24,132,10,8],[160,124,3,12]].forEach(([x,y,a,b])=>r.push(R(a,poly(rell(x-5,y,6,8,-.4,0,T))),R(b,poly(rell(x+5,y,6,8,.4,0,T))),R(11,ell(x,y,2.2,6))));
+  add('kites','Rainbow Kite Festival','medium','nature',['#a5d8ff','#ffffff','#ffd43b','#8ce99a','#2f9e44','#fa5252','#4dabf7','#9775fa','#ff922b','#f783ac','#a9714b','#63e6be'],r)})();
+
+ // ===== 2026-10-22  Garden Bugs (Hard, Animals) =====
+ (function(){const r=[],T=6.2832;
+  // vertical stripe of an ellipse between x1 and x2 (sampled polygon)
+  const vband=(cx,cy,rx,ry,x1,x2)=>{const U=[],D=[],N=8,h=x=>ry*Math.sqrt(Math.max(0,1-((x-cx)/rx)**2));for(let i=0;i<=N;i++){const x=x1+(x2-x1)*i/N;U.push([x,cy-h(x)]);D.push([x,cy+h(x)])}return poly(U.concat(D.reverse()))};
+  r.push(R(1,rect(0,0,200,200)),R(3,circ(176,24,14)),R(2,ell(64,18,14,6)),R(2,ell(136,20,12,5)));
+  r.push(R(4,'M0,96Q50,80 100,92T200,86V200H0Z'));
+  r.push(R(5,'M0,160Q100,146 200,160V200H0Z'));
+  // three big flowers: stems, leaves, petals, centers
+  const flower=(x,y,sy,pc,cc,lf)=>{r.push(R(5,rect(x-3,y+16,6,sy-y-16)));
+   lf.forEach(([lx,ly,rot])=>r.push(R(13,poly(rell(lx,ly,12,5,rot,0,T)))));
+   for(let i=0;i<8;i++){const a=i*T/8;r.push(R(pc[i%2],circ(x+13*Math.cos(a),y+13*Math.sin(a),7.5)))}
+   r.push(R(cc,circ(x,y,8.5)))};
+  flower(34,58,160,[8,10],3,[[24,112,-.5],[44,128,.5]]);
+  flower(100,40,160,[3,10],11,[[90,96,-.5],[110,112,.5]]);
+  flower(166,64,160,[9,8],3,[[156,118,-.5],[176,132,.5]]);
+  // bees (wings first)
+  const bee=(x,y)=>{r.push(R(2,poly(rell(x-3,y-9,4.5,7,-.3,0,T))),R(2,poly(rell(x+4,y-9,4.5,7,.3,0,T))));
+   r.push(R(3,ell(x,y,10,7)),R(7,vband(x,y,10,7,-3+x,.5+x)),R(7,vband(x,y,10,7,3.5+x,7+x)),R(7,circ(x+11,y-1,4.5)))};
+  bee(64,88);bee(130,72);
+  // butterfly
+  ((x,y)=>{r.push(R(12,poly(rell(x-9,y-6,10,7,-.5,0,T))),R(12,poly(rell(x+9,y-6,10,7,.5,0,T))));
+   r.push(R(10,poly(rell(x-7,y+7,7,5.5,.4,0,T))),R(10,poly(rell(x+7,y+7,7,5.5,-.4,0,T))));
+   r.push(R(3,circ(x-11,y-7,3)),R(3,circ(x+11,y-7,3)),R(7,ell(x,y,2.5,11)))})(134,112);
+  // caterpillar crawling on the grass
+  [[72,158],[82,154],[92,157],[102,153],[112,156]].forEach(([x,y],i)=>r.push(R(i%2?13:4,circ(x,y,7))));
+  r.push(R(3,circ(124,148,8.5)),R(7,circ(121,145,2.2)),R(7,circ(128,145,2.2)),R(8,circ(124,152,2.4)));
+  // ladybug on a big leaf
+  r.push(R(4,poly(rell(38,180,32,12,-.12,0,T))));
+  r.push(R(7,circ(38,159,9)),R(2,circ(33,154,2.2)),R(2,circ(43,154,2.2)));
+  r.push(R(6,'M38,160A15,15 0 0 0 38,190Z'),R(6,'M38,160A15,15 0 0 1 38,190Z'));
+  [[31,169,3.3],[30,181,3],[45,169,3.3],[46,181,3]].forEach(([x,y,k])=>r.push(R(7,circ(x,y,k))));
+  // snail with a spiral shell
+  r.push(R(14,rect(181,152,4,16)),R(14,rect(190,154,4,16)),R(7,circ(183,152,3)),R(7,circ(192,154,3)));
+  r.push(R(14,ell(160,186,32,8)),R(14,ell(187,176,8,13)));
+  r.push(R(10,circ(158,170,18)),R(3,circ(160,171,13)),R(10,circ(162,172,8)),R(3,circ(163,172,3.6)));
+  // small flowers in the grass
+  [[70,190,8],[96,184,9],[118,192,12],[12,146,10],[194,142,6]].forEach(([x,y,c])=>r.push(R(c,circ(x,y,6)),R(3,circ(x,y,2.4))));
+  add('gardenbugs','Garden Bugs','hard','animals',['#a5d8ff','#ffffff','#ffd43b','#8ce99a','#2f9e44','#fa5252','#343a40','#f783ac','#9775fa','#ff922b','#a9714b','#4dabf7','#63e6be','#ffe8cc'],r)})();
 })();
