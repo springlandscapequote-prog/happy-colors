@@ -567,4 +567,62 @@
   // small flowers in the grass
   [[70,190,8],[96,184,9],[118,192,12],[12,146,10],[194,142,6]].forEach(([x,y,c])=>r.push(R(c,circ(x,y,6)),R(3,circ(x,y,2.4))));
   add('gardenbugs','Garden Bugs','hard','animals',['#a5d8ff','#ffffff','#ffd43b','#8ce99a','#2f9e44','#fa5252','#343a40','#f783ac','#9775fa','#ff922b','#a9714b','#4dabf7','#63e6be','#ffe8cc'],r)})();
+
+ // ===== 2026-10-23  Jack-o'-Lantern Smile (Easy, Holidays & Winter) =====
+ (function(){const r=[],T=6.2832;
+  // evening sky, crescent moon, stars, clouds, grassy hill
+  r.push(R(1,rect(0,0,200,200)),R(2,circ(160,34,15)),R(1,circ(167,28,12.5)));
+  [[30,26,6],[86,18,5],[126,46,5],[186,78,5],[18,82,5]].forEach(([x,y,k])=>r.push(R(2,star(x,y,k,k*.42))));
+  r.push(R(3,ell(54,56,22,8)),R(3,ell(150,90,20,7)));
+  r.push(R(7,'M0,158Q100,138 200,158V200H0Z'));
+  // big smiling pumpkin: side ribs first, middle rib on top
+  r.push(R(5,ell(72,130,38,46)),R(5,ell(128,130,38,46)),R(4,ell(100,128,38,50)));
+  r.push(R(8,poly([[93,82],[107,82],[112,62],[100,60]])),R(6,poly(rell(124,72,15,6,-.35,0,T))));
+  // happy face (triangle eyes, nose, smile with two teeth)
+  r.push(R(2,poly([[68,118],[90,118],[79,98]])),R(2,poly([[110,118],[132,118],[121,98]])),R(2,poly([[93,134],[107,134],[100,123]])));
+  r.push(R(2,'M62,140Q100,180 138,140Q100,160 62,140Z'),R(4,rect(83,148,9,7)),R(4,rect(108,148,9,7)));
+  // fallen autumn leaves
+  [[26,178,9,.5],[170,184,8,-.6],[188,166,9,.3],[40,194,8,-.2]].forEach(([x,y,c,a])=>r.push(R(c,poly(rell(x,y,9,5,a,0,T)))));
+  add('jacklantern',"Jack-o'-Lantern Smile",'easy','holidays',['#7048e8','#ffe066','#d0bfff','#ff922b','#e8590c','#2f9e44','#8ce99a','#a9714b','#fa5252'],r)})();
+
+ // ===== 2026-10-23  Wizard Tower Library (Hard, Fantasy) =====
+ (function(){const r=[];
+  // stone wall, arched night window with moon and stars, window sill
+  r.push(R(1,rect(0,0,200,200)));
+  r.push(R(3,'M72,80V42A28,28 0 0 1 128,42V80Z'));
+  r.push(R(4,circ(112,38,11)),R(3,circ(117,33,9)));
+  [[86,34,5],[84,62,5],[104,66,4.6],[118,58,4.2]].forEach(([x,y,k],i)=>r.push(R(i%2?5:4,star(x,y,k,k*.42))));
+  r.push(R(6,rect(66,78,68,6)));
+  // a few grey stone blocks on the wall
+  r.push(R(2,rect(54,4,22,9)),R(2,rect(124,4,22,9)),R(2,rect(80,132,18,9)),R(2,rect(102,143,18,9)));
+  // floor and round rug
+  r.push(R(15,rect(0,154,200,46)));
+  r.push(R(11,ell(100,182,72,15)),R(13,ell(100,182,52,10)),R(4,ell(100,182,28,5.5)));
+  // two bookshelves full of books (frame, 3 compartments, books, some with a gold band)
+  const shelf=(x0,sets)=>{r.push(R(7,rect(x0,30,58,124)));
+   sets.forEach((bk,k)=>{const y0=34+k*40;r.push(R(6,rect(x0+4,y0,50,34)));let x=x0+6;
+    bk.forEach(([w,h,c,b])=>{r.push(R(c,rect(x,y0+34-h,w,h)));if(b)r.push(R(4,rect(x,y0+34-h+6,w,4)));x+=w+.6})})};
+  shelf(6,[[[7,28,8,1],[6,24,10,0],[8,30,9,1],[6,22,14,0],[7,27,12,1],[7,25,11,0]],
+           [[6,26,9,0],[8,30,14,1],[7,24,8,0],[6,28,10,1],[7,22,12,0],[8,29,13,0]],
+           [[8,29,10,1],[6,25,12,0],[7,30,11,0],[7,23,8,1],[6,27,9,0],[7,26,14,1]]]);
+  shelf(136,[[[6,26,12,1],[8,29,11,0],[7,23,9,0],[6,28,8,1],[7,25,14,0],[8,30,10,1]],
+             [[7,28,13,0],[6,24,8,1],[8,30,10,0],[7,26,9,1],[6,23,11,0],[7,29,12,1]],
+             [[6,24,14,0],[8,30,8,1],[7,27,13,0],[6,22,10,1],[8,28,9,0],[6,25,11,1]]]);
+  // wizard hat on the left shelf (no face, no character)
+  r.push(R(11,'M20,28Q30,16 40,2Q42,16 48,28Z'),R(4,rect(21,22,26,5)),R(11,ell(34,29,21,4)),R(4,star(37,13,5.5,2.4)));
+  // potion bottles on the right shelf
+  r.push(R(6,rect(148,6,6,8)),R(9,circ(151,21,8)));
+  r.push(R(6,rect(165,4,5,8)),R(13,rect(162,12,11,18)));
+  r.push(R(6,rect(182,6,5,10)),R(10,poly([[176,30],[193,30],[188,16],[181,16]])));
+  // desk with open spell book, candle and crystal ball
+  r.push(R(7,rect(66,126,7,34)),R(7,rect(127,126,7,34)),R(7,rect(60,118,80,8)));
+  r.push(R(8,rect(62,113,40,5)),R(5,'M64,114L66,100Q76,96 82,102V114Z'),R(5,'M82,102Q90,96 98,100L100,114H82Z'));
+  [[70,92,5],[82,84,4.4],[94,90,4.2]].forEach(([x,y,k])=>r.push(R(4,star(x,y,k,k*.42))));
+  r.push(R(6,rect(103,113,15,5)),R(15,rect(107,94,7,19)),R(12,ell(110.5,86,4.6,8)),R(4,ell(110.5,88,2.8,4.6)));
+  r.push(R(7,poly([[120,118],[138,118],[134,110],[124,110]])),R(14,circ(129,99,11)),R(5,circ(125,95,3.6)));
+  // stack of books on the floor
+  r.push(R(8,rect(10,182,42,8)),R(10,rect(14,174,36,8)),R(9,rect(12,166,38,8)));
+  // globe on a stand
+  r.push(R(7,rect(160,188,20,6)),R(7,rect(168,180,4,9)),R(10,circ(170,166,14)),R(9,poly(rell(165,161,6,4.5,.3,0,6.2832))),R(9,poly(rell(176,172,5.5,4,-.4,0,6.2832))));
+  add('wizardlibrary','Wizard Tower Library','hard','fantasy',['#adb5bd','#868e96','#364fc7','#ffd43b','#ffffff','#a9714b','#7f4f24','#fa5252','#40c057','#4dabf7','#9775fa','#ff922b','#f783ac','#63e6be','#fff3bf'],r)})();
 })();
