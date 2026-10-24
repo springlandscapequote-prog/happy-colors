@@ -625,4 +625,66 @@
   // globe on a stand
   r.push(R(7,rect(160,188,20,6)),R(7,rect(168,180,4,9)),R(10,circ(170,166,14)),R(9,poly(rell(165,161,6,4.5,.3,0,6.2832))),R(9,poly(rell(176,172,5.5,4,-.4,0,6.2832))));
   add('wizardlibrary','Wizard Tower Library','hard','fantasy',['#adb5bd','#868e96','#364fc7','#ffd43b','#ffffff','#a9714b','#7f4f24','#fa5252','#40c057','#4dabf7','#9775fa','#ff922b','#f783ac','#63e6be','#fff3bf'],r)})();
+
+ // ===== 2026-10-24  Steam Train Station (Hard, Vehicles) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(3,circ(176,24,13)));
+  [[30,22,16,6],[44,16,9,6],[96,30,15,6],[108,24,8,5]].forEach(([x,y,a,b])=>r.push(R(2,ell(x,y,a,b))));
+  r.push(R(4,'M0,92Q50,70 100,88T200,80V200H0Z'),R(5,'M0,104Q60,90 120,104T200,100V200H0Z'));
+  r.push(R(4,rect(0,110,200,90)));
+  // station building (chimney behind the roof)
+  r.push(R(8,rect(78,40,8,18)),R(11,rect(10,64,88,50)),R(12,poly([[4,66],[54,36],[104,66]])),R(2,circ(54,54,7)));
+  [18,46,74].forEach(x=>r.push(R(14,`M${x},94V82a8,8 0 0,1 16,0V94Z`)));
+  r.push(R(8,rect(6,96,96,5)));
+  for(let i=0;i<6;i++){const x=6+i*16;r.push(R(i%2?2:9,poly([[x,101],[x+16,101],[x+8,110]])))}
+  // lamp post and tree
+  r.push(R(8,rect(104,84,4,28)),R(3,circ(106,79,5)));
+  r.push(R(6,rect(121,92,6,22)),R(5,circ(124,82,11)));
+  // smoke puffs from the engine
+  [[184,88,6],[173,78,8],[159,70,9],[143,64,9],[127,58,8]].forEach(([x,y,k])=>r.push(R(13,circ(x,y,k))));
+  // track: gravel, ties, rail
+  r.push(R(7,rect(0,162,200,14)));
+  for(let i=0;i<14;i++)r.push(R(6,rect(3+i*14.3,160,7,18)));
+  r.push(R(8,rect(0,164,200,4)));
+  // two passenger cars
+  [[4,10],[58,16]].forEach(([x,c])=>{
+   r.push(R(c,rect(x,118,46,34)),R(8,rect(x-2,112,50,7)));
+   [0,1,2].forEach(i=>r.push(R(11,rect(x+4+i*14,124,10,12))));
+   r.push(R(14,rect(x,142,46,5)));
+   [x+11,x+35].forEach(w=>r.push(R(8,circ(w,157,7)),R(14,circ(w,157,3))))});
+  r.push(R(8,rect(50,144,8,4)),R(8,rect(104,144,6,4)));
+  // coal tender
+  r.push(R(9,rect(110,124,24,28)),R(8,'M110,125Q116,112 122,121Q128,112 134,125Z'));
+  [116,128].forEach(w=>r.push(R(8,circ(w,157,6)),R(14,circ(w,157,2.6))));
+  r.push(R(8,rect(132,144,6,4)));
+  // locomotive: dome and chimney behind the boiler
+  r.push(R(14,ell(166,122,6,6)),R(8,poly([[178,100],[188,100],[186,124],[180,124]])),R(8,rect(175,95,16,7)));
+  r.push(R(9,rect(136,104,24,48)),R(8,rect(132,98,32,7)),R(11,rect(141,110,14,14)));
+  r.push(R(10,'M158,122H186Q194,122 194,136Q194,150 186,150H158Z'));
+  r.push(R(14,rect(170,122,4,28)),R(14,rect(182,122,4,28)),R(3,circ(195,132,4)));
+  r.push(R(9,rect(136,148,60,6)));
+  r.push(R(8,circ(150,155,9)),R(8,circ(171,155,9)),R(8,circ(189,159,5)));
+  r.push(R(7,rect(150,153,21,4)),R(14,circ(150,155,3.5)),R(14,circ(171,155,3.5)));
+  // flowers in the front grass
+  [[14,190,15],[42,186,16],[72,192,15],[104,187,16],[136,191,15],[166,186,16],[190,192,15]].forEach(([x,y,c])=>r.push(R(c,star(x,y,6,3.2))));
+  add('steamtrain','Steam Train Station','hard','vehicles',['#a5d8ff','#ffffff','#ffd43b','#8ce99a','#40c057','#8d5524','#adb5bd','#343a40','#e03131','#4dabf7','#fff3bf','#d9480f','#e9ecef','#fab005','#f783ac','#9775fa'],r)})();
+
+ // ===== 2026-10-24  Flying Saucer (Easy, Space) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)));
+  [[20,72,11],[64,20,10],[118,20,10],[186,94,10],[172,134,11],[24,130,11]].forEach(([x,y,s])=>r.push(R(4,star(x,y,s,s*.48))));
+  r.push(R(6,circ(34,34,19)),R(3,band(34,34,19,29,40)));
+  r.push(R(2,'M0,168Q50,148 100,166T200,158V200H0Z'));
+  r.push(R(3,ell(30,184,16,7)),R(3,ell(172,182,15,6.5)));
+  // light beam
+  r.push(R(7,poly([[84,104],[116,104],[146,174],[54,174]])));
+  // antenna, dome, shine
+  r.push(R(9,rect(98,54,4,12)),R(10,circ(100,52,4.5)));
+  r.push(R(8,ell(100,86,24,24)),R(5,poly(rell(90,76,6,3.5,-.6,0,6.2832))));
+  // saucer body and rim
+  r.push(R(9,ell(100,100,58,14)),R(3,ell(100,106,38,6)));
+  [[62,4],[81,10],[100,4],[119,10],[138,4]].forEach(([x,c])=>r.push(R(c,circ(x,98,5.6))));
+  // shooting star
+  r.push(R(5,poly([[152,62],[188,46],[191,55]])),R(4,star(148,64,10,4.8)));
+  add('saucer','Flying Saucer','easy','space',['#1b2459','#adb5bd','#868e96','#ffd43b','#ffffff','#ff922b','#fff3bf','#99e9f2','#9775fa','#f783ac'],r)})();
 })();

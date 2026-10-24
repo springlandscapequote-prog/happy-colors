@@ -18,3 +18,5 @@ Other pictures (stars, butterfly, garden, winter house, puppy, rainbow, ocean, c
 ## Daily pictures (`pictures-daily.js`)
 
 Happy Snowman, Planet Parade and all later daily pictures are original drawings made in code for this project (no outside images or photos), released as CC0 / original work of this project. Any daily picture that is traced from an outside photo gets its own section above with page URL, author, license and changes. Full list: `PICTURE_LOG.md`. Procedure: `DAILY_RUN.md`.
+
+- 2026-10-24: Steam Train Station (`steamtrain`, Hard, Vehicles) and Flying Saucer (`saucer`, Easy, Space): original drawings made in code for this project, no outside sources; license CC0 / original work of this project.
