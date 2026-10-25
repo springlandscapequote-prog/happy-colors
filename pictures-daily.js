@@ -687,4 +687,76 @@
   // shooting star
   r.push(R(5,poly([[152,62],[188,46],[191,55]])),R(4,star(148,64,10,4.8)));
   add('saucer','Flying Saucer','easy','space',['#1b2459','#adb5bd','#868e96','#ffd43b','#ffffff','#ff922b','#fff3bf','#99e9f2','#9775fa','#f783ac'],r)})();
+
+ // ===== 2026-10-25  Harvest Table (Hard, Holidays & Winter) =====
+ (function(){const r=[],T=6.2832;
+  r.push(R(1,rect(0,0,200,200)));
+  // paper leaf bunting along the top
+  for(let i=0;i<9;i++){const x=4+i*22;r.push(R([5,6,4][i%3],poly([[x,2],[x+18,2],[x+9,20]])))}
+  // window with an autumn view
+  r.push(R(3,rect(56,28,88,60)));
+  [[61,33],[102,33],[61,60],[102,60]].forEach(([x,y])=>r.push(R(2,rect(x,y,37,23))));
+  r.push(R(7,'M61,83V73Q80,64 98,72V83Z'),R(12,'M102,83V71Q122,63 139,74V83Z'));
+  r.push(R(6,circ(126,45,7)),R(11,ell(79,45,11,5)));
+  // autumn wreath on the left wall
+  r.push(R(9,circ(26,62,17)),R(1,circ(26,62,9)));
+  [[26,46,5],[41,56,4],[38,74,7],[11,56,6],[14,74,4]].forEach(([x,y,c])=>r.push(R(c,star(x,y,6.5,3.2))));
+  r.push(R(5,poly([[26,80],[14,73],[14,87]])),R(5,poly([[26,80],[38,73],[38,87]])));
+  // dried corn hanging on the right wall
+  r.push(R(13,poly([[166,40],[152,50],[160,58]])),R(13,poly([[180,40],[194,50],[186,58]])));
+  r.push(R(6,poly(rell(164,66,6.5,17,.28,0,T))),R(6,poly(rell(182,66,6.5,17,-.28,0,T))));
+  r.push(R(13,poly([[166,44],[156,62],[168,56]])),R(13,poly([[180,44],[190,62],[178,56]])));
+  r.push(R(5,circ(173,40,5)));
+  // candles
+  [[50,8],[150,8]].forEach(([x])=>{r.push(R(11,rect(x-5,84,10,26)),R(6,poly(rell(x,77,4,7,0,0,T))))});
+  // table: cloth top, trim, front drape with checks
+  r.push(R(15,rect(0,108,200,42)));
+  r.push(R(3,ell(50,111,11,3.6)),R(3,ell(150,111,11,3.6)));
+  r.push(R(6,rect(0,148,200,6)),R(15,rect(0,154,200,46)));
+  for(let row=0;row<3;row++)for(let k=0;k<5;k++){const x=(row%2?20:0)+k*40,y=154+row*15.4;r.push(R(16,rect(x,y,20,15.4)))}
+  // fruits in the basket (drawn first so the basket sits in front)
+  [[72,98],[82,98],[77,90],[67,106],[77,106],[87,106]].forEach(([x,y])=>r.push(R(8,circ(x,y,5.4))));
+  r.push(R(12,rect(75,80,4,7)));
+  r.push(R(3,rect(95,78,3.5,8)),R(7,poly(rell(104,81,7,3.5,-.4,0,T))),R(5,circ(97,98,12)));
+  r.push(R(14,circ(118,92,7.5)),R(14,circ(120,105,10.5)),R(3,rect(117,80,3,6)));
+  r.push(R(4,circ(134,106,8.5)),R(9,circ(102,112,7)));
+  // basket
+  r.push(R(13,'M58,114H142L130,146H70Z'));
+  r.push(R(3,poly([[61.4,124],[138.6,124],[137.1,128],[62.9,128]])),R(3,poly([[65.1,134],[134.9,134],[133.4,138],[66.6,138]])));
+  r.push(R(3,ell(100,115,44,5)));
+  // pumpkin pie on a plate (left)
+  r.push(R(11,ell(32,134,30,11)),R(10,ell(32,131,26,9)),R(9,ell(32,130,21,6.5)),R(11,circ(32,129,4.2)));
+  // pumpkin (right, plain, no face)
+  r.push(R(12,rect(169,104,6,10)),R(7,poly(rell(183,108,8,3.8,.35,0,T))));
+  r.push(R(4,ell(160,130,10,14)),R(4,ell(184,130,10,14)),R(9,ell(172,130,13,16)));
+  // fallen leaves on the table
+  [[8,118,5],[64,142,6],[146,142,5],[196,118,6],[92,152,9],[110,155,7]].forEach(([x,y,c])=>r.push(R(c,star(x,y,6,3))));
+  add('harvest','Harvest Table','hard','holidays',['#fff9db','#a5d8ff','#8d5524','#ff922b','#e03131','#ffd43b','#69db7c','#9775fa','#d9480f','#e9b872','#ffffff','#2b9348','#c08552','#c0eb75','#ffd8a8','#f08c00'],r)})();
+
+
+ // ===== 2026-10-25  Friendly Whale (Easy, Animals; drawn and tested 2026-10-23, added today) =====
+ (function(){const r=[],T=6.2832;
+  r.push(R(1,rect(0,0,200,200)),R(3,circ(170,28,15)));
+  r.push(R(2,ell(40,30,18,7)),R(2,ell(112,22,14,6)),R(2,ell(186,62,13,5)));
+  r.push(R(4,'M0,96Q25,88 50,96T100,96T150,96T200,96V200H0Z'));
+  // water spout from the blowhole
+  r.push(R(2,'M116,78Q112,62 104,52Q114,56 120,64Q126,56 136,52Q128,62 124,78Z'));
+  [[100,46],[118,40],[140,46]].forEach(([x,y])=>r.push(R(2,circ(x,y,4.2))));
+  // tail (behind the body), flukes
+  r.push(R(6,poly([[48,98],[24,74],[32,68],[58,108]])));
+  r.push(R(6,poly(rell(18,66,13,6,-.5,0,T))),R(6,poly(rell(38,58,13,6,-1.2,0,T))));
+  // body, belly, flipper, face
+  r.push(R(6,ell(104,110,60,32)));
+  r.push(R(7,'M56,122Q104,154 160,118Q150,136 104,140Q70,138 56,122Z'));
+  r.push(R(5,poly(rell(92,124,15,7,.5,0,T))));
+  r.push(R(8,circ(134,100,5.5)),R(9,circ(146,114,5.5)));
+  r.push(R(8,'M128,122Q142,130 156,118L157,123Q142,137 127,127Z'));
+  // front waves
+  r.push(R(5,'M0,140Q25,130 50,140T100,140T150,140T200,140V200H0Z'));
+  // little fish and bubbles
+  [[44,170,10],[150,178,9]].forEach(([x,y,c])=>r.push(R(c,poly([[x-16,y-7],[x-8,y],[x-16,y+7]])),R(c,ell(x,y,11,7))));
+  [[66,160,4],[172,160,3.6],[100,186,4]].forEach(([x,y,k])=>r.push(R(2,circ(x,y,k))));
+  // sea star on the right
+  r.push(R(10,star(120,166,10,4.6)));
+  add('whale','Friendly Whale','easy','animals',['#a5d8ff','#ffffff','#ffd43b','#4dabf7','#1c7ed6','#748ffc','#dbe4ff','#343a40','#f783ac','#ff922b'],r)})();
 })();
