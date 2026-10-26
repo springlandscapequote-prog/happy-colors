@@ -759,4 +759,68 @@
   // sea star on the right
   r.push(R(10,star(120,166,10,4.6)));
   add('whale','Friendly Whale','easy','animals',['#a5d8ff','#ffffff','#ffd43b','#4dabf7','#1c7ed6','#748ffc','#dbe4ff','#343a40','#f783ac','#ff922b'],r)})();
+
+ // ===== 2026-10-26  Space Station Garden (Hard, Space) =====
+ (function(){const r=[],T=6.2832;
+  const rr=(x,y,w,h,q)=>`M${x+q},${y}H${x+w-q}Q${x+w},${y} ${x+w},${y+q}V${y+h-q}Q${x+w},${y+h} ${x+w-q},${y+h}H${x+q}Q${x},${y+h} ${x},${y+h-q}V${y+q}Q${x},${y} ${x+q},${y}Z`;
+  r.push(R(1,rect(0,0,200,200)));
+  // big nebula clouds (large easy areas)
+  r.push(R(14,poly(rell(52,30,48,15,-.3,0,T))),R(13,poly(rell(150,156,40,13,.35,0,T))));
+  // stars
+  [[10,14,6,3],[98,12,6,2],[142,34,5,3],[72,46,5,2],[16,160,6,3],[58,152,5,2],[100,150,5,3],[192,170,5,2],[120,26,4,2],[30,50,4,3]].forEach(([x,y,s,c])=>r.push(R(c,star(x,y,s,s*.45))));
+  // moon with craters
+  r.push(R(7,circ(176,22,14)),R(8,circ(171,18,3.6)),R(8,circ(182,28,3)));
+  // Earth far below
+  r.push(R(4,circ(100,300,130)));
+  r.push(R(5,ell(52,190,22,8)),R(5,ell(128,184,18,7)),R(5,ell(170,194,14,7)),R(2,ell(92,192,16,4.5)),R(2,ell(150,197,14,3.5)));
+  // solar panel wings (4 panels x 9 cells)
+  [[4,56],[4,110],[158,56],[158,110]].forEach(([x0,y0])=>{for(let row=0;row<3;row++)for(let col=0;col<3;col++)r.push(R((row+col)%2?4:9,rect(x0+col*13,y0+row*11,12,10)))});
+  // truss
+  r.push(R(7,rect(4,96,192,6)));
+  // side modules
+  r.push(R(11,rr(38,89,24,18,4)),R(8,rect(43,89,4,18)));
+  r.push(R(3,rr(138,87,24,22,5)),R(10,circ(152,98,4.2)));
+  // antenna dish
+  r.push(R(7,rect(148,72,4,15)),R(2,poly(rell(150,71,8,3.5,0,0,T))),R(12,circ(150,63,3.2)));
+  // main module
+  r.push(R(2,rr(58,82,84,30,8)));
+  r.push(R(7,rect(74,82,4,30)),R(7,rect(122,82,4,30)));
+  r.push(R(10,circ(66,97,4.5)),R(10,circ(134,97,4.5)),R(10,circ(90,94,3.6)),R(10,circ(110,94,3.6)));
+  r.push(R(11,rect(80,102,40,6)));
+  // greenhouse dome with the astronauts' garden
+  r.push(R(10,'M72,80A28,28 0 0,1 128,80Z'));
+  r.push(R(15,rect(74,72,52,8)));
+  r.push(R(6,circ(80,70,5)),R(5,circ(88,69,5)));
+  r.push(R(6,rect(98,58,4,15)),R(5,poly(rell(93.5,64,5,2.6,-.5,0,T))),R(5,poly(rell(106.5,62,5,2.6,.5,0,T))));
+  r.push(R(12,circ(95,70,3.2)),R(12,circ(105,69,3.2)),R(12,circ(100,56,3)));
+  r.push(R(6,rect(112,66,4,8)),R(3,star(114,64,7,3.4)),R(15,circ(114,64,2.8)));
+  r.push(R(8,rect(68,79,64,5)));
+  // floating astronaut holding a little potted plant (helmet visor only, no face)
+  r.push(R(7,rr(110,146,9,18,2)));
+  r.push(R(2,poly(rell(124,170,4.5,9,.35,0,T))),R(2,poly(rell(136,170,4.5,9,-.25,0,T))));
+  r.push(R(12,ell(120,178,5,3.2)),R(12,ell(139,178,5,3.2)));
+  r.push(R(2,poly(rell(115,156,4.2,9,.5,0,T))),R(2,poly(rell(144,147,4.2,10,-.9,0,T))));
+  r.push(R(2,rr(117,144,24,22,6)),R(12,rect(123,151,12,6)));
+  r.push(R(2,circ(128,134,11)),R(8,ell(130,134,7,5.2)),R(2,poly(rell(127,132,2.6,1.6,-.4,0,T))));
+  r.push(R(11,poly([[146,128],[160,128],[157,140],[149,140]])),R(5,circ(150,123,4)),R(6,circ(157,122,4)));
+  add('spacegarden','Space Station Garden','hard','space',['#1b2459','#ffffff','#ffd43b','#4dabf7','#69db7c','#2b9348','#adb5bd','#495057','#1864ab','#99e9f2','#ff922b','#e03131','#f783ac','#9775fa','#8d5524'],r)})();
+
+ // ===== 2026-10-26  Magic Wand & Stars (Easy, Fantasy) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)));
+  // crescent moon (same-as-sky circle on top makes the crescent)
+  r.push(R(2,circ(38,40,18)),R(1,circ(47,33,15)));
+  // clouds at the bottom
+  r.push(R(5,ell(36,188,42,18)),R(5,ell(112,192,46,17)),R(5,ell(180,186,34,17)));
+  // wand stick in 4 striped pieces, from (56,172) to (116,96)
+  const seg=(t0,t1)=>{const ax=56,ay=172,bx=116,by=96,dx=bx-ax,dy=by-ay,L=Math.hypot(dx,dy),nx=-dy/L*5,ny=dx/L*5,p=t=>[ax+dx*t,ay+dy*t];const a=p(t0),b=p(t1);return poly([[a[0]+nx,a[1]+ny],[b[0]+nx,b[1]+ny],[b[0]-nx,b[1]-ny],[a[0]-nx,a[1]-ny]])};
+  [[0,.25,3],[.25,.5,6],[.5,.75,3],[.75,1,6]].forEach(([a,b,c])=>r.push(R(c,seg(a,b))));
+  // big star with an inner star
+  r.push(R(2,star(126,78,36,16)),R(7,star(126,80,17,7.6)));
+  // ribbon bow under the star
+  r.push(R(4,poly([[104,108],[88,98],[90,118]])),R(4,poly([[104,108],[120,116],[106,124]])),R(9,circ(104,108,5)));
+  // sparkles
+  [[176,30,11,8],[74,70,10,4],[178,118,10,6],[40,112,9,8],[150,150,10,4],[20,150,8,7],[98,24,9,6]].forEach(([x,y,s,c])=>r.push(R(c,star(x,y,s,s*.45))));
+  [[160,64,4.5,5],[60,100,4,9],[130,130,4.2,8],[86,152,4,2],[190,152,4.4,9]].forEach(([x,y,k,c])=>r.push(R(c,circ(x,y,k))));
+  add('magicwand','Magic Wand & Stars','easy','fantasy',['#e5dbff','#ffd43b','#9775fa','#f783ac','#ffffff','#74c0fc','#ff922b','#63e6be','#e64980'],r)})();
 })();

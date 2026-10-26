@@ -21,3 +21,4 @@ Happy Snowman, Planet Parade and all later daily pictures are original drawings 
 
 - 2026-10-24: Steam Train Station (`steamtrain`, Hard, Vehicles) and Flying Saucer (`saucer`, Easy, Space): original drawings made in code for this project, no outside sources; license CC0 / original work of this project.
 - 2026-10-25: Harvest Table (`harvest`, Hard, Holidays & Winter) and Friendly Whale (`whale`, Easy, Animals): original drawings made in code for this project, no outside sources; license CC0 / original work of this project.
+- 2026-10-26: Space Station Garden (`spacegarden`, Hard, Space) and Magic Wand & Stars (`magicwand`, Easy, Fantasy & Castles): original drawings made in code for this project, no outside sources; license CC0 / original work of this project.
