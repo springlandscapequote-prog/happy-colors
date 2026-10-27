@@ -823,4 +823,65 @@
   [[176,30,11,8],[74,70,10,4],[178,118,10,6],[40,112,9,8],[150,150,10,4],[20,150,8,7],[98,24,9,6]].forEach(([x,y,s,c])=>r.push(R(c,star(x,y,s,s*.45))));
   [[160,64,4.5,5],[60,100,4,9],[130,130,4.2,8],[86,152,4,2],[190,152,4.4,9]].forEach(([x,y,k,c])=>r.push(R(c,circ(x,y,k))));
   add('magicwand','Magic Wand & Stars','easy','fantasy',['#e5dbff','#ffd43b','#9775fa','#f783ac','#ffffff','#74c0fc','#ff922b','#63e6be','#e64980'],r)})();
+ // ===== 2026-10-27  Sunny Sailboat (Easy, Vehicles) =====
+ (function(){const r=[],T=6.2832;
+  r.push(R(1,rect(0,0,200,200)),R(3,circ(166,36,18)));
+  r.push(R(2,ell(40,34,24,10)),R(2,ell(112,22,16,7)),R(2,ell(178,80,16,6)));
+  // little green island far away
+  r.push(R(9,'M0,132Q26,98 58,132Z'));
+  r.push(R(4,'M0,128Q25,122 50,128T100,128T150,128T200,128V200H0Z'));
+  // mast and flag
+  r.push(R(7,rect(98,40,5,98)),R(6,poly([[103,38],[122,44],[103,50]])));
+  // striped main sail (3 bands) and orange jib
+  const sx=y=>104+(y-48)/80*58;
+  r.push(R(6,poly([[104,48],[104,75],[sx(75),75]])),R(2,poly([[104,75],[104,101],[sx(101),101],[sx(75),75]])),R(3,poly([[104,101],[104,128],[sx(128),128],[sx(101),101]])));
+  r.push(R(8,poly([[97,52],[97,128],[52,128]])));
+  // hull with a white stripe and portholes
+  r.push(R(6,'M46,134H164L148,162H62Z'));
+  r.push(R(2,poly([[48,136],[162,136],[158,143],[52,143]])));
+  [[80,151],[105,151],[130,151]].forEach(([x,y])=>r.push(R(3,circ(x,y,4.6))));
+  // front waves
+  r.push(R(5,'M0,160Q25,152 50,160T100,160T150,160T200,160V200H0Z'));
+  // fish, bubbles, sea star
+  [[40,180,8],[160,182,10]].forEach(([x,y,c])=>r.push(R(c,poly([[x-18,y-8],[x-9,y],[x-18,y+8]])),R(c,ell(x,y,12,7.5))));
+  [[64,170,4],[182,166,3.8],[132,174,3.6]].forEach(([x,y,k])=>r.push(R(2,circ(x,y,k))));
+  r.push(R(3,star(100,186,11,5)));
+  add('sailboat','Sunny Sailboat','easy','vehicles',['#a5d8ff','#ffffff','#ffd43b','#4dabf7','#1c7ed6','#e03131','#8d5524','#ff922b','#69db7c','#f783ac'],r)})();
+
+ // ===== 2026-10-27  Hot Cocoa Winter Window (Medium, Holidays & Winter) =====
+ (function(){const r=[];
+  // vertical wavy steam ribbon (sampled sine strip)
+  const steam=(x0,y0,y1,amp,w)=>{const L=[],Rr=[],N=14;for(let i=0;i<=N;i++){const y=y0+(y1-y0)*i/N,x=x0+amp*Math.sin(i/N*6.2832);L.push([x-w/2,y]);Rr.push([x+w/2,y])}return poly(L.concat(Rr.reverse()))};
+  r.push(R(1,rect(0,0,200,200)));
+  // window: frame, night glass, outside scene
+  r.push(R(2,rect(30,16,140,110)),R(3,rect(38,24,124,94)));
+  r.push(R(9,circ(130,44,10)));
+  [[58,38,7],[80,54,6],[116,34,6],[152,58,6]].forEach(([x,y,s])=>r.push(R(9,star(x,y,s,s*.45))));
+  r.push(R(4,'M38,98Q70,84 100,94T162,90V118H38Z'));
+  [[60,78],[142,80]].forEach(([x,y])=>r.push(R(8,poly([[x,y],[x+13,y+14],[x-13,y+14]])),R(8,poly([[x,y+8],[x+17,y+28],[x-17,y+28]]))));
+  [[50,58],[90,40],[120,58],[148,30],[110,86]].forEach(([x,y])=>r.push(R(4,circ(x,y,3.2))));
+  r.push(R(2,rect(96,24,8,94)),R(2,rect(38,66,124,8)));
+  // curtains, rod and a string of lights
+  r.push(R(13,'M18,10H48Q36,60 46,130H18Z'),R(13,'M182,10H152Q164,60 154,130H182Z'));
+  r.push(R(11,rect(10,6,180,6)),R(9,circ(12,9,5)),R(9,circ(188,9,5)));
+  [[56,5],[74,9],[92,12],[110,7],[128,5],[146,9]].forEach(([x,c],i)=>r.push(R(c,circ(x,19+(i%2)*3,4))));
+  // sill and table
+  r.push(R(14,rect(24,124,152,9)));
+  r.push(R(14,rect(0,146,200,54)),R(11,rect(0,146,200,6)));
+  // candle on the left
+  r.push(R(10,poly(rell(29,116,4.5,8,0,0,6.2832))),R(12,rect(22,124,14,26)),R(9,ell(29,152,15,4.5)));
+  // gift box on the right
+  r.push(R(13,rect(168,126,26,26)),R(9,rect(179,126,5,26)),R(5,circ(181.5,123,5)));
+  // mug: handle ring behind, body, stripe, star, cocoa, marshmallows, steam
+  r.push(R(5,circ(112,130,15)),R(1,circ(112,130,8)));
+  r.push(R(5,'M62,104H110L106,160Q104,166 98,166H74Q68,166 66,160Z'));
+  r.push(R(2,rect(64,118,44,7)));
+  r.push(R(9,star(86,143,10,4.4)));
+  r.push(R(6,ell(86,104,24,5.5)));
+  r.push(R(7,rect(70,94,10,9)),R(2,rect(82,92,10,9)),R(7,rect(94,95,10,9)));
+  [[76,52,88],[88,46,86],[100,54,90]].forEach(([x,a,b])=>r.push(R(12,steam(x,a,b,3,5))));
+  // plate of cookies with chocolate chips
+  r.push(R(2,ell(150,170,32,8)));
+  [[138,160],[162,162]].forEach(([x,y])=>{r.push(R(10,circ(x,y,12)));[[-4,-4],[4,0],[-2,5]].forEach(([dx,dy])=>r.push(R(11,circ(x+dx,y+dy,2.6))))});
+  add('cocoawindow','Hot Cocoa Winter Window','medium','holidays',['#ffe8cc','#ffffff','#364fc7','#e7f5ff','#e03131','#8d5524','#fcc2d7','#2b9348','#ffd43b','#ff922b','#5c3a1e','#a5d8ff','#9775fa','#c08457'],r)})();
 })();
