@@ -884,4 +884,65 @@
   r.push(R(2,ell(150,170,32,8)));
   [[138,160],[162,162]].forEach(([x,y])=>{r.push(R(10,circ(x,y,12)));[[-4,-4],[4,0],[-2,5]].forEach(([dx,dy])=>r.push(R(11,circ(x+dx,y+dy,2.6))))});
   add('cocoawindow','Hot Cocoa Winter Window','medium','holidays',['#ffe8cc','#ffffff','#364fc7','#e7f5ff','#e03131','#8d5524','#fcc2d7','#2b9348','#ffd43b','#ff922b','#5c3a1e','#a5d8ff','#9775fa','#c08457'],r)})();
+
+ // ===== 2026-10-28  Digger & Dump Truck (Medium, Vehicles) =====
+ (function(){const r=[];
+  const rr=(x,y,w,h,q)=>`M${x+q},${y}H${x+w-q}Q${x+w},${y} ${x+w},${y+q}V${y+h-q}Q${x+w},${y+h} ${x+w-q},${y+h}H${x+q}Q${x},${y+h} ${x},${y+h-q}V${y+q}Q${x},${y} ${x+q},${y}Z`;
+  r.push(R(1,rect(0,0,200,200)),R(3,circ(26,26,15)));
+  r.push(R(2,ell(84,26,22,9)),R(2,ell(102,18,14,7)),R(2,ell(166,40,22,8)),R(2,ell(150,34,12,6)));
+  r.push(R(8,'M0,118Q40,92 86,116T200,108V160H0Z'));
+  r.push(R(7,rect(0,150,200,50)),R(5,rect(0,176,200,24)));
+  [[6,186],[60,186],[114,186],[168,186]].forEach(([x,y])=>r.push(R(2,rect(x,y,26,4))));
+  // dirt pile with rocks and a little flag
+  r.push(R(6,'M80,154Q104,108 130,154Z'));
+  r.push(R(5,ell(96,144,6,4)),R(5,ell(114,138,5,4)),R(5,ell(108,150,6,3.6)));
+  // excavator: boom and stick behind the cab, bucket full of dirt
+  r.push(R(3,poly([[56,114],[96,62],[108,70],[70,122]])));
+  r.push(R(5,poly([[68,104],[94,72],[99,76],[73,108]])));
+  r.push(R(3,poly([[96,62],[106,56],[124,98],[113,103]])));
+  r.push(R(4,circ(102,63,5.5)));
+  r.push(R(6,ell(124,100,11,4.5)),R(4,poly([[112,100],[136,98],[136,114],[118,118]])));
+  r.push(R(12,rr(8,146,76,22,11)));
+  [[19,157,6],[36,157,5],[53,157,5],[71,157,6]].forEach(([x,y,k])=>r.push(R(5,circ(x,y,k)),R(4,circ(x,y,2.8))));
+  r.push(R(4,rect(16,136,60,10)));
+  r.push(R(4,rect(56,90,5,14)),R(3,rr(12,98,52,40,5)));
+  r.push(R(11,rr(18,104,22,20,3)),R(4,rect(12,126,52,5)),R(10,circ(52,108,3.6)));
+  // dump truck with a load of dirt
+  r.push(R(6,'M128,124Q150,100 172,124Z'));
+  r.push(R(9,poly([[124,122],[176,122],[172,148],[128,148]])),R(3,rect(130,128,40,5)),R(3,rect(132,138,36,5)));
+  r.push(R(10,rr(174,114,22,34,4)),R(11,rr(178,118,14,12,2)),R(3,circ(193,140,2.6)));
+  r.push(R(12,rect(122,146,76,6)));
+  [[138,158],[158,158],[184,158]].forEach(([x,y])=>r.push(R(12,circ(x,y,9)),R(5,circ(x,y,3.8))));
+  // traffic cones
+  [[30,170],[100,166],[150,174]].forEach(([x,y])=>{r.push(R(9,poly([[x,y],[x+8,y+20],[x-8,y+20]])),R(2,poly([[x-3,y+7],[x+3,y+7],[x+5,y+12],[x-5,y+12]])),R(9,rect(x-11,y+20,22,4)))});
+  add('digger','Digger & Dump Truck','medium','vehicles',['#a5d8ff','#ffffff','#ffd43b','#495057','#adb5bd','#8d5524','#c08457','#69db7c','#ff922b','#e03131','#4dabf7','#212529'],r)})();
+
+ // ===== 2026-10-28  Goldfish Bowl (Medium, Animals) =====
+ (function(){const r=[];
+  const weed=(x0,y0,y1,amp,w)=>{const L=[],Rr=[],N=14;for(let i=0;i<=N;i++){const y=y0+(y1-y0)*i/N,x=x0+amp*Math.sin(i/N*6.2832);L.push([x-w/2,y]);Rr.push([x+w/2,y])}return poly(L.concat(Rr.reverse()))};
+  r.push(R(1,rect(0,0,200,200)));
+  // framed sun picture on the wall
+  r.push(R(6,rect(10,14,40,34)),R(3,rect(14,18,32,26)),R(9,circ(30,31,8)));
+  // table
+  r.push(R(5,rect(0,150,200,50)),R(6,rect(0,150,200,7)));
+  // potted plant on the table
+  r.push(R(8,poly(rell(168,108,7,18,-.4,0,6.2832))),R(8,poly(rell(184,112,7,17,.5,0,6.2832))),R(8,poly(rell(176,104,7,20,0,0,6.2832))));
+  r.push(R(13,'M160,128H192L188,156H164Z'),R(14,rect(158,124,36,7)));
+  // bowl glass, water, rim, sand
+  r.push(R(4,circ(100,98,62)),R(3,band(100,98,58,58,156)),R(11,ell(100,40,32,7)));
+  r.push(R(7,band(100,98,58,138,156)));
+  [[70,146,13],[84,147,9],[118,146,14],[130,144,13]].forEach(([x,y,c])=>r.push(R(c,ell(x,y,6,4.4))));
+  // seaweed and treasure chest
+  r.push(R(8,weed(130,146,96,4,6)),R(8,weed(140,140,108,3,5.5)),R(8,weed(100,148,116,3,6)));
+  r.push(R(6,rect(58,126,24,16)),R(6,'M58,126Q70,114 82,126Z'),R(9,rect(58,128,24,4)),R(9,rect(67,131,6,6)));
+  // big goldfish (tail and fins first)
+  r.push(R(10,poly([[108,86],[126,72],[124,102]])),R(9,poly([[86,76],[100,66],[102,78]])));
+  r.push(R(10,ell(92,88,19,13)));
+  r.push(R(9,ell(98,88,4,10)),R(9,poly([[90,94],[98,106],[84,98]])));
+  r.push(R(2,circ(80,84,4.6)),R(12,circ(79,84,2.2)));
+  // little purple fish
+  r.push(R(14,poly([[118,120],[132,112],[132,128]])),R(14,ell(110,120,11,7.5)),R(2,circ(105,118,3)),R(12,circ(104.5,118,1.9)));
+  // bubbles
+  [[66,74,3.8],[62,64,4.2],[94,124,3],[142,84,3.2],[136,72,3.8],[54,104,3.4]].forEach(([x,y,k])=>r.push(R(2,circ(x,y,k))));
+  add('fishbowl','Goldfish Bowl','medium','animals',['#ffe8cc','#ffffff','#a5d8ff','#e7f5ff','#c08457','#8d5524','#ffec99','#2b9348','#ffd43b','#ff922b','#74c0fc','#212529','#f783ac','#9775fa'],r)})();
 })();
