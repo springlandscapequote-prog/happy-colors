@@ -945,4 +945,76 @@
   // bubbles
   [[66,74,3.8],[62,64,4.2],[94,124,3],[142,84,3.2],[136,72,3.8],[54,104,3.4]].forEach(([x,y,k])=>r.push(R(2,circ(x,y,k))));
   add('fishbowl','Goldfish Bowl','medium','animals',['#ffe8cc','#ffffff','#a5d8ff','#e7f5ff','#c08457','#8d5524','#ffec99','#2b9348','#ffd43b','#ff922b','#74c0fc','#212529','#f783ac','#9775fa'],r)})();
+
+ // ===== 2026-10-29  Fairy Tea Party (Medium, Fantasy & Castles) =====
+ (function(){const r=[];
+  // garland string: horizontal sampled sine strip (4 wide)
+  const garl=(x0,x1,y0,amp,w)=>{const T=[],B=[],N=20;for(let i=0;i<=N;i++){const x=x0+(x1-x0)*i/N,y=y0+amp*Math.sin(i/N*3.1416);T.push([x,y-w/2]);B.push([x,y+w/2])}return poly(T.concat(B.reverse()))};
+  r.push(R(1,rect(0,0,200,200)),R(3,circ(174,62,13)));
+  r.push(R(2,ell(40,74,22,8)),R(2,ell(134,82,18,7)));
+  r.push(R(4,'M0,112Q50,90 100,110T200,102V200H0Z'));
+  r.push(R(5,'M0,156Q60,142 120,154T200,150V200H0Z'));
+  // fairy lights garland with glowing bulbs
+  r.push(R(5,garl(-2,202,10,22,4)));
+  [[14,1],[42,7],[72,9],[100,3],[128,12],[158,8],[186,7]].forEach(([x,c],i)=>{const t=(x+2)/204,y=10+22*Math.sin(t*3.1416)+6;r.push(R([3,7,9,12,8,10,3][i],circ(x,y,5.2)))});
+  // tree stump table (roots, trunk, bark lines, cut top with rings)
+  r.push(R(6,poly([[54,176],[66,150],[72,176]])),R(6,poly([[128,176],[134,150],[146,176]])));
+  r.push(R(6,rect(62,120,76,56)));
+  [[76,132],[97,136],[118,132]].forEach(([x,y])=>r.push(R(13,rect(x,y,5,36))));
+  r.push(R(14,ell(100,120,48,12)),R(6,ell(100,120,30,7.5)),R(14,ell(100,120,15,3.8)));
+  // teapot (handle and spout first)
+  r.push(R(8,circ(80,100,9)),R(1,circ(80,100,4.6)));
+  r.push(R(7,poly([[114,98],[132,82],[137,86],[118,110]])));
+  r.push(R(7,ell(100,102,19,14)));
+  r.push(R(8,ell(100,88,10,4.4)),R(3,circ(100,82,3.6)));
+  [[92,100],[106,98],[100,110]].forEach(([x,y])=>r.push(R(2,circ(x,y,3.2))));
+  // tea cups on saucers
+  [[66,9],[136,12]].forEach(([x,c])=>{r.push(R(c,circ(x-10,108,5.5)),R(14,circ(x-10,108,2.6)));
+   r.push(R(2,ell(x,118,14,3.8)),R(c,poly([[x-10,102],[x+10,102],[x+7,116],[x-7,116]])));});
+  // toadstool seats
+  [[22,140],[178,140]].forEach(([x,y])=>{r.push(R(2,rect(x-7,y,14,26)),R(11,`M${x-19},${y+2}A19,15 0 0,1 ${x+19},${y+2}Z`));
+   [[-9,-6],[2,-10],[10,-4]].forEach(([dx,dy])=>r.push(R(2,circ(x+dx,y+dy,3.2))))});
+  // cupcakes in the grass
+  [[46,174],[154,174]].forEach(([x,y])=>{r.push(R(8,poly([[x-11,y],[x+11,y],[x+8,y+16],[x-8,y+16]])),R(7,ell(x,y-2,13,8)),R(11,circ(x,y-11,4)))});
+  // flowers
+  [[84,186,9],[116,188,10]].forEach(([x,y,c])=>{for(let i=0;i<5;i++){const a=i*1.2566-1.5708;r.push(R(c,circ(x+6*Math.cos(a),y+6*Math.sin(a),4.2)))}r.push(R(3,circ(x,y,3.4)))});
+  // butterflies (no faces)
+  [[38,46,12],[118,56,7]].forEach(([x,y,c])=>{r.push(R(c,poly(rell(x-7,y,8,6,-.5,0,6.2832))),R(c,poly(rell(x+7,y,8,6,.5,0,6.2832))),R(13,ell(x,y,2,7)))});
+  add('teaparty','Fairy Tea Party','medium','fantasy',['#e5dbff','#ffffff','#ffd43b','#8ce99a','#2f9e44','#a9714b','#f783ac','#9775fa','#4dabf7','#ff922b','#fa5252','#63e6be','#7f4f24','#ffc078'],r)})();
+
+ // ===== 2026-10-29  Stargazing Observatory (Hard, Space) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)));
+  // milky way band (big, easy to tap)
+  r.push(R(4,poly(rell(100,66,120,24,-.32,0,6.2832))),R(5,poly(rell(96,66,78,9,-.32,0,6.2832))));
+  // crescent moon
+  r.push(R(3,circ(28,28,16)),R(1,circ(35,23,13)));
+  // ringed planet
+  r.push(R(11,poly(rell(164,28,18,5,-.3,0,6.2832))),R(10,circ(164,28,9)),R(15,band(164,28,9,25,29)),R(11,poly(rell(164,28,18,5,-.3,0,3.1416).concat(rell(164,28,12,3,-.3,3.1416,0)))));
+  // comet
+  r.push(R(12,poly([[84,14],[120,10],[120,24]])),R(2,circ(120,17,6)));
+  // stars
+  [[60,12,5],[8,62,5],[54,44,4],[70,90,5],[12,98,4],[96,34,4],[140,10,5],[192,8,4],[186,56,5],[140,48,4],[194,92,5],[52,98,4],[86,62,5],[120,70,4],[58,72,4],[26,80,4],[176,100,4],[30,56,4],[106,88,4],[160,64,4]].forEach(([x,y,s],i)=>r.push(R([3,2,12][i%3],star(x,y,s,s*.45))));
+  // shooting stars
+  [[146,80,170,74],[50,64,74,54]].forEach(([x0,y0,x1,y1])=>{r.push(R(15,poly([[x0,y0-2],[x1,y1-3],[x1,y1+3],[x0,y0+2]])),R(3,star(x1,y1,6,2.8)))});
+  // hills and pine trees
+  r.push(R(8,'M0,140Q50,120 100,136T200,128V200H0Z'));
+  [[16,132,1],[38,128,.8],[188,126,.9],[96,134,.7]].forEach(([x,y,k])=>{r.push(R(13,rect(x-3,y-2,6,Math.max(12*k,8))),R(9,poly([[x,y-34*k],[x+14*k,y-14*k],[x-14*k,y-14*k]])),R(9,poly([[x,y-22*k],[x+17*k,y],[x-17*k,y]])))});
+  // observatory: telescope behind the dome, dome with open slit, round building
+  r.push(R(7,poly([[134,96],[160,64],[168,70],[142,102]])),R(12,poly(rell(164,67,6,4.4,-.87+1.5708,0,6.2832))));
+  r.push(R(6,'M110,112A30,30 0 0,1 170,112Z'),R(12,band(140,112,30,98,104)),R(1,rect(134,86,10,26)));
+  r.push(R(15,rect(112,112,56,46)),R(6,rect(108,108,64,6)));
+  r.push(R(13,'M132,158V142A8,8 0 0,1 148,142V158Z'),R(3,circ(144,150,1.9)));
+  r.push(R(3,circ(122,128,5.5)),R(3,circ(158,128,5.5)));
+  r.push(R(7,rect(106,156,68,6)));
+  // little telescope on a tripod
+  r.push(R(7,poly([[72,150],[66,170],[69,171],[75,152]])),R(7,poly([[76,150],[84,170],[81,171],[73,152]])));
+  r.push(R(10,poly([[60,140],[88,126],[92,134],[64,148]])),R(2,poly(rell(90,130,3.4,5,-.45,0,6.2832))));
+  // front grass, checkered picnic blanket and a lantern
+  r.push(R(9,'M0,170Q60,158 120,168T200,164V200H0Z'));
+  for(let row=0;row<2;row++)for(let col=0;col<4;col++)r.push(R((row+col)%2?2:14,poly([[16+col*16+row*6,176+row*10],[32+col*16+row*6,176+row*10],[32+col*16+(row+1)*6,186+row*10],[16+col*16+(row+1)*6,186+row*10]])));
+  r.push(R(11,rect(94,176,12,14)),R(3,circ(100,183,4)),R(7,rect(96,170,8,6)));
+  // flowers
+  [[128,186,10],[156,182,5],[184,188,11]].forEach(([x,y,c])=>{for(let i=0;i<5;i++){const a=i*1.2566-1.5708;r.push(R(c,circ(x+5.5*Math.cos(a),y+5.5*Math.sin(a),3.8)))}r.push(R(3,circ(x,y,3)))});
+  add('observatory','Stargazing Observatory','hard','space',['#1b2459','#ffffff','#ffd43b','#364fc7','#9775fa','#adb5bd','#495057','#2b9348','#69db7c','#f783ac','#ff922b','#99e9f2','#8d5524','#e03131','#ffe8cc'],r)})();
 })();
