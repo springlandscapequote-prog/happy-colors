@@ -1017,4 +1017,71 @@
   // flowers
   [[128,186,10],[156,182,5],[184,188,11]].forEach(([x,y,c])=>{for(let i=0;i<5;i++){const a=i*1.2566-1.5708;r.push(R(c,circ(x+5.5*Math.cos(a),y+5.5*Math.sin(a),3.8)))}r.push(R(3,circ(x,y,3)))});
   add('observatory','Stargazing Observatory','hard','space',['#1b2459','#ffffff','#ffd43b','#364fc7','#9775fa','#adb5bd','#495057','#2b9348','#69db7c','#f783ac','#ff922b','#99e9f2','#8d5524','#e03131','#ffe8cc'],r)})();
+
+ // ===== 2026-10-30  Autumn Waterfall (Medium, Nature) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(3,circ(172,26,14)));
+  r.push(R(2,ell(40,24,20,8)),R(2,ell(118,18,16,6)));
+  r.push(R(10,'M0,70Q50,46 100,62T200,56V200H0Z'));
+  // cliffs on both sides with the river at the top
+  r.push(R(4,'M0,74L34,64L78,58L82,150L0,150Z'),R(4,'M118,58L160,62L200,70V150H118Z'));
+  r.push(R(6,ell(100,60,24,6)));
+  // waterfall with light stripes
+  r.push(R(6,rect(80,60,40,90)));
+  [86,98,110].forEach(x=>r.push(R(7,rect(x,66,5,78))));
+  // rocks on the cliffs
+  [[22,96,10,6],[54,120,11,6],[148,92,11,6],[178,124,10,6],[30,136,9,5]].forEach(([x,y,a,b])=>r.push(R(5,ell(x,y,a,b))));
+  // pool with foam and stones
+  r.push(R(6,ell(100,158,80,16)));
+  r.push(R(2,ell(100,150,26,6)),R(2,ell(70,154,10,4)),R(2,ell(130,154,10,4)));
+  r.push(R(5,ell(46,162,8,4.5)),R(5,ell(156,164,9,4.5)));
+  // autumn trees on top of the cliffs
+  [[16,66,8],[52,58,9],[150,58,3],[186,64,13]].forEach(([x,y,c])=>{r.push(R(12,rect(x-3,y-10,6,14)));
+   r.push(R(c,circ(x-8,y-14,9)),R(c==8?9:8,circ(x+8,y-14,9)),R(c,circ(x,y-24,10)))});
+  // grass in front
+  r.push(R(11,'M0,172Q50,164 100,172T200,168V200H0Z'));
+  // falling leaves
+  [[64,30,8],[96,40,9],[136,34,3],[150,104,8],[42,108,13],[184,98,9],[60,186,3],[140,190,8]].forEach(([x,y,c],i)=>r.push(R(c,poly(rell(x,y,6.5,3.8,i*.7,0,6.2832)))));
+  // mushrooms
+  [[22,182],[176,184]].forEach(([x,y])=>{r.push(R(2,rect(x-3,y-6,6,12)),R(9,`M${x-11},${y-5}A11,9 0 0,1 ${x+11},${y-5}Z`));
+   r.push(R(2,circ(x-4,y-10,2.2)),R(2,circ(x+5,y-9,2)))});
+  // little red-orange leaf pile
+  r.push(R(13,ell(100,186,16,7)),R(8,ell(94,183,6,3.8)),R(9,ell(106,188,6,3.8)));
+  add('waterfall','Autumn Waterfall','medium','nature',['#a5d8ff','#ffffff','#ffd43b','#868e96','#495057','#4dabf7','#d0ebff','#ff922b','#fa5252','#8ce99a','#2b9348','#8d5524','#e8590c'],r)})();
+
+ // ===== 2026-10-30  Octopus Coral Garden (Hard, Animals) =====
+ (function(){const r=[];
+  // tube along a polyline with width w0 -> w1 (sampled strip with perpendicular offsets)
+  const tube=(pts,w0,w1)=>{const L=[],Rt=[],n=pts.length;for(let i=0;i<n;i++){const a=pts[Math.max(0,i-1)],b=pts[Math.min(n-1,i+1)],dx=b[0]-a[0],dy=b[1]-a[1],l=Math.hypot(dx,dy)||1,w=(w0+(w1-w0)*i/(n-1))/2;L.push([pts[i][0]-dy/l*w,pts[i][1]+dx/l*w]);Rt.push([pts[i][0]+dy/l*w,pts[i][1]-dx/l*w])}return poly(L.concat(Rt.reverse()))};
+  const wave=(x0,y0,x1,y1,amp,k)=>{const o=[];for(let i=0;i<=16;i++){const t=i/16,x=x0+(x1-x0)*t,y=y0+(y1-y0)*t,dx=x1-x0,dy=y1-y0,l=Math.hypot(dx,dy),s=amp*Math.sin(t*k*3.1416);o.push([x-dy/l*s,y+dx/l*s])}return o};
+  r.push(R(1,rect(0,0,200,200)));
+  // light rays from the surface
+  r.push(R(2,poly([[20,0],[44,0],[22,90],[8,90]])),R(2,poly([[150,0],[172,0],[192,80],[178,80]])),R(2,poly([[90,0],[108,0],[104,30],[92,30]])));
+  // sand
+  r.push(R(3,'M0,158Q50,146 100,156T200,150V200H0Z'));
+  // seaweed
+  [[12,160,6,52,8],[30,164,26,96,9],[176,160,180,60,8],[192,164,196,112,9],[160,166,152,118,9]].forEach(([x0,y0,x1,y1,c])=>r.push(R(c,tube(wave(x0,y0,x1,y1,5,3),7,4))));
+  // branch corals
+  [[34,160,4],[164,160,5]].forEach(([x,y,c])=>{r.push(R(c,tube([[x,y],[x,y-30]],8,6)),R(c,tube([[x,y-14],[x-12,y-24],[x-14,y-36]],7,5)),R(c,tube([[x,y-18],[x+12,y-28],[x+13,y-40]],7,5)));
+   r.push(R(c,circ(x,y-31,4.5)),R(c,circ(x-14,y-37,4)),R(c,circ(x+13,y-41,4)))});
+  // brain corals
+  [[72,166,10],[118,170,14]].forEach(([x,y,c])=>{r.push(R(c,`M${x-18},${y}A18,16 0 0,1 ${x+18},${y}Z`),R(c==10?5:6,band(x,y,17,y-9,y-5)))});
+  // tentacles (behind the head)
+  const tents=[[78,94,-1.0],[84,98,-.6],[92,100,-.25],[100,101,0],[108,100,.25],[116,98,.6],[122,94,1.0],[100,96,.0]];
+  tents.slice(0,7).forEach(([bx,by,a],i)=>{const pts=[];for(let j=0;j<=14;j++){const t=j/14,len=58-Math.abs(a)*16,ang=1.5708-a*1.2,x=bx+Math.cos(ang)*len*t+Math.sin(t*5+i)*9*t,y=by+Math.sin(ang)*len*t*.9;pts.push([x,y])}
+   r.push(R(6,tube(pts,13,5)));const s1=pts[5],s2=pts[10];r.push(R(7,circ(s1[0],s1[1],3)),R(7,circ(s2[0],s2[1],2.6)))});
+  // head
+  r.push(R(6,ell(100,72,30,30)));
+  [[86,56,4],[112,52,3.5],[100,44,3],[118,66,3]].forEach(([x,y,k])=>r.push(R(7,circ(x,y,k))));
+  r.push(R(11,circ(89,78,7)),R(11,circ(111,78,7)),R(12,circ(90,79,3.6)),R(12,circ(112,79,3.6)));
+  r.push(R(4,ell(78,90,5,3)),R(4,ell(122,90,5,3)));
+  // fish (tails first)
+  [[36,40,13,1],[60,82,5,1],[72,20,14,1],[172,30,13,-1]].forEach(([x,y,c,d])=>{r.push(R(c,poly([[x-d*10,y],[x-d*20,y-7],[x-d*20,y+7]])),R(c,ell(x,y,12,7.5)),R(10,poly([[x-d*2,y-6],[x+d*5,y-11],[x+d*7,y-5]])),R(11,circ(x+d*6,y-1.5,2.6)))});
+  // bubbles
+  [[132,40,4],[138,26,3],[134,12,4.5],[64,64,3.5],[60,52,3],[150,72,3]].forEach(([x,y,k])=>r.push(R(11,circ(x,y,k))));
+  // starfish, shells and pebbles on the sand
+  [[24,182,5],[176,180,10]].forEach(([x,y,c])=>r.push(R(c,star(x,y,9,4))));
+  [[98,188],[150,190]].forEach(([x,y])=>{r.push(R(15,`M${x-8},${y}A8,8 0 0,1 ${x+8},${y}Z`)),r.push(R(4,rect(x-5,y,10,3.6)))});
+  [[60,190,6,3.5],[124,192,5,3],[192,192,6,3.5],[6,170,5,3]].forEach(([x,y,a,b])=>r.push(R(15,ell(x,y,a,b))));
+  add('octopus','Octopus Coral Garden','hard','animals',['#1c7ed6','#4dabf7','#ffec99','#f783ac','#ff922b','#9775fa','#d0bfff','#2b9348','#69db7c','#fa5252','#ffffff','#212529','#ffd43b','#63e6be','#c08457'],r)})();
 })();
