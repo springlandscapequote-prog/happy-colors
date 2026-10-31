@@ -1084,4 +1084,90 @@
   [[98,188],[150,190]].forEach(([x,y])=>{r.push(R(15,`M${x-8},${y}A8,8 0 0,1 ${x+8},${y}Z`)),r.push(R(4,rect(x-5,y,10,3.6)))});
   [[60,190,6,3.5],[124,192,5,3],[192,192,6,3.5],[6,170,5,3]].forEach(([x,y,a,b])=>r.push(R(15,ell(x,y,a,b))));
   add('octopus','Octopus Coral Garden','hard','animals',['#1c7ed6','#4dabf7','#ffec99','#f783ac','#ff922b','#9775fa','#d0bfff','#2b9348','#69db7c','#fa5252','#ffffff','#212529','#ffd43b','#63e6be','#c08457'],r)})();
+
+ // ===== 2026-10-31  Mars Rover Canyon (Medium, Space) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(12,circ(166,30,13)));
+  r.push(R(5,circ(36,26,8)),R(13,circ(72,16,4.5)));
+  [[110,20],[130,44],[16,58],[92,46]].forEach(([x,y])=>r.push(R(6,star(x,y,5,2.2))));
+  // far mesas and canyon walls
+  r.push(R(2,'M0,92L0,66L20,64L28,72L58,70L66,92Z'),R(2,'M120,92L132,70L170,68L176,60L200,62V92Z'));
+  r.push(R(3,'M0,92L66,92L80,84L120,84L132,92L200,92V120H0Z'));
+  r.push(R(2,rect(0,100,200,5)));
+  // ground
+  r.push(R(4,'M0,116Q50,108 100,116T200,112V200H0Z'));
+  // craters
+  [[34,176,16,6],[168,168,14,5]].forEach(([x,y,a,b])=>{r.push(R(3,ell(x,y,a,b)),R(11,ell(x,y+1.5,a-6,b-2.5)))});
+  // rocks
+  [[16,140,7,4],[184,138,8,4.5],[60,190,8,4.5],[132,186,7,4],[40,126,6,3.5],[190,190,6,3.5]].forEach(([x,y,a,b])=>r.push(R(11,ell(x,y,a,b))));
+  // wheel tracks behind the rover
+  [[8,158],[22,158],[36,158],[8,166],[22,166],[36,166]].forEach(([x,y])=>r.push(R(3,rect(x,y,9,4))));
+  // little helicopter drone
+  r.push(R(13,rect(150,58,4,10)),R(5,ell(152,72,9,6)),R(10,circ(155,71,3)),R(13,poly(rell(152,56,16,2.4,0,0,6.2832))));
+  r.push(R(13,poly([[145,76],[147,76],[142,84],[139,84]])),R(13,poly([[157,76],[159,76],[165,84],[162,84]])));
+  // mast and camera head (behind the body)
+  r.push(R(5,rect(116,74,6,34)),R(13,rect(106,60,26,14)),R(10,circ(113,67,3.6)),R(10,circ(125,67,3.6)));
+  // antenna and arm
+  r.push(R(13,rect(74,90,4,18)),R(6,'M64,92A12,12 0 0,1 88,92Z'));
+  r.push(R(5,poly([[132,128],[156,138],[154,143],[130,133]])),R(13,rect(152,138,10,8)));
+  // solar panel
+  r.push(R(5,rect(60,106,80,9)));
+  for(let i=0;i<6;i++)r.push(R(7,rect(62+i*13,107.5,11,6)));
+  // body
+  r.push(R(6,rect(68,115,66,20)),R(9,rect(68,124,66,5)),R(10,rect(76,117,12,6)),R(8,circ(124,120,3)));
+  // suspension and wheels
+  r.push(R(13,poly([[74,135],[130,135],[128,139],[76,139]])));
+  [[76,146],[102,146],[128,146]].forEach(([x,y])=>{r.push(R(8,circ(x,y,10)),R(5,circ(x,y,4)))});
+  // dust puffs
+  r.push(R(12,ell(56,154,8,4)),R(12,ell(46,148,6,3.5)));
+  add('marsrover','Mars Rover Canyon','medium','space',['#ffd8a8','#d9480f','#e8590c','#ffa94d','#868e96','#f1f3f5','#1c7ed6','#212529','#ffd43b','#a5d8ff','#8d5524','#fff3bf','#495057'],r)})();
+
+ // ===== 2026-10-31  Halloween Candy Porch (Hard, Holidays) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(2,circ(170,24,15)),R(12,circ(165,20,3)),R(12,circ(175,30,2.6)));
+  [[22,12],[60,24],[100,10],[134,30],[196,52]].forEach(([x,y],i)=>r.push(R(3,star(x,y,5,2.2))));
+  // friendly bats
+  [[40,40],[124,16]].forEach(([x,y])=>{r.push(R(8,poly([[x-4,y],[x-16,y-8],[x-13,y+1],[x-18,y+6],[x-4,y+5]])),R(8,poly([[x+4,y],[x+16,y-8],[x+13,y+1],[x+18,y+6],[x+4,y+5]])),R(11,ell(x,y+1,5,6)))});
+  // roof and wall
+  r.push(R(12,poly([[6,66],[100,34],[194,66]])),R(8,rect(6,64,188,5)));
+  r.push(R(7,rect(14,69,172,93)));
+  [80,140].forEach(y=>r.push(R(6,rect(14,y,172,4))));
+  // bunting under the roof trim
+  for(let i=0;i<9;i++){const x=18+i*19;r.push(R([4,11,8][i%3],poly([[x,69],[x+14,69],[x+7,79]])))}
+  // windows with shutters
+  [[26,88],[138,88]].forEach(([x,y],k)=>{r.push(R(9,rect(x-8,y,8,40)),R(9,rect(x+38,y,8,40)),R(10,rect(x,y,38,40)));
+   for(let i=0;i<2;i++)for(let j=0;j<2;j++)r.push(R(3,rect(x+3+i*17.5,y+3+j*17.5,14.5,15.5)))});
+  // ghost in the left window, cat in the right window
+  r.push(R(10,'M38,128L38,104A9,9 0 0,1 56,104L56,128L52,123L47,128L43,123Z'),R(8,circ(44,106,2.2)),R(8,circ(50,106,2.2)));
+  r.push(R(8,ell(157,121,9,8)),R(8,circ(157,108,6)),R(8,poly([[151,106],[152,98],[156,103]])),R(8,poly([[163,106],[162,98],[158,103]])));
+  // door with frame, panels, knob and wreath
+  r.push(R(10,rect(80,84,40,78)),R(9,rect(84,88,32,74)));
+  [[88,112],[102,112],[88,136],[102,136]].forEach(([x,y])=>r.push(R(6,rect(x,y,10,20))));
+  r.push(R(3,circ(111,130,2.6)),R(5,circ(100,99,9)),R(9,circ(100,99,4.6)),R(4,circ(93,93,2.4)),R(4,circ(107,93,2.4)),R(4,circ(100,108,2.4)));
+  // porch lanterns
+  [[72,96],[124,96]].forEach(([x,y])=>{r.push(R(8,rect(x,y,7,4)),R(3,rect(x,y+4,7,10)),R(8,rect(x,y+14,7,3)))});
+  // porch floor and railings
+  r.push(R(6,rect(0,162,200,8)));
+  r.push(R(10,rect(4,140,64,4)),R(10,rect(132,140,64,4)));
+  for(let i=0;i<7;i++){r.push(R(10,rect(8+i*9,144,4,18)),R(10,rect(136+i*9,144,4,18)))}
+  // steps
+  r.push(R(7,rect(70,170,60,10)),R(6,rect(64,180,72,10)),R(7,rect(58,190,84,10)));
+  // grass by the steps
+  r.push(R(5,rect(0,170,58,30)),R(5,rect(142,170,58,30)));
+  // jack-o'-lanterns (friendly smiles)
+  const jack=(x,y,s,face)=>{r.push(R(5,rect(x-2,y-s-5,4,7)),R(4,ell(x,y,s*1.25,s)),R(13,ell(x,y,s*.45,s*.92)));
+   if(face){r.push(R(8,poly([[x-s*.75,y-s*.12],[x-s*.4,y-s*.5],[x-s*.15,y-s*.12]])),R(8,poly([[x+s*.15,y-s*.12],[x+s*.4,y-s*.5],[x+s*.75,y-s*.12]])),R(8,`M${f(x-s*.7)},${f(y+s*.15)}Q${x},${f(y+s*.85)} ${f(x+s*.7)},${f(y+s*.15)}Z`))}};
+  jack(26,178,13,1);jack(176,180,13,1);jack(78,165,7,0);jack(126,166,7,0);
+  // candy bowl on the top step
+  [[93,164,9],[101,162,15],[109,164,3]].forEach(([x,y,c])=>r.push(R(c,circ(x,y,4.6))));
+  // wrapped candies on the middle step
+  [[76,185,15],[124,185,9]].forEach(([x,y,c])=>r.push(R(c,poly([[x-13,y-4.5],[x-5,y],[x-13,y+4.5]])),R(c,poly([[x+13,y-4.5],[x+5,y],[x+13,y+4.5]])),R(c,circ(x,y,5))));
+  r.push(R(11,'M88,169L114,169A13,8 0 0,1 88,169Z'));
+  // potted mums
+  [[50,188],[150,188]].forEach(([x,y])=>{r.push(R(6,poly([[x-8,y],[x+8,y],[x+6,y+12],[x-6,y+12]])));
+   [[x-6,y-4,13],[x+6,y-4,9],[x,y-9,15],[x,y-2,3]].forEach(([a,b,c])=>r.push(R(c,circ(a,b,5))))});
+  // fallen leaves on the grass
+  [[8,196,4],[44,172,9],[192,196,13],[164,164,4]].forEach(([x,y,c],i)=>r.push(R(c,poly(rell(x,y,5,3,i*.8,0,6.2832)))));
+  r.push(R(14,ell(112,196,6,3)),R(14,ell(100,186,6,3)));
+  add('candyporch','Halloween Candy Porch','hard','holidays',['#5f3dc4','#fff3bf','#ffd43b','#ff922b','#2b9348','#8d5524','#c08457','#212529','#e03131','#ffffff','#9775fa','#868e96','#ffa94d','#69db7c','#f783ac'],r)})();
 })();
