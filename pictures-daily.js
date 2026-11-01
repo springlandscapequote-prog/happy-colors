@@ -1170,4 +1170,75 @@
   [[8,196,4],[44,172,9],[192,196,13],[164,164,4]].forEach(([x,y,c],i)=>r.push(R(c,poly(rell(x,y,5,3,i*.8,0,6.2832)))));
   r.push(R(14,ell(112,196,6,3)),R(14,ell(100,186,6,3)));
   add('candyporch','Halloween Candy Porch','hard','holidays',['#5f3dc4','#fff3bf','#ffd43b','#ff922b','#2b9348','#8d5524','#c08457','#212529','#e03131','#ffffff','#9775fa','#868e96','#ffa94d','#69db7c','#f783ac'],r)})();
+
+ // ===== 2026-11-01  Race Car Track (Hard, Vehicles) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(2,circ(182,16,11)));
+  [[34,18,9,6],[48,14,10,7],[62,19,9,6]].forEach(([x,y,a,b])=>r.push(R(3,ell(x,y,a,b))));
+  // bunting across the top
+  for(let i=0;i<8;i++){const x=78+i*13;r.push(R([6,7,2,10][i%4],poly([[x,0],[x+11,0],[x+5.5,10]])))}
+  // grandstand with colored seats (no people)
+  r.push(R(6,poly([[2,34],[100,34],[92,24],[10,24]])),R(11,rect(6,34,90,46)));
+  for(let j=0;j<3;j++)for(let i=0;i<6;i++)r.push(R([6,7,9,10,14,2][(i+j)%6],rect(9+i*14.5,38+j*14,12.5,10)));
+  // pit garage
+  r.push(R(7,poly([[104,34],[198,34],[192,24],[110,24]])),R(3,rect(108,34,86,46)),R(9,rect(108,36,86,8)));
+  [114,140,166].forEach(x=>{r.push(R(11,rect(x,50,22,30)),R(7,rect(x,60,22,5)))});
+  // checkered flag
+  r.push(R(8,rect(99,22,3.6,58)));
+  for(let j=0;j<2;j++)for(let i=0;i<3;i++)r.push(R((i+j)%2?8:3,rect(102.6+i*7,10+j*6.5,7,6.5)));
+  // grass, trees and a tire stack
+  r.push(R(4,rect(0,80,200,28)));
+  [[16,92],[56,90]].forEach(([x,y])=>{r.push(R(13,rect(x-3,y+4,6,12)),R(12,circ(x,y,9)),R(12,circ(x+9,y+4,6)))});
+  [[150,0],[172,0]].forEach(([x])=>{for(let k=0;k<3;k++)r.push(R(k%2?6:8,rect(x,84+k*7.5,16,6.5)))});
+  // track with red/white curbs
+  for(let i=0;i<15;i++)r.push(R(i%2?3:6,rect(i*13.4,108,13.4,6)));
+  r.push(R(5,rect(0,114,200,52)));
+  for(let i=0;i<7;i++)r.push(R(3,rect(46+i*22,137,14,4)));
+  for(let i=0;i<15;i++)r.push(R(i%2?6:3,rect(i*13.4,166,13.4,6)));
+  // checkered start line
+  for(let j=0;j<6;j++)for(let i=0;i<2;i++)r.push(R((i+j)%2?8:3,rect(8+i*7,114+j*8.66,7,8.66)));
+  // race cars (no numbers or logos)
+  const car=(x,y,c,s)=>{r.push(R(3,rect(x-20,y,12,4)),R(3,rect(x-24,y+7,14,4)));
+   r.push(R(8,rect(x,y-6,6,14)),R(c,poly([[x+2,y],[x+20,y-4],[x+40,y-4],[x+58,y+4],[x+58,y+10],[x+2,y+10]])));
+   r.push(R(1,ell(x+29,y-5,8,4.6)),R(s,rect(x+8,y+1,40,4.4)));
+   r.push(R(8,rect(x+52,y+9,12,4)));
+   [x+14,x+46].forEach(cx=>{r.push(R(8,circ(cx,y+11,7)),R(11,circ(cx,y+11,3)))})};
+  car(50,120,6,3);car(92,150,7,2);car(134,120,10,9);
+  // bottom grass with flower bushes and cones
+  r.push(R(4,rect(0,172,200,28)));
+  [[30,186],[100,188],[170,186]].forEach(([x,y],i)=>{r.push(R(12,ell(x,y,16,9)));[[x-7,y-2],[x+6,y-3],[x,y+3]].forEach(([a,b],k)=>r.push(R([14,2,10][(i+k)%3],circ(a,b,3.4))))});
+  [[62,184],[138,184]].forEach(([x,y])=>{r.push(R(9,poly([[x,y-10],[x+8,y+10],[x-8,y+10]])),R(3,poly([[x-3,y-2.5],[x+3,y-2.5],[x+5,y+2.5],[x-5,y+2.5]])),R(8,rect(x-11,y+10,22,4)))});
+  add('racetrack','Race Car Track','hard','vehicles',['#a5d8ff','#ffd43b','#ffffff','#51cf66','#868e96','#e03131','#1c7ed6','#212529','#ff922b','#9775fa','#ced4da','#2b9348','#c08457','#f783ac'],r)})();
+
+ // ===== 2026-11-01  Dragon Egg Nest (Medium, Fantasy) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(2,circ(30,28,14)));
+  [[146,24,12,8],[162,18,12,9],[176,25,11,7]].forEach(([x,y,a,b])=>r.push(R(3,ell(x,y,a,b))));
+  // mountains with snow caps
+  r.push(R(4,poly([[-10,120],[46,52],[104,120]])),R(11,poly([[78,120],[146,44],[214,120]])));
+  r.push(R(3,poly([[46,52],[34,67],[42,63],[48,69],[57,65]])),R(3,poly([[146,44],[132,60],[140,56],[147,63],[159,59]])));
+  r.push(R(5,rect(0,116,200,84)));
+  // back of the nest
+  r.push(R(6,ell(100,150,64,22)));
+  // baby dragon: wings first, then body, belly, head
+  r.push(R(13,poly([[88,118],[64,96],[70,108],[60,112],[70,118],[64,126],[86,130]])),R(13,poly([[112,118],[136,96],[130,108],[140,112],[130,118],[136,126],[114,130]])));
+  r.push(R(12,ell(100,124,19,18)),R(2,ell(100,121,9,8)));
+  r.push(R(12,circ(100,93,16)),R(13,ell(100,102,11,7.5)));
+  r.push(R(14,circ(93,90,3.2)),R(14,circ(107,90,3.2)),R(14,'M93,100Q100,111 107,100Z'));
+  // eggshell cap on the head and broken shell in front
+  r.push(R(3,poly([[85,87],[88,77],[100,71],[112,77],[115,87],[108,82],[100,88],[92,82]])));
+  r.push(R(3,poly([[78,134],[85,128],[92,135],[100,127],[108,135],[115,128],[122,134],[120,152],[80,152]])),R(8,circ(90,143,3.6)),R(9,circ(110,142,3.6)));
+  // two spotted eggs
+  [[54,136,-.35,8,10],[146,136,.35,9,8]].forEach(([x,y,t,c,s])=>{r.push(R(c,poly(rell(x,y,14,19,t,0,6.2832))));
+   [[-5,-7],[5,-2],[-3,6]].forEach(([dx,dy])=>r.push(R(s,circ(x+dx,y+dy,3.4))))});
+  // front of the nest with twigs
+  r.push(R(7,'M30,148Q100,178 170,148L164,168Q100,194 36,168Z'));
+  [[64,166,-.12],[100,173,0],[136,166,.12]].forEach(([x,y,t])=>r.push(R(6,poly(rell(x,y,20,2.6,t,0,6.2832)))));
+  // magic sparkles
+  [[40,90],[160,88],[70,66],[126,62],[100,40]].forEach(([x,y])=>r.push(R(2,star(x,y,6,2.6))));
+  // flowers
+  [[20,184,9],[180,186,11]].forEach(([x,y,c])=>{for(let k=0;k<5;k++){const a=k*1.2566-1.5708;r.push(R(c,circ(x+6*Math.cos(a),y+6*Math.sin(a),4)))}r.push(R(2,circ(x,y,3.4)))});
+  // mushrooms
+  [[64,190,9],[136,190,10]].forEach(([x,y,c])=>{r.push(R(3,rect(x-3.5,y-4,7,10)),R(c,'M'+(x-11)+','+(y-3)+'A11,9 0 0,1 '+(x+11)+','+(y-3)+'Z'),R(3,circ(x-4,y-7,2.2)),R(3,circ(x+4,y-8,2.2)))});
+  add('dragonegg','Dragon Egg Nest','medium','fantasy',['#d0bfff','#ffd43b','#ffffff','#9775fa','#69db7c','#8d5524','#c08457','#20c997','#f783ac','#ff922b','#4dabf7','#2b9348','#b2f2bb','#212529'],r)})();
 })();
