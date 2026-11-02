@@ -1241,4 +1241,68 @@
   // mushrooms
   [[64,190,9],[136,190,10]].forEach(([x,y,c])=>{r.push(R(3,rect(x-3.5,y-4,7,10)),R(c,'M'+(x-11)+','+(y-3)+'A11,9 0 0,1 '+(x+11)+','+(y-3)+'Z'),R(3,circ(x-4,y-7,2.2)),R(3,circ(x+4,y-8,2.2)))});
   add('dragonegg','Dragon Egg Nest','medium','fantasy',['#d0bfff','#ffd43b','#ffffff','#9775fa','#69db7c','#8d5524','#c08457','#20c997','#f783ac','#ff922b','#4dabf7','#2b9348','#b2f2bb','#212529'],r)})();
+
+ // ===== 2026-11-02  Enchanted Treehouse Lanterns (Hard, Fantasy) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(2,circ(172,24,15)),R(1,circ(179,19,12)));
+  [[14,14],[44,30],[192,6],[188,62],[20,62],[8,40]].forEach(([x,y],i)=>r.push(R(i%2?3:2,star(x,y,5.5,2.4))));
+  // hills
+  r.push(R(15,ell(30,160,74,34)),R(11,ell(178,162,64,30)));
+  r.push(R(5,rect(0,160,200,40)));
+  // tree: branch for the swing, trunk with roots
+  r.push(R(6,poly([[106,128],[178,112],[180,119],[106,136]])));
+  r.push(R(6,poly([[84,172],[92,96],[108,96],[116,172]])),R(6,poly([[86,164],[70,174],[90,174]])),R(6,poly([[114,164],[130,174],[110,174]])));
+  // swing
+  r.push(R(13,rect(150,117,3.6,32)),R(13,rect(170,113,3.6,36)),R(9,rect(144,148,34,6)));
+  // foliage (big shapes behind the house)
+  r.push(R(4,circ(100,46,42)),R(4,circ(54,64,26)),R(4,circ(146,64,26)));
+  r.push(R(5,circ(76,20,12)),R(5,circ(124,18,12)),R(5,circ(40,56,10)),R(5,circ(162,54,10)));
+  // platform and supports
+  r.push(R(6,poly([[66,103],[74,103],[94,124],[94,132]])),R(6,poly([[134,103],[126,103],[106,124],[106,132]])));
+  r.push(R(7,rect(54,96,92,7)));
+  // house
+  r.push(R(8,rect(122,30,10,24)));
+  r.push(R(7,rect(66,64,68,32)),R(6,rect(66,66,68,4)),R(6,rect(66,90,68,4)));
+  r.push(R(8,poly([[56,66],[100,34],[144,66]])),R(2,circ(100,53,6.5)));
+  r.push(R(11,rect(92,72,16,24)),R(2,circ(104,85,2.4)));
+  [[70,72],[114,72]].forEach(([x,y])=>{r.push(R(13,rect(x,y,16,16)),R(2,rect(x+3,y+3,10,7)));r.push(R(10,rect(x-2,y+16,20,5)))});
+  // ladder
+  for(let k=0;k<6;k++)r.push(R(7,rect(68,108+k*10,16,4)));
+  r.push(R(6,rect(66,103,4,68)),R(6,rect(82,103,4,68)));
+  // lantern garlands
+  const garland=(x0,x1,y0,sag)=>{const T=[],B=[],N=14;for(let i=0;i<=N;i++){const t=i/N,x=x0+(x1-x0)*t,y=y0+sag*Math.sin(Math.PI*t);T.push([x,y-2]);B.push([x,y+2])}r.push(R(13,poly(T.concat(B.reverse()))));
+   return t=>[x0+(x1-x0)*t,y0+sag*Math.sin(Math.PI*t)]};
+  const lant=(p,c)=>{const [x,y]=p;r.push(R(13,rect(x-4,y+1,8,4)),R(c,ell(x,y+12,6,8)))};
+  const g1=garland(4,56,92,12);[[.15,9],[.4,10],[.65,14],[.9,2]].forEach(([t,c])=>lant(g1(t),c));
+  const g2=garland(144,198,84,12);[[.12,2],[.37,14],[.62,9],[.87,10]].forEach(([t,c])=>lant(g2(t),c));
+  // fireflies
+  [[24,132],[58,146],[136,96],[192,104],[132,148],[40,118]].forEach(([x,y])=>r.push(R(2,star(x,y,5,2.2))));
+  // stepping stones
+  [[100,180,10,4],[118,188,10,4],[90,192,9,3.6],[136,194,9,3.6]].forEach(([x,y,a,b])=>r.push(R(12,ell(x,y,a,b))));
+  // mushrooms
+  [[20,182,8],[52,188,11],[178,186,10]].forEach(([x,y,c])=>{r.push(R(3,rect(x-3.5,y-4,7,10)),R(c,'M'+(x-11)+','+(y-3)+'A11,9 0 0,1 '+(x+11)+','+(y-3)+'Z'),R(3,circ(x-4,y-7,2.2)),R(3,circ(x+4,y-8,2.2)))});
+  // flowers
+  [[150,176,10],[196,176,9],[34,170,14]].forEach(([x,y,c])=>{for(let k=0;k<5;k++){const a=k*1.2566-1.5708;r.push(R(c,circ(x+5.6*Math.cos(a),y+5.6*Math.sin(a),3.6)))}r.push(R(2,circ(x,y,3.2)))});
+  add('treehouse','Enchanted Treehouse Lanterns','hard','fantasy',['#5c7cfa','#ffd43b','#ffffff','#2b9348','#69db7c','#8d5524','#c08457','#e03131','#ff922b','#f783ac','#9775fa','#adb5bd','#212529','#20c997','#b197fc'],r)})();
+
+ // ===== 2026-11-02  Snow Globe (Easy, Holidays & Winter) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(7,rect(0,172,200,28)));
+  [[24,30],[176,40],[22,120],[180,128]].forEach(([x,y],i)=>r.push(R(i%2?2:4,star(x,y,10,4.2))));
+  r.push(R(3,circ(100,90,62)));
+  r.push(R(4,band(100,90,62,122,152)));
+  // pine trees
+  [[52,124],[148,124]].forEach(([x,y])=>{r.push(R(7,rect(x-4,y-6,8,10)),R(9,poly([[x,y-40],[x+14,y-20],[x-14,y-20]])),R(9,poly([[x,y-28],[x+17,y-6],[x-17,y-6]])))});
+  // cottage
+  r.push(R(8,rect(110,72,9,16)));
+  r.push(R(6,rect(78,94,44,32)),R(8,poly([[72,96],[100,72],[128,96]])),R(4,poly([[100,72],[86,84],[114,84]])));
+  r.push(R(5,rect(93,106,14,20)),R(2,rect(83,102,9,9)),R(2,rect(108,102,9,9)));
+  // snowflakes in the globe
+  [[86,50],[130,48],[106,38],[60,86],[142,90],[82,144],[120,146]].forEach(([x,y])=>r.push(R(4,star(x,y,5.5,2.4))));
+  // glass shine
+  r.push(R(4,poly(rell(64,66,5,16,.6,0,6.2832))));
+  // base
+  r.push(R(8,poly([[56,146],[144,146],[160,180],[40,180]])),R(2,rect(48,160,104,7)));
+  [[70,172],[100,172],[130,172]].forEach(([x,y])=>r.push(R(4,star(x,y,6,2.6))));
+  add('snowglobe','Snow Globe','easy','holidays',['#d0bfff','#ffd43b','#a5d8ff','#ffffff','#74c0fc','#ffa94d','#8d5524','#e03131','#2b9348'],r)})();
 })();
