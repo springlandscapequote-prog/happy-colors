@@ -1305,4 +1305,76 @@
   r.push(R(8,poly([[56,146],[144,146],[160,180],[40,180]])),R(2,rect(48,160,104,7)));
   [[70,172],[100,172],[130,172]].forEach(([x,y])=>r.push(R(4,star(x,y,6,2.6))));
   add('snowglobe','Snow Globe','easy','holidays',['#d0bfff','#ffd43b','#a5d8ff','#ffffff','#74c0fc','#ffa94d','#8d5524','#e03131','#2b9348'],r)})();
+
+ // ===== 2026-11-03  Rainy Rainforest Canopy (Hard, Nature) =====
+ (function(){const r=[];
+  const drop=(x,y)=>`M${x},${y-8}L${x+4.2},${y}A4.2,4.2 0 1,1 ${x-4.2},${y}Z`;
+  const vine=(x0,y1)=>{const L=[],Rr=[];for(let y=0;y<=y1;y+=4){const x=x0+4*Math.sin(y/10);L.push([x-2.2,y]);Rr.push([x+2.2,y])}return poly(L.concat(Rr.reverse()))};
+  const flower=(x,y,c)=>{for(let i=0;i<5;i++){const a=-Math.PI/2+i*2*Math.PI/5;r.push(R(c,circ(x+6.5*Math.cos(a),y+6.5*Math.sin(a),5.2)))}r.push(R(9,circ(x,y,4)))};
+  // misty sky and rain clouds
+  r.push(R(1,rect(0,0,200,200)));
+  r.push(R(15,ell(40,14,34,12)),R(15,ell(108,10,30,11)),R(15,ell(172,16,32,12)));
+  // far canopy (dark circles, light circles in front)
+  [[10,56],[50,50],[92,56],[134,50],[176,56]].forEach(([x,y])=>r.push(R(3,circ(x,y,20))));
+  [[30,64],[72,66],[114,66],[156,64],[198,70]].forEach(([x,y])=>r.push(R(4,circ(x,y,13))));
+  // trunks with bark stripes
+  r.push(R(5,rect(14,60,20,140)),R(5,rect(166,60,20,140)));
+  r.push(R(6,rect(19,96,10,5)),R(6,rect(19,136,10,5)),R(6,rect(171,92,10,5)),R(6,rect(171,128,10,5)));
+  // misty forest floor and river
+  r.push(R(3,'M0,160Q50,148 100,158T200,154V200H0Z'));
+  r.push(R(13,'M0,178Q50,170 100,178T200,176V200H0Z'));
+  r.push(R(12,rect(60,186,20,4.5)),R(12,rect(130,184,24,4.5)));
+  // lily pads
+  r.push(R(4,ell(40,186,13,5.5)),R(4,ell(108,190,14,6)),R(4,ell(176,190,12,5)));
+  // branch from the left trunk with a toucan
+  r.push(R(6,poly([[30,104],[124,96],[126,106],[30,114]])));
+  r.push(R(7,poly([[58,96],[50,118],[62,114]])));
+  r.push(R(7,ell(66,84,12,16)),R(12,ell(72,80,6,9)));
+  r.push(R(8,poly([[74,66],[100,72],[96,80],[76,78]])),R(9,poly([[90,70],[100,72],[96,80],[89,79]])));
+  r.push(R(12,circ(70,70,4.6)),R(7,circ(71,70,2.2)));
+  r.push(R(8,rect(60,98,4,4)),R(8,rect(68,98,4,4)));
+  // hanging vines with leaves
+  [[100,92],[140,86],[48,40]].forEach(([x0,y1],k)=>{r.push(R(3,vine(x0,y1)));for(let y=24;y<=y1-6;y+=20){const x=x0+4*Math.sin(y/10),s=((y/20)|0)%2?1:-1;r.push(R(4,poly(rell(x+s*7,y,8,4.6,s*.5,0,6.2832))))}});
+  // big leaf with a tree frog
+  r.push(R(4,poly(rell(138,146,34,12,-.25,0,6.2832))),R(3,poly(rell(138,146,30,2.4,-.25,0,6.2832))));
+  r.push(R(16,ell(124,130,7,5)),R(16,ell(150,128,7,5)));
+  r.push(R(16,ell(137,124,15,11)),R(12,ell(137,128,8,5.5)));
+  r.push(R(10,circ(129,112,5.2)),R(10,circ(145,112,5.2)),R(7,circ(129,112,2.4)),R(7,circ(145,112,2.4)));
+  r.push(R(8,circ(126,136,3)),R(8,circ(148,136,3)));
+  // flowers
+  flower(40,148,11);flower(96,140,10);flower(186,146,14);
+  // butterfly
+  r.push(R(14,poly(rell(141,84,9,6,-.6,0,6.2832))),R(14,poly(rell(141,98,7,5,.6,0,6.2832))));
+  r.push(R(11,poly(rell(159,84,9,6,.6,0,6.2832))),R(11,poly(rell(159,98,7,5,-.6,0,6.2832))));
+  r.push(R(7,ell(150,91,2.6,10)));
+  // raindrops
+  [[16,32],[76,28],[96,38],[124,30],[150,34],[196,36],[62,36],[110,118],[56,166],[88,108],[48,128],[78,130],[116,84],[194,124],[6,120],[6,90],[46,90],[120,170],[82,154],[160,168]].forEach(([x,y])=>r.push(R(2,drop(x,y))));
+  // foreground leaves in the corners
+  r.push(R(3,poly(rell(8,186,26,10,-.6,0,6.2832))),R(4,poly(rell(196,180,24,9,.6,0,6.2832))));
+  add('rainforest','Rainy Rainforest Canopy','hard','nature',['#a5d8ff','#339af0','#2b9348','#69db7c','#8d5524','#c08457','#212529','#ff922b','#ffd43b','#e03131','#f783ac','#ffffff','#20c997','#9775fa','#adb5bd','#94d82d'],r)})();
+
+ // ===== 2026-11-03  Little Sea Turtle (Easy, Animals) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)));
+  r.push(R(2,poly([[40,0],[64,0],[30,200],[6,200]])),R(2,poly([[130,0],[150,0],[124,170],[104,170]])));
+  r.push(R(3,'M0,168Q50,156 100,166T200,162V200H0Z'));
+  // seaweed
+  r.push(R(4,'M16,180Q4,150 16,128Q28,106 16,84L26,84Q38,106 26,128Q14,150 28,180Z'));
+  r.push(R(4,'M178,176Q168,156 178,140Q188,124 180,108L190,108Q198,124 188,140Q178,156 190,176Z'));
+  // starfish and shell on the sand
+  r.push(R(9,star(150,182,13,5.5)),R(10,ell(62,184,10,6)));
+  // fish
+  r.push(R(10,poly([[52,40],[66,30],[66,50]])),R(10,ell(40,40,15,10)));
+  // flippers (behind the shell), tail and head
+  r.push(R(5,poly(rell(138,62,24,9,-.6,0,6.2832))),R(5,poly(rell(140,132,24,9,.6,0,6.2832))));
+  r.push(R(5,poly(rell(54,70,15,7,.6,0,6.2832))),R(5,poly(rell(54,126,15,7,-.6,0,6.2832))));
+  r.push(R(5,poly([[46,92],[26,98],[46,104]])));
+  r.push(R(5,circ(156,90,16)));
+  // shell: rim, inner shell and plates
+  r.push(R(6,ell(96,98,52,38)),R(4,ell(96,98,45,31)));
+  r.push(R(7,circ(96,98,12)),R(7,circ(96,77,8)),R(7,circ(71,92,9)),R(7,circ(121,92,9)),R(7,circ(78,116,8)),R(7,circ(114,116,8)));
+  r.push(R(8,circ(162,84,4.6)));
+  // bubbles
+  [[168,46,6],[178,26,5],[158,18,4.6]].forEach(([x,y,s])=>r.push(R(2,circ(x,y,s))));
+  add('turtle','Little Sea Turtle','easy','animals',['#74c0fc','#a5d8ff','#ffe066','#2b9348','#8ce99a','#8d5524','#c0eb75','#212529','#f783ac','#ff922b'],r)})();
 })();
