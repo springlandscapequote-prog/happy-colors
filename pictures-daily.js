@@ -1377,4 +1377,60 @@
   // bubbles
   [[168,46,6],[178,26,5],[158,18,4.6]].forEach(([x,y,s])=>r.push(R(2,circ(x,y,s))));
   add('turtle','Little Sea Turtle','easy','animals',['#74c0fc','#a5d8ff','#ffe066','#2b9348','#8ce99a','#8d5524','#c0eb75','#212529','#f783ac','#ff922b'],r)})();
+ // ===== 2026-11-04  Little Fire Boat (Easy, Vehicles) =====
+ (function(){const r=[];
+  // thick water-spray arc (quadratic curve sampled, w = thickness)
+  const arc=(x0,y0,cx,cy,x1,y1,w)=>{const A=[],B=[];for(let i=0;i<=16;i++){const t=i/16,u=1-t,x=u*u*x0+2*u*t*cx+t*t*x1,y=u*u*y0+2*u*t*cy+t*t*y1,dx=2*u*(cx-x0)+2*t*(x1-cx),dy=2*u*(cy-y0)+2*t*(y1-cy),L=Math.hypot(dx,dy),nx=-dy/L*w/2,ny=dx/L*w/2;A.push([x+nx,y+ny]);B.push([x-nx,y-ny])}return poly(A.concat(B.reverse()))};
+  r.push(R(1,rect(0,0,200,200)),R(5,circ(172,28,14)));
+  r.push(R(3,ell(36,26,22,9)),R(3,ell(118,18,18,7)));
+  r.push(R(8,'M0,122Q50,98 100,118T200,110V132H0Z'));
+  r.push(R(2,'M0,128Q50,120 100,128T200,124V200H0Z'));
+  // water sprays from the two cannons (behind the boat)
+  r.push(R(9,arc(52,110,26,30,6,118,8)),R(9,arc(148,110,174,30,194,118,8)));
+  [[12,100],[20,82],[188,100],[180,82]].forEach(([x,y])=>r.push(R(9,circ(x,y,4.2))));
+  // hull, stripe, portholes
+  r.push(R(4,poly([[28,130],[172,130],[160,164],[44,164]])));
+  r.push(R(3,poly([[32,139],[168,139],[165,148],[35,148]])));
+  [[72,156],[100,156],[128,156]].forEach(([x,y])=>r.push(R(5,circ(x,y,4))));
+  // cabin, roof, one big window each
+  r.push(R(3,rect(70,96,60,34)),R(4,rect(64,86,72,11)));
+  r.push(R(6,rect(77,103,19,13)),R(6,rect(104,103,19,13)));
+  // mast and beacon light
+  r.push(R(7,rect(96,62,8,24)),R(5,circ(100,56,7)));
+  // cannon posts and cannons
+  r.push(R(7,rect(47,114,10,16)),R(7,rect(143,114,10,16)));
+  r.push(R(5,poly([[40,108],[60,104],[62,112],[42,116]])),R(5,poly([[160,104],[140,108],[138,116],[158,112]])));
+  // waves and bow wave
+  r.push(R(3,poly([[160,164],[184,150],[176,164]])));
+  [[30,180],[90,186],[150,182],[60,170]].forEach(([x,y])=>r.push(R(3,ell(x,y,14,4))));
+  add('fireboat','Little Fire Boat','easy','vehicles',['#a5d8ff','#339af0','#ffffff','#e03131','#ffd43b','#1864ab','#adb5bd','#2b9348','#99e9f2'],r)})();
+
+ // ===== 2026-11-04  Comet & Star Nursery (Medium, Space) =====
+ (function(){const r=[];
+  // crescent = part of circle 1 outside circle 2 (sampled polygon)
+  const crescent=(x1,y1,r1,x2,y2,r2)=>{const A=[],B=[];for(let i=0;i<360;i++){const a=i*Math.PI/180,px=x1+r1*Math.cos(a),py=y1+r1*Math.sin(a);if(Math.hypot(px-x2,py-y2)>r2)A.push([px,py]);const qx=x2+r2*Math.cos(a),qy=y2+r2*Math.sin(a);if(Math.hypot(qx-x1,qy-y1)<r1)B.push([qx,qy])}return poly(A.concat(B.reverse()))};
+  r.push(R(1,rect(0,0,200,200)));
+  // nebula clouds (the star nursery)
+  r.push(R(2,poly(rell(104,124,92,40,-.3,0,6.2832))));
+  r.push(R(3,poly(rell(70,156,46,20,.15,0,6.2832))));
+  r.push(R(8,poly(rell(150,96,40,16,-.4,0,6.2832))));
+  r.push(R(9,poly(rell(166,176,30,11,.25,0,6.2832))));
+  // comet: tail bands then the head
+  const tr=Math.atan2(36,98);
+  r.push(R(6,poly(rell(108,28,56,15,tr,0,6.2832))),R(11,poly(rell(112,30,50,9,tr,0,6.2832))),R(5,poly(rell(118,32,40,4.4,tr,0,6.2832))));
+  r.push(R(4,circ(160,47,13)),R(5,circ(164,43,5)));
+  // ringed planet
+  const px=42,py=62,rot=-.25;
+  r.push(R(7,poly(rell(px,py,32,9,rot,0,6.2832))),R(9,circ(px,py,15)),R(8,band(px,py,15,56,61)));
+  r.push(R(7,poly(rell(px,py,32,9,rot,0,3.1416).concat(rell(px,py,22,5,rot,3.1416,0)))));
+  // crescent moon with craters
+  r.push(R(11,crescent(28,160,24,40,152,20)));
+  r.push(R(12,circ(14,160,3.6)),R(12,circ(22,176,3.2)));
+  // baby stars in the nursery
+  [[72,112,11,4],[104,126,12,11],[138,112,10,7],[118,150,10,10],[90,146,9,5],[150,136,9,6],[60,140,9,9]].forEach(([x,y,s,c])=>r.push(R(c,star(x,y,s,s*.45))));
+  // little planets
+  r.push(R(7,circ(180,140,7)),R(3,circ(178,70,6)));
+  // twinkle stars
+  [[10,12],[60,10],[30,100],[186,14],[190,40],[6,128],[100,188],[136,188],[194,104],[80,78],[120,70],[184,194],[60,192],[100,96],[176,116],[14,30]].forEach(([x,y],i)=>r.push(R([5,4,10,6][i%4],star(x,y,5.5,2.4))));
+  add('cometnursery','Comet & Star Nursery','medium','space',['#1a1b4b','#5f3dc4','#f783ac','#ffd43b','#ffffff','#74c0fc','#ff922b','#b197fc','#20c997','#fcc2d7','#ffec99','#868e96'],r)})();
 })();
