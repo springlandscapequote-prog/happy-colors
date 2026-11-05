@@ -1433,4 +1433,94 @@
   // twinkle stars
   [[10,12],[60,10],[30,100],[186,14],[190,40],[6,128],[100,188],[136,188],[194,104],[80,78],[120,70],[184,194],[60,192],[100,96],[176,116],[14,30]].forEach(([x,y],i)=>r.push(R([5,4,10,6][i%4],star(x,y,5.5,2.4))));
   add('cometnursery','Comet & Star Nursery','medium','space',['#1a1b4b','#5f3dc4','#f783ac','#ffd43b','#ffffff','#74c0fc','#ff922b','#b197fc','#20c997','#fcc2d7','#ffec99','#868e96'],r)})();
+
+ // ===== 2026-11-05  Tide Pool Rocks (Hard, Nature) =====
+ (function(){const r=[];
+  // wavy seaweed strip
+  const weed=(x0,y0,y1,w,amp)=>{const L=[],Rr=[];for(let y=y0;y<=y1;y+=4){const x=x0+amp*Math.sin((y-y0)/9);L.push([x-w/2,y]);Rr.push([x+w/2,y])}return poly(L.concat(Rr.reverse()))};
+  // sky + clouds + sun
+  r.push(R(1,rect(0,0,200,200)));
+  r.push(R(2,ell(40,18,36,10)),R(2,ell(130,12,40,11)),R(2,ell(180,22,28,9)));
+  r.push(R(15,circ(168,36,13)));
+  // sandy beach
+  r.push(R(4,'M0,56Q50,48 100,58T200,52V200H0Z'));
+  // big rock masses
+  r.push(R(5,poly([[0,70],[55,62],[70,110],[48,150],[0,140]])));
+  r.push(R(6,poly([[50,78],[95,68],[118,100],[100,148],[55,140]])));
+  r.push(R(7,poly([[105,72],[155,60],[175,95],[160,145],[110,138]])));
+  r.push(R(5,poly([[155,78],[200,70],[200,150],[168,148]])));
+  r.push(R(6,poly([[20,140],[70,130],[90,170],[40,185],[8,168]])));
+  r.push(R(7,poly([[120,140],[170,132],[190,170],[145,188],[110,168]])));
+  // rock speckles (kept clear of pool centers)
+  [[28,95],[42,120],[78,100],[98,128],[130,95],[148,105],[178,100],[60,155],[150,155]].forEach(([x,y],i)=>r.push(R([5,6,7][i%3],circ(x,y,5.5))));
+  // three tide pools + reflections at pool edges (not under starfish)
+  r.push(R(3,ell(70,118,28,16)),R(16,ell(55,110,9,4.5)),R(16,ell(85,124,8,3.5)));
+  r.push(R(3,ell(145,118,26,15)),R(16,ell(132,110,9,4.5)),R(16,ell(158,124,7,3)));
+  r.push(R(3,ell(100,168,34,18)),R(16,ell(82,160,10,4.5)),R(16,ell(120,160,9,4)));
+  // foam edges
+  [[48,106],[90,130],[120,106],[166,130],[76,154],[124,182]].forEach(([x,y])=>r.push(R(2,circ(x,y,4.2))));
+  // starfish in pools
+  r.push(R(10,star(68,118,14,6)));
+  r.push(R(11,star(148,118,12,5.2)));
+  r.push(R(10,star(100,170,13,5.5)));
+  // 3 anemones: body + 5 round tentacles (big enough to keep labels)
+  [[36,145,11],[174,145,11],[88,145,10]].forEach(([cx,cy,s],k)=>{
+    const tc=k%2?11:12, bc=k%2?12:11;
+    for(let i=0;i<5;i++){const a=-Math.PI/2+i*2*Math.PI/5;r.push(R(tc,circ(cx+s*.9*Math.cos(a),cy+s*.9*Math.sin(a),s*.4)))}
+    r.push(R(bc,circ(cx,cy,s*.55)));
+  });
+  // seaweed
+  r.push(R(8,weed(18,100,155,5.5,5)),R(9,weed(26,110,160,5,4)));
+  r.push(R(8,weed(185,95,150,5.5,5)),R(9,weed(176,105,155,5,4)));
+  r.push(R(8,weed(98,78,112,5,3)),R(9,weed(108,80,115,4.5,3)));
+  // hermit crab (shell then body/legs)
+  r.push(R(13,ell(48,178,14,10)));
+  r.push(R(14,circ(58,174,5)));
+  r.push(R(14,poly([[58,176],[72,170],[70,178],[58,180]])));
+  [[40,186],[46,188],[52,186]].forEach(([x,y])=>r.push(R(14,ell(x,y,4,2.2))));
+  // little crab
+  r.push(R(14,ell(168,178,10,7)));
+  // big white eyes (no tiny pupils — those misfilled on Chromium)
+  r.push(R(2,circ(160,170,5)),R(2,circ(176,170,5)));
+  r.push(R(14,poly([[158,176],[148,168],[150,174]])),R(14,poly([[178,176],[188,168],[186,174]])));
+  // shells
+  [[30,168],[80,188],[130,188],[190,160],[20,130],[112,148]].forEach(([x,y],i)=>r.push(R(13,ell(x,y,7+i%2,4.5))));
+  r.push(R(2,ell(32,166,3.2,2.2)),R(2,ell(82,186,3.2,2.2)),R(2,ell(132,186,3.2,2.2)));
+  // pebbles (clear of corner ledges)
+  [[60,192],[100,192],[140,192],[42,192],[158,192],[95,100],[125,100],[55,88],[145,88],[180,130],[10,155]].forEach(([x,y],i)=>r.push(R([5,6,7,13][i%4],circ(x,y,3.8))));
+  // bubbles in water
+  [[58,112],[84,118],[136,112],[158,118],[86,162],[114,166],[100,150]].forEach(([x,y])=>r.push(R(2,circ(x,y,3.2))));
+  // barnacles on rocks
+  [[35,85],[65,90],[135,85],[160,90],[185,110],[45,135],[155,135]].forEach(([x,y],i)=>r.push(R([6,7,5][i%3],circ(x,y,3.6))));
+  // kelp blades in bottom pool (away from starfish center)
+  r.push(R(9,poly(rell(78,175,14,4.2,.4,0,6.2832))),R(8,poly(rell(122,176,13,4,-.3,0,6.2832))));
+  // corner rock ledges
+  r.push(R(5,poly([[0,180],[22,176],[26,200],[0,200]])),R(6,poly([[178,180],[200,176],[200,200],[174,200]])));
+  add('tidepool','Tide Pool Rocks','hard','nature',['#a5d8ff','#ffffff','#339af0','#ffd8a8','#495057','#868e96','#adb5bd','#2b9348','#69db7c','#ff922b','#f783ac','#9775fa','#ffec99','#e03131','#ffd43b','#74c0fc'],r)})();
+
+ // ===== 2026-11-05  Mermaid Tail Seashells (Easy, Fantasy) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)));
+  r.push(R(8,'M0,155Q60,142 110,155T200,148V200H0Z'));
+  // mermaid tail: curved body from top-left down (NO face/torso)
+  r.push(R(2,poly([[48,12],[100,8],[118,40],[112,90],[95,130],[68,148],[42,128],[38,80],[32,40]])));
+  // big scale circles
+  [[58,36],[80,30],[98,38],[55,58],[78,52],[100,60],[60,82],[82,76],[102,86],[68,108],[90,104]].forEach(([x,y],i)=>r.push(R(i%2?3:2,circ(x,y,12))));
+  // fluke fin (wide mermaid fluke)
+  r.push(R(4,poly([[55,140],[18,175],[40,168],[68,155],[95,168],[118,178],[90,145],[72,150]])));
+  r.push(R(6,poly([[62,148],[42,165],[68,158],[92,165],[78,148]])));
+  // seashells
+  r.push(R(5,ell(158,62,30,24)),R(6,ell(158,62,14,11)));
+  r.push(R(5,ell(155,140,26,20)),R(9,ell(155,140,12,9)));
+  r.push(R(5,circ(36,172,17)),R(9,circ(40,168,7.5)));
+  // pearls
+  [[128,95],[142,108],[126,116]].forEach(([x,y])=>r.push(R(6,circ(x,y,6.5))));
+  // starfish
+  r.push(R(7,star(175,172,17,7.5)));
+  // bubbles
+  [[172,28],[188,48],[22,36]].forEach(([x,y])=>r.push(R(6,circ(x,y,6.5))));
+  // sparkles
+  [[16,16],[186,16]].forEach(([x,y])=>r.push(R(9,star(x,y,7.5,3.2))));
+  add('mermaidtail','Mermaid Tail Seashells','easy','fantasy',['#b197fc','#20c997','#69db7c','#f783ac','#ffd8a8','#ffffff','#ff922b','#ffe066','#fcc2d7'],r)})();
+
 })();
