@@ -1523,4 +1523,117 @@
   [[16,16],[186,16]].forEach(([x,y])=>r.push(R(9,star(x,y,7.5,3.2))));
   add('mermaidtail','Mermaid Tail Seashells','easy','fantasy',['#b197fc','#20c997','#69db7c','#f783ac','#ffd8a8','#ffffff','#ff922b','#ffe066','#fcc2d7'],r)})();
 
+
+ // ===== 2026-11-06  Aquarium Tunnel (Hard, Animals) =====
+ (function(){const r=[];
+  const weed=(x0,y0,y1,w,amp)=>{const L=[],Rr=[];for(let y=y0;y<=y1;y+=4){const x=x0+amp*Math.sin((y-y0)/10);L.push([x-w/2,y]);Rr.push([x+w/2,y])}return poly(L.concat(Rr.reverse()))};
+  // deep water background
+  r.push(R(1,rect(0,0,200,200)));
+  // light rays from top
+  r.push(R(2,poly([[40,0],[70,0],[55,70]])),R(2,poly([[90,0],[120,0],[105,80]])),R(2,poly([[140,0],[165,0],[152,65]])));
+  // tunnel glass wash (big pale shape behind scene, not a covering rim)
+  r.push(R(3,poly([[0,20],[30,5],[100,0],[170,5],[200,20],[200,40],[170,22],[100,14],[30,22],[0,40]])));
+  // sand floor
+  r.push(R(4,'M0,150Q50,140 100,152T200,145V200H0Z'));
+  // sand ripples
+  r.push(R(13,ell(50,170,40,8)),R(13,ell(140,175,45,9)),R(13,ell(100,188,55,7)));
+  // big rock piles
+  r.push(R(5,poly([[0,120],[45,110],[55,155],[30,170],[0,160]])));
+  r.push(R(6,poly([[145,115],[200,105],[200,165],[170,175],[140,155]])));
+  r.push(R(5,poly([[70,155],[100,148],[120,165],[95,180],[65,170]])));
+  // rock speckles (kept clear of tunnel pillars at x<20 and x>180)
+  [[28,138],[40,152],[158,132],[168,148],[85,162],[110,168]].forEach(([x,y],i)=>r.push(R([5,6][i%2],circ(x,y,5.5))));
+  // left pink coral
+  r.push(R(7,circ(32,100,14)));
+  r.push(R(7,ell(22,85,8,14)),R(7,ell(42,82,8,15)),R(7,ell(32,78,9,12)));
+  r.push(R(12,circ(22,72,6.2)),R(12,circ(44,68,6.2)),R(12,circ(32,64,6.2)));
+  // right orange coral
+  r.push(R(8,circ(170,105,13)));
+  r.push(R(8,ell(160,88,7.5,13)),R(8,ell(180,86,7.5,14)),R(8,ell(170,82,8,12)));
+  r.push(R(12,circ(160,76,5)),R(12,circ(180,74,5)),R(12,circ(170,72,5)));
+  // center purple coral dome
+  r.push(R(9,ell(100,130,28,18)));
+  r.push(R(14,ell(100,128,14,8)));
+  r.push(R(9,band(100,130,28,122,126)));
+  // anemones (body + round tentacles)
+  [[55,140,11],[145,142,11]].forEach(([cx,cy,s])=>{
+    for(let i=0;i<5;i++){const a=-Math.PI/2+i*2*Math.PI/5;r.push(R(11,circ(cx+s*.95*Math.cos(a),cy+s*.95*Math.sin(a),s*.42)))}
+    r.push(R(12,circ(cx,cy,s*.55)));
+  });
+  // seaweed (inward of pillars; below coral tips y~70)
+  r.push(R(10,weed(28,100,148,6,5)),R(15,weed(40,108,152,5.5,4)));
+  r.push(R(10,weed(172,100,150,6,5)),R(15,weed(160,108,155,5.5,4)));
+  r.push(R(10,weed(75,100,145,5.5,4)),R(15,weed(125,105,148,5.5,4)));
+  // yellow fish
+  r.push(R(13,ell(70,70,22,14)));
+  r.push(R(8,poly([[48,70],[32,58],[32,82]])));
+  r.push(R(8,poly([[70,56],[78,48],[82,58]])));
+  r.push(R(2,circ(82,66,4.6)));
+  r.push(R(16,circ(83,66,2.4)));
+  // teal fish (clear of striped fish above-right)
+  r.push(R(15,ell(128,68,20,12)));
+  r.push(R(10,poly([[148,68],[165,58],[165,78]])));
+  r.push(R(10,poly([[128,56],[134,48],[138,58]])));
+  r.push(R(2,circ(115,64,4.4)));
+  r.push(R(16,circ(114,64,2.3)));
+  // orange fish
+  r.push(R(8,ell(100,100,18,11)));
+  r.push(R(12,poly([[82,100],[66,90],[66,110]])));
+  r.push(R(2,circ(110,96,4.2)));
+  r.push(R(16,circ(111,96,2.2)));
+  // small pink fish
+  r.push(R(7,ell(50,50,12,8)));
+  r.push(R(11,poly([[38,50],[26,42],[26,58]])));
+  r.push(R(2,circ(56,47,3.6)));
+  // blue striped fish (top-right, clear of teal fish)
+  r.push(R(2,ell(155,32,13,8)));
+  r.push(R(16,band(155,32,13,27,31)),R(16,band(155,32,13,34,38)));
+  r.push(R(16,poly([[168,32],[178,26],[178,38]])));
+  r.push(R(2,circ(147,29,3.5)));
+  // starfish on sand
+  r.push(R(8,star(45,175,14,6)));
+  r.push(R(11,star(160,180,12,5.2)));
+  r.push(R(12,star(100,185,11,4.8)));
+  // shells
+  [[25,185],[70,190],[130,192],[185,170],[15,160]].forEach(([x,y],i)=>r.push(R(13,ell(x,y,8+i%2,5))));
+  r.push(R(2,ell(26,183,3.5,2.2)),R(2,ell(71,188,3.5,2.2)),R(2,ell(131,190,3.5,2.2)));
+  // bubbles
+  [[40,40],[60,30],[90,25],[120,35],[170,55],[85,85],[110,75],[40,110],[180,100],[95,55]].forEach(([x,y])=>r.push(R(2,circ(x,y,4))));
+  // pebbles
+  [[55,192],[85,195],[115,193],[145,190],[175,185],[35,195]].forEach(([x,y],i)=>r.push(R([5,6,13][i%3],circ(x,y,3.8))));
+  // tunnel wall pillars + top rim (drawn last, keep clear of fish)
+  r.push(R(3,poly([[0,0],[16,0],[20,200],[0,200]])));
+  r.push(R(3,poly([[184,0],[200,0],[200,200],[180,200]])));
+  r.push(R(3,poly([[16,0],[100,0],[184,0],[172,16],[100,8],[28,16]])));
+  add('aquarium','Aquarium Tunnel','hard','animals',['#1c7ed6','#74c0fc','#e7f5ff','#ffec99','#868e96','#495057','#f783ac','#ff922b','#9775fa','#2b9348','#69db7c','#fcc2d7','#ffe066','#c08457','#20c997','#212529'],r)})();
+
+ // ===== 2026-11-06  Crescent Moon & Stars (Easy, Space) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)));
+  // soft nebula clouds
+  r.push(R(6,poly(rell(50,50,40,18,.3,0,6.2832))));
+  r.push(R(7,poly(rell(160,140,36,16,-.4,0,6.2832))));
+  r.push(R(6,poly(rell(140,40,28,12,.5,0,6.2832))));
+  // big crescent moon
+  r.push(R(2,circ(68,105,50)));
+  // craters only on the lit (left) face, clear of sky overlay at (95,90) r42
+  r.push(R(8,circ(42,90,8)));
+  r.push(R(8,circ(50,120,7)));
+  r.push(R(8,ell(38,115,7.5,4.5)));
+  r.push(R(8,circ(48,75,5.5)));
+  // sky overlay makes the crescent
+  r.push(R(1,circ(95,90,42)));
+  // little planet (keep 10+ inside frame)
+  r.push(R(5,circ(160,50,16)));
+  r.push(R(4,band(160,50,16,43,49)));
+  r.push(R(9,band(160,50,16,53,59)));
+  // big stars (grown for visible@1x)
+  [[155,105,13],[125,160,12],[35,35,11],[165,165,11],[28,155,10],[100,28,10],[178,115,9]].forEach(([x,y,s],i)=>r.push(R([3,4,9][i%3],star(x,y,s,s*.42))));
+  // twinkle stars
+  [[105,70],[120,120],[55,170],[175,40],[24,95]].forEach(([x,y])=>r.push(R(3,star(x,y,6.5,2.8))));
+  // shooting star
+  r.push(R(4,poly([[140,22],[178,14],[176,20]])));
+  r.push(R(3,circ(140,22,5)));
+  add('crescentmoon','Crescent Moon & Stars','easy','space',['#1b2459','#ffd43b','#ffffff','#74c0fc','#ff922b','#9775fa','#b197fc','#ffe8cc','#f783ac'],r)})();
+
 })();
