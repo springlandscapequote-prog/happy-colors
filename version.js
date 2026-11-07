@@ -1,1 +1,1 @@
-var APP_VERSION='d3aa524e2d';
+var APP_VERSION='3b8c00d437';
