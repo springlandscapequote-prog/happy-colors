@@ -1636,6 +1636,60 @@
   r.push(R(3,circ(140,22,5)));
   add('crescentmoon','Crescent Moon & Stars','easy','space',['#1b2459','#ffd43b','#ffffff','#74c0fc','#ff922b','#9775fa','#b197fc','#ffe8cc','#f783ac'],r)})();
 
+ // ===== 2026-11-07  Fire Station Dog & Hose (Medium, Vehicles) =====
+ (function(){const r=[];
+  const rr=(x,y,w,h,q)=>`M${x+q},${y}H${x+w-q}Q${x+w},${y} ${x+w},${y+q}V${y+h-q}Q${x+w},${y+h} ${x+w-q},${y+h}H${x+q}Q${x},${y+h} ${x},${y+h-q}V${y+q}Q${x},${y} ${x+q},${y}Z`;
+  // sky, sun, clouds
+  r.push(R(1,rect(0,0,200,200)),R(3,circ(22,22,15)));
+  r.push(R(2,ell(68,26,20,8)),R(2,ell(84,20,13,6)),R(2,ell(158,34,22,8)),R(2,ell(146,28,13,6)));
+  // grass hill + road (stripes clear of foreground props)
+  r.push(R(4,'M0,118Q50,100 100,116T200,108V150H0Z'));
+  r.push(R(7,rect(0,148,200,52)));
+  [[6,184],[54,184],[102,184],[150,184]].forEach(([x,y])=>r.push(R(2,rect(x,y,28,5))));
+  // station building
+  r.push(R(5,rect(28,52,118,100)));
+  r.push(R(6,'M22,56L87,18L152,56Z'));
+  r.push(R(8,rect(118,28,14,28)),R(2,ell(125,22,8,5)),R(2,ell(132,16,6,4)));
+  // garage door + thick stripes + handle
+  r.push(R(12,rect(42,88,60,64)));
+  r.push(R(2,rect(46,100,52,6)),R(2,rect(46,116,52,6)),R(2,rect(46,132,52,6)));
+  r.push(R(8,circ(94,118,3.6)));
+  // side door (narrower, latch on left) + window with one big pane
+  r.push(R(8,rect(108,96,24,56)),R(3,rect(112,120,7,12)));
+  r.push(R(11,rect(108,60,28,28)),R(2,rect(112,64,20,16)));
+  // flag pole + simple two-color flag
+  r.push(R(8,rect(156,40,4,78)));
+  r.push(R(5,poly([[160,42],[188,52],[160,62]])),R(2,poly([[160,52],[178,58],[160,62]])));
+  // wall ladder
+  r.push(R(8,rect(18,70,6,78)),R(8,rect(34,70,6,78)));
+  [78,94,110,126].forEach(y=>r.push(R(12,rect(18,y,22,5))));
+  // hydrant (far right, clear of dog body)
+  r.push(R(5,rect(182,116,14,34)),R(6,rect(178,112,22,7)),R(6,rect(194,128,10,8)),R(6,circ(189,108,5.5)));
+  // coiled hose: stacked disks (outer orange, road fill, inner orange, road center)
+  r.push(R(10,circ(64,166,17)));
+  r.push(R(7,circ(64,166,11)));
+  r.push(R(10,circ(64,166,8)));
+  r.push(R(7,circ(64,166,3.6)));
+  r.push(R(8,rect(78,162,26,8)),R(6,circ(106,166,5)));
+  // boots (far left) + helmet (between boots and hose)
+  r.push(R(9,rr(8,162,16,22,3)),R(9,rr(28,162,16,22,3)),R(12,rect(8,176,16,5)),R(12,rect(28,176,16,5)));
+  r.push(R(5,ell(48,176,11,6)),R(6,rect(40,172,16,5)),R(3,circ(48,168,3.2)));
+  // dalmatian between door and hydrant: head left edge ~133 clears door at 132
+  r.push(R(2,rect(138,158,7,16)),R(2,rect(150,158,7,16)),R(2,rect(160,158,7,16)),R(2,rect(170,158,7,16)));
+  r.push(R(9,'M170,144L188,134L190,140L174,152Z'));
+  r.push(R(2,ell(156,148,22,15)));
+  r.push(R(2,circ(138,134,12)));
+  r.push(R(9,ell(128,124,6,9)),R(9,ell(146,122,6,9)));
+  r.push(R(2,ell(130,140,8,6)),R(9,circ(126,140,3.4)));
+  r.push(R(2,circ(132,130,4.2)),R(2,circ(142,130,4.2)));
+  [[148,142],[164,150],[156,154],[142,150],[168,142]].forEach(([x,y])=>r.push(R(9,circ(x,y,4))));
+  // dog bowl left of dog
+  r.push(R(10,ell(112,178,13,5)),R(5,ell(112,176,9,3.5)));
+  // bucket under hydrant
+  r.push(R(11,poly([[168,172],[186,172],[184,192],[170,192]])),R(8,rect(166,170,22,5)),R(12,ell(177,170,9,3)));
+  add('firestation','Fire Station Dog & Hose','medium','vehicles',['#a5d8ff','#ffffff','#ffd43b','#69db7c','#e03131','#c92a2a','#495057','#8d5524','#212529','#ff922b','#4dabf7','#adb5bd'],r)})();
+
+
 })();
 
 // Spring Landscape Rose Garden — vectorized from owner-supplied line art. See LICENSES.md.
