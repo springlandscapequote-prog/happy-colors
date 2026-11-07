@@ -11,6 +11,13 @@ Happy Colors is a private family app. Pictures that come from real photos use on
 - **How it was changed:** center-cropped to a square, downscaled to 300x300, smoothed, reduced to 8 colors (Easy) or 20 colors (Hard) with k-means in Lab color space, split into regions, tiny regions merged into neighbors, outlines traced and smoothed into SVG paths. The result is a simplified derivative; no pixels of the original are included in the app.
 - **Generator:** `tools/build_realistic.py`
 
+## Spring Landscape Rose Garden (`rosegarden`, Hard, Nature)
+
+- **Source:** color-by-number page titled "Spring Landscape / Rose Garden", supplied by the owner with this change (numbered line art, 10-color key, and a fully colored answer key). Not downloaded from a public URL.
+- **Author:** owner-supplied art
+- **License:** supplied by the owner for use in Happy Colors
+- **How it was changed:** the numbered cells were vectorized into SVG paths (no pixels of the page are shipped). Each cell keeps the number printed on the line art, which matched the answer-key color for all 192 cells. Colors are the 10 key swatches (red, dark red, pink, leaf green, dark green, brown, logo green, grass green, sky blue, white). Two unnumbered flecks — a thin leaf-green gap between stems and a tiny sky speck caught in a line junction — were merged into the neighboring cell of the same color. The black outlines were split between the cells they separate so every cell meets its neighbors and can be tapped. Paths are slightly smoothed (about 1.6px on the source page). The white cells (clouds and the area behind the green S) use the key's white.
+
 ## Everything else
 
 Other pictures (stars, butterfly, garden, winter house, puppy, rainbow, ocean, castle, sunflower mandala, bus, fire truck, owl, Christmas tree, rainbow castle, rocket) are drawn in code by this project and have no outside sources.
