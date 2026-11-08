@@ -1689,6 +1689,114 @@
   r.push(R(11,poly([[168,172],[186,172],[184,192],[170,192]])),R(8,rect(166,170,22,5)),R(12,ell(177,170,9,3)));
   add('firestation','Fire Station Dog & Hose','medium','vehicles',['#a5d8ff','#ffffff','#ffd43b','#69db7c','#e03131','#c92a2a','#495057','#8d5524','#212529','#ff922b','#4dabf7','#adb5bd'],r)})();
 
+ // ===== 2026-11-08  Snow Day Sledding Hill (Hard, Holidays & Winter) =====
+ (function(){const r=[];
+  const sm=t=>{t=Math.max(0,Math.min(1,t));return t*t*(3-2*t)};
+  const hy=x=>96+60*sm((x-30)/150), ha=x=>{const t=(x-30)/150;return (t<0||t>1)?0:Math.atan(60*6*t*(1-t)/150)};
+  // local sled frame -> page (x forward downhill, y up negative)
+  const T=(ox,oy,a)=>(x,y)=>[ox+x*Math.cos(a)-y*Math.sin(a),oy+x*Math.sin(a)+y*Math.cos(a)];
+  const TP=(t,pts)=>poly(pts.map(p=>t(p[0],p[1])));
+  const TC=(t,x,y,rad)=>{const p=t(x,y);return circ(f(p[0]),f(p[1]),rad)};
+  const strip=(d,w,x0,x1)=>{const A=[],B=[];for(let x=x0;x<=x1;x+=5){A.push([x,hy(x)+d]);B.push([x,hy(x)+d+w])}return poly(A.concat(B.reverse()))};
+  const pine=(x,by,s)=>{r.push(R(7,rect(x-4*s,by-6*s,8*s,12*s)));
+   r.push(R(5,poly([[x,by-54*s],[x+12*s,by-36*s],[x-12*s,by-36*s]])),R(6,poly([[x,by-42*s],[x+16*s,by-20*s],[x-16*s,by-20*s]])),R(5,poly([[x,by-28*s],[x+20*s,by-4*s],[x-20*s,by-4*s]])))};
+  const sled=(ox,col)=>{const a=ha(ox),t=T(ox,hy(ox),a);
+   r.push(R(13,TP(t,[[-26,0],[22,0],[30,-9],[25,-9],[20,-4],[-26,-4]])));
+   r.push(R(col,TP(t,[[-28,-4],[20,-4],[24,-13],[-28,-13]])));return t};
+  // sky, sun, clouds
+  r.push(R(1,rect(0,0,200,200)),R(4,circ(172,28,14)));
+  r.push(R(2,ell(40,26,22,9)),R(2,ell(54,19,12,6)),R(2,ell(112,20,18,7)),R(2,ell(124,14,10,5)));
+  // far hill with pines
+  r.push(R(3,'M60,130Q130,70 200,92V200H60Z'));
+  pine(118,100,.8);pine(182,94,.75);
+  // big sledding hill, sled trails, front snow
+  const H=[];for(let x=0;x<=200;x+=5)H.push([x,hy(x)]);H.push([200,200],[0,200]);
+  r.push(R(2,poly(H)));
+  r.push(R(3,strip(16,4.5,62,180)),R(3,strip(32,4.5,72,168)));
+  r.push(R(3,'M0,178Q50,170 100,180T200,182V200H0Z'));
+  // fence at the top of the hill (rails first, then posts with snow caps)
+  r.push(R(7,rect(4,82,54,4.5)),R(7,rect(4,92,54,4.5)));
+  [8,24,40,54].forEach(x=>{r.push(R(7,rect(x-3,78,7,26)))});
+  [8,24,54].forEach(x=>r.push(R(2,ell(x+0.5,78,5,2.6))));
+  // bluebird on a fence post
+  r.push(R(10,poly([[34,74],[28,68],[30,77]])),R(10,ell(40,72,7.5,5.5)),R(9,ell(41,75,4.6,2.6)),R(10,circ(46,66,4.4)),R(4,poly([[50,64],[56,66],[50,68.5]])),R(13,circ(45.5,64.8,1.9)));
+  // bear cub on a red sled
+  {const t=sled(78,8);
+   r.push(R(7,TC(t,-14,-50,4.4)),R(7,TC(t,2,-50,4.4)));
+   r.push(R(7,poly(rell(...t(-8,-22),11,12,ha(78),0,2*Math.PI))));
+   r.push(R(7,TC(t,-6,-40,10.5)));
+   r.push(R(15,poly(rell(...t(-3,-36),5.6,4.2,ha(78),0,2*Math.PI))),R(13,TC(t,-3,-38.5,2.2)));
+   r.push(R(13,TC(t,-11,-43,2)),R(13,TC(t,0,-43,2)));
+   r.push(R(12,TP(t,[[-17,-46],[5,-46],[3,-54],[-6,-57],[-15,-54]])),R(2,TC(t,-6,-59,3.6)));
+   r.push(R(10,TP(t,[[-17,-31],[5,-31],[5,-26.5],[-17,-26.5]])),R(10,TP(t,[[-17,-28],[-12,-28],[-16,-15],[-21,-16]])));
+   r.push(R(11,TC(t,2,-17,3.8)),R(11,TC(t,-17,-15,3.8)));}
+  // bunny on a blue sled
+  {const t=sled(140,10),a=ha(140);
+   r.push(R(14,poly(rell(...t(-12,-58),4.2,11,a-.2,0,2*Math.PI))),R(14,poly(rell(...t(0,-58),4.2,11,a+.2,0,2*Math.PI))));
+   r.push(R(12,poly(rell(...t(-12,-59),2,7,a-.2,0,2*Math.PI))),R(12,poly(rell(...t(0,-59),2,7,a+.2,0,2*Math.PI))));
+   r.push(R(14,poly(rell(...t(-8,-22),10,11,a,0,2*Math.PI))));
+   r.push(R(14,TC(t,-6,-38,9.5)));
+   r.push(R(13,TC(t,-10,-40,1.9)),R(13,TC(t,-1,-40,1.9)),R(12,TC(t,-5.5,-35,2.2)));
+   r.push(R(9,TP(t,[[-16,-30],[4,-30],[4,-25.5],[-16,-25.5]])),R(9,TP(t,[[-16,-27],[-11,-27],[-15,-14],[-20,-15]])));
+   r.push(R(8,TC(t,2,-16,3.6)),R(8,TC(t,-16,-14,3.6)));}
+  // empty yellow sled waiting in front, with its rope
+  r.push(R(7,'M60,146Q72,140 78,150L76,153Q70,145 62,150Z'));
+  r.push(R(13,poly([[18,154],[62,154],[68,146],[64,146],[60,150],[18,150]])),R(4,rect(16,140,46,10)));
+  // little snow fort of big blocks (front left)
+  [0,1,2,3].forEach(i=>{r.push(R(i%2?14:2,rect(84+i*15,166,15,10)),R(i%2?2:14,rect(84+i*15,156,15,10)))});
+  [0,2].forEach(i=>r.push(R(14,rect(84+i*15+15,147,15,9))));
+  // snowball pile, bush with berries
+  r.push(R(2,circ(160,185,7)),R(2,circ(176,185,7)),R(2,circ(168,173,7)));
+  r.push(R(6,circ(18,182,9)),R(5,circ(33,180,8)),R(8,circ(14,178,2.4)),R(8,circ(22,186,2.4)),R(8,circ(34,176,2.4)));
+  // falling snowflakes
+  [[12,14],[12,56],[66,46],[80,30],[142,12],[148,44],[150,70],[96,124],[22,124],[50,120],[190,118],[110,190]].forEach(([x,y])=>r.push(R(2,star(x,y,6,2.8))));
+  add('sledhill','Snow Day Sledding Hill','hard','holidays',['#a5d8ff','#ffffff','#d0ebff','#ffd43b','#2b9348','#69db7c','#8d5524','#e03131','#ff922b','#1c7ed6','#9775fa','#f783ac','#495057','#dee2e6','#e0b07a'],r)})();
+
+ // ===== 2026-11-08  Seahorse (Medium, Animals) =====
+ (function(){const r=[];
+  // tapering tube along a polyline (perpendicular offsets)
+  const tube=(P,w0,w1)=>{const A=[],B=[],n=P.length-1;P.forEach((p,i)=>{const q=P[Math.min(n,i+1)],o=P[Math.max(0,i-1)],dx=q[0]-o[0],dy=q[1]-o[1],L=Math.hypot(dx,dy)||1,w=(w0+(w1-w0)*i/n)/2;A.push([p[0]-dy/L*w,p[1]+dx/L*w]);B.push([p[0]+dy/L*w,p[1]-dx/L*w])});return poly(A.concat(B.reverse()))};
+  const wave=(x,y0,y1,amp,ph)=>{const P=[];for(let y=y1;y>=y0;y-=6)P.push([x+amp*Math.sin(y/12+ph),y]);return P};
+  // water, light rays
+  r.push(R(1,rect(0,0,200,200)),R(2,'M0,0H200V40Q150,52 100,40T0,44Z'));
+  r.push(R(2,poly([[118,40],[136,40],[176,150],[150,150]])),R(2,poly([[30,44],[44,44],[70,140],[52,140]])));
+  // sand floor
+  r.push(R(10,'M0,166Q50,154 100,166T200,160V200H0Z'));
+  // seaweed (left and right)
+  r.push(R(8,tube(wave(16,70,172,5,0),9,5)),R(9,tube(wave(30,96,172,4,2),8,4.5)),R(9,tube(wave(186,80,166,5,1),9,5)));
+  // pink branching coral (right)
+  r.push(R(6,tube([[166,168],[166,148],[166,126]],10,7)),R(6,tube([[166,150],[156,138],[150,124]],7,6)),R(6,tube([[167,146],[178,136],[180,120]],7,6)));
+  r.push(R(6,circ(166,124,5)),R(6,circ(150,122,4.5)),R(6,circ(180,118,4.5)));
+  // purple dome coral (left) with one wide stripe
+  r.push(R(7,'M36,170A22,20 0 0,1 80,170Z'),R(14,'M44,170A14,12 0 0,1 72,170Z'));
+  // rocks, shell, starfish
+  r.push(R(13,ell(120,178,16,8)),R(13,ell(140,184,10,6)));
+  r.push(R(11,'M88,186A12,12 0 0,1 112,186Z'),R(6,rect(96,186,8,5)));
+  r.push(R(4,star(176,182,10,4.6)));
+  // little fish
+  r.push(R(4,poly([[170,58],[184,48],[184,68]])),R(4,ell(160,58,13,8)),R(5,rect(156,51,5,14)),R(12,circ(152,56,2.2)));
+  r.push(R(14,poly([[164,100],[176,92],[176,108]])),R(14,ell(154,100,11,7)),R(12,circ(147,98,2)));
+  // seahorse: dorsal fin behind, tail, belly, neck, head, snout
+  r.push(R(6,poly(rell(124,96,7,15,.25,0,2*Math.PI))));
+  const tail=[[108,120],[104,132],[100,140]];for(let i=0;i<=18;i++){const a=i/18*1.55*Math.PI,rr=12-6*i/18;tail.push([88+rr*Math.cos(a),144+rr*Math.sin(a)])}
+  r.push(R(3,tube(tail,18,6)));
+  r.push(R(3,poly(rell(98,72,12,19,-.35,0,2*Math.PI))));
+  r.push(R(3,ell(106,104,19,25)));
+  r.push(R(4,ell(96,106,9,20)));
+  [[89,94],[88,104],[89,114]].forEach(([x,y])=>r.push(R(5,rect(x,y,14,4))));
+  r.push(R(3,poly([[84,46],[62,48],[62,58],[84,58]])),R(5,rect(58,47,6,12)));
+  r.push(R(5,poly([[88,40],[92,28],[98,38]])),R(5,poly([[98,40],[106,32],[106,44]])));
+  r.push(R(3,ell(92,50,14,12)));
+  r.push(R(11,circ(94,47,5.6)),R(12,circ(95,47,2.8)),R(6,circ(88,57,3.6)));
+  [[104,72],[112,88],[116,112],[100,132]].forEach(([x,y])=>r.push(R(5,circ(x,y,3.4))));
+  // sand pebbles
+  [[14,186],[30,190],[60,188],[76,190],[150,192],[188,190]].forEach(([x,y],i)=>r.push(R(i%2?13:5,circ(x,y,3.4))));
+  // bubbles from the snout and the fish
+  [[52,40,4.2],[44,28,5],[54,16,4],[136,50,3.6],[130,38,4.4],[138,24,3.8]].forEach(([x,y,s])=>r.push(R(11,circ(x,y,s))));
+  add('seahorse','Seahorse','medium','animals',['#4dabf7','#a5d8ff','#ff922b','#ffd43b','#e8590c','#f783ac','#9775fa','#2b9348','#69db7c','#ffd8a8','#ffffff','#343a40','#868e96','#20c997'],r)})();
+
+
+
 
 })();
 
