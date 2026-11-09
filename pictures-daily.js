@@ -1798,6 +1798,72 @@
 
 
 
+
+ // ===== 2026-11-09  Sweets Express (Hard, Vehicles) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(3,circ(166,26,13)));
+  r.push(R(2,ell(40,28,20,8)),R(2,ell(112,20,18,7)),R(2,ell(190-20,52,14,6)));
+  // hills
+  r.push(R(7,ell(56,128,92,46)),R(6,ell(160,134,84,40)));
+  // lollipop trees on the hills
+  [[112,100,8],[176,104,9]].forEach(([x,y,c])=>{r.push(R(11,rect(x-2,60,4,y-60)),R(c,circ(x,58,10)),R(2,circ(x,58,6)),R(c,circ(x,58,2.6)))});
+  // ground, rails, ties
+  r.push(R(13,rect(0,158,200,42)));
+  for(let i=0;i<13;i++)r.push(R(11,rect(4+i*15,156,9,8)));
+  r.push(R(12,rect(0,151,200,5)));
+  // peppermints and gumdrops on the ground
+  [[30,177,4],[80,178,8],[130,177,9],[172,178,4]].forEach(([x,y,c])=>r.push(R(c,circ(x,y,10)),R(2,circ(x,y,7)),R(c,circ(x,y,3.6))));
+  [[56,184,6],[104,184,12],[152,184,3]].forEach(([x,y,c])=>r.push(R(c,'M'+(x-6)+','+(y+4)+'A6,7 0 0,1 '+(x+6)+','+(y+4)+'Z')));
+  // ---- locomotive ----
+  r.push(R(5,rect(26,100,40,36)),R(2,rect(32,100,5,36)),R(2,rect(46,100,5,36)));
+  r.push(R(4,rect(52,82,10,18)),R(3,rect(49,78,16,6)),R(3,rect(36,92,10,9)));
+  r.push(R(8,rect(10,86,22,50)),R(4,rect(7,80,28,8)),R(2,rect(14,92,14,14)),R(3,rect(10,126,22,6)),R(3,circ(63,112,3.6)));
+  [20,38,56].forEach(x=>r.push(R(12,circ(x,146,7)),R(3,circ(x,146,3))));
+  // smoke
+  r.push(R(2,circ(58,64,6)),R(2,circ(68,52,7)),R(2,circ(82,42,8)));
+  // couplers
+  [[62,128],[104,128],[146,128]].forEach(([x,y])=>r.push(R(12,rect(x,y,6,5))));
+  // ---- car 1: gumdrops ----
+  r.push(R(8,rect(66,116,38,22)),R(2,rect(66,124,38,5)),R(2,rect(66,112,38,5)));
+  [[73,106,4],[85,106,6],[97,106,10],[79,95,5],[91,95,9]].forEach(([x,y,c])=>r.push(R(c,'M'+(x-6)+','+(y+6)+'A6,7.4 0 0,1 '+(x+6)+','+(y+6)+'Z')));
+  [76,94].forEach(x=>r.push(R(12,circ(x,146,7)),R(3,circ(x,146,3))));
+  // ---- car 2: lollipops ----
+  r.push(R(11,rect(117,94,4,20)),R(11,rect(133,94,4,20)));
+  [[119,12],[135,4]].forEach(([x,c])=>r.push(R(c,circ(x,86,8.5)),R(2,circ(x,86,5.2)),R(c,circ(x,86,2.4))));
+  r.push(R(9,rect(108,116,38,22)),R(2,rect(108,124,38,5)),R(2,rect(108,112,38,5)));
+  [117,137].forEach(x=>r.push(R(12,circ(x,146,7)),R(3,circ(x,146,3))));
+  // ---- car 3: donut ----
+  r.push(R(10,circ(169,99,13)),R(5,circ(169,99,10.4)),R(12,circ(169,99,3.8)));
+  [[162,95,3],[176,95,8],[162,105,6],[176,105,2],[169,90,13]].forEach(([x,y,c])=>r.push(R(c,rect(x-2,y-1.8,4,3.6))));
+  r.push(R(6,rect(150,116,38,22)),R(2,rect(150,124,38,5)),R(2,rect(150,112,38,5)));
+  [159,179].forEach(x=>r.push(R(12,circ(x,146,7)),R(3,circ(x,146,3))));
+  add('sweetstrain','Sweets Express','hard','vehicles',['#a5d8ff','#ffffff','#ffd43b','#e03131','#f783ac','#40c057','#8ce99a','#339af0','#9775fa','#ff922b','#8d5524','#343a40','#ffc9de','#20c997'],r)})();
+
+ // ===== 2026-11-09  Ice Skating Pond (Medium, Holidays) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(13,circ(164,28,12)));
+  r.push(R(2,ell(40,26,20,8)),R(2,ell(104,38,18,7)));
+  [[78,18],[126,14],[14,60],[190,58],[100,8]].forEach(([x,y])=>r.push(R(2,star(x,y,5.5,2.4))));
+  r.push(R(2,ell(50,104,90,26)),R(2,ell(170,106,80,22)),R(3,rect(0,102,200,98)));
+  // pines
+  [[30,112],[172,112]].forEach(([x,y])=>{r.push(R(7,rect(x-3,y-8,6,14)),R(6,poly([[x,y-60],[x+17,y-34],[x-17,y-34]])),R(2,poly([[x,y-60],[x+7,y-49],[x-7,y-49]])),R(6,poly([[x,y-42],[x+21,y-14],[x-21,y-14]])),R(2,poly([[x,y-42],[x+8,y-31],[x-8,y-31]])))});
+  // lamps
+  [[68,112],[134,112]].forEach(([x,y])=>r.push(R(9,rect(x-2,y-30,4,34)),R(13,rect(x-5,y-40,10,10)),R(9,rect(x-7,y-42,14,3.6))));
+  // pond
+  r.push(R(5,ell(100,152,86,40)),R(4,ell(100,152,79,34)));
+  r.push(R(2,poly(rell(100,152,62,22,0,3.5,5.3).concat(rell(100,152,57,18,0,5.3,3.5)))));
+  r.push(R(2,poly(rell(100,152,66,26,0,.2,1.2).concat(rell(100,152,60,22,0,1.2,.2)))));
+  // penguin
+  r.push(R(12,poly(rell(65,146,5,12,.3,0,6.2832))),R(12,poly(rell(95,146,5,12,-.3,0,6.2832))));
+  r.push(R(9,ell(80,142,14,20)),R(2,ell(80,147,9,14)),R(2,circ(74,130,4)),R(2,circ(86,130,4)),R(9,circ(75,130,2)),R(9,circ(85,130,2)),R(10,poly([[75,136],[85,136],[80,143]])));
+  r.push(R(8,rect(66,119,28,6)),R(8,rect(86,123,7,14)),R(12,poly([[67,119],[93,119],[80,105]])),R(2,circ(80,104,4.4)));
+  r.push(R(10,ell(73,163,7,3.8)),R(10,ell(87,163,7,3.8)),R(5,rect(64,166,20,3.6)),R(5,rect(76,166,20,3.6)));
+  // bunny
+  r.push(R(2,ell(124,110,4.4,11)),R(2,ell(136,110,4.4,11)),R(11,ell(124,111,2.2,7)),R(11,ell(136,111,2.2,7)));
+  r.push(R(2,ell(130,147,12,15)),R(2,circ(130,126,10)),R(9,circ(126,124,1.9)),R(9,circ(134,124,1.9)),R(11,circ(130,129,2.2)));
+  r.push(R(6,rect(119,133,22,6)),R(6,rect(122,137,7,13)));
+  r.push(R(11,ell(122,162,6,3.6)),R(11,ell(138,162,6,3.6)),R(5,rect(114,165.5,16,3.4)),R(5,rect(130,165.5,16,3.4)));
+  add('skatepond','Ice Skating Pond','medium','holidays',['#a5d8ff','#ffffff','#e7f5ff','#c5f6fa','#ced4da','#2b9348','#8d5524','#e03131','#343a40','#ff922b','#f783ac','#339af0','#ffd43b'],r)})();
 })();
 
 // Spring Landscape Rose Garden — vectorized from owner-supplied line art. See LICENSES.md.
