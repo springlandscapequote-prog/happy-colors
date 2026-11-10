@@ -1864,6 +1864,72 @@
   r.push(R(6,rect(119,133,22,6)),R(6,rect(122,137,7,13)));
   r.push(R(11,ell(122,162,6,3.6)),R(11,ell(138,162,6,3.6)),R(5,rect(114,165.5,16,3.4)),R(5,rect(130,165.5,16,3.4)));
   add('skatepond','Ice Skating Pond','medium','holidays',['#a5d8ff','#ffffff','#e7f5ff','#c5f6fa','#ced4da','#2b9348','#8d5524','#e03131','#343a40','#ff922b','#f783ac','#339af0','#ffd43b'],r)})();
+
+ // ===== 2026-11-10  Coral Castle (Hard, Fantasy & Castles) =====
+ (function(){const r=[];
+  const tube=(P,w0,w1)=>{const A=[],B=[],n=P.length-1;P.forEach((p,i)=>{const q=P[Math.min(n,i+1)],o=P[Math.max(0,i-1)],dx=q[0]-o[0],dy=q[1]-o[1],L=Math.hypot(dx,dy)||1,w=(w0+(w1-w0)*i/n)/2;A.push([p[0]-dy/L*w,p[1]+dx/L*w]);B.push([p[0]+dy/L*w,p[1]-dx/L*w])});return poly(A.concat(B.reverse()))};
+  const wave=(x,y0,y1,amp,ph)=>{const P=[];for(let y=y1;y>=y0;y-=6)P.push([x+amp*Math.sin(y/12+ph),y]);return P};
+  // water, surface ripples, light rays
+  r.push(R(1,rect(0,0,200,200)),R(2,poly([[88,0],[104,0],[132,60],[112,60]])),R(2,poly([[16,0],[28,0],[44,52],[30,52]])));
+  r.push(R(2,ell(150,8,26,6)),R(2,ell(56,6,18,5)));
+  // sand floor
+  r.push(R(3,'M0,170Q50,160 100,170T200,166V200H0Z'));
+  // seaweed behind the castle sides
+  r.push(R(9,tube(wave(14,100,176,4,0),10,6)),R(12,tube(wave(188,96,176,4,2),10,6)));
+  // castle wall + side towers
+  r.push(R(13,rect(62,134,76,38)));
+  r.push(R(5,rect(30,112,36,60)),R(5,rect(134,112,36,60)));
+  [[48,6],[152,6]].forEach(([x])=>r.push(R(6,poly([[x,82],[x+23,112],[x-23,112]]))));
+  r.push(R(7,star(48,80,7,3)),R(7,star(152,80,7,3)));
+  // main tower
+  r.push(R(4,rect(80,70,40,102)),R(6,poly([[100,32],[126,70],[74,70]])),R(7,star(100,28,8,3.5)));
+  [[84,78],[104,78]].forEach(([x])=>r.push(R(12,rect(x,78,12,14))));
+  r.push(R(7,circ(100,108,8)));
+  // bricks (main tower, side towers)
+  [[82,118],[98,118],[90,127],[106,127]].forEach(([x,y],i)=>r.push(R(i%2?13:5,rect(x,y,14,8))));
+  [[34,136],[50,136],[42,146],[34,156],[50,156]].forEach(([x,y],i)=>{r.push(R(i%2?4:13,rect(x,y,14,8)));r.push(R(i%2?4:13,rect(x+104,y,14,8)))});
+  // tower windows
+  r.push(R(7,rect(42,118,12,13)),R(7,rect(146,118,12,13)));
+  // gate
+  r.push(R(10,rect(88,146,24,26)),R(10,ell(100,146,12,10)),R(7,circ(106,160,2.6)));
+  // jellyfish
+  r.push(R(11,tube([[20,30],[18,40],[22,52]],5,4)),R(11,tube([[30,30],[30,42],[26,56]],5,4)));
+  r.push(R(4,ell(26,26,15,10)),R(13,ell(26,22,7,3.4)));
+  // fish
+  const fish=(x,y,d,c1,c2)=>{r.push(R(c2,poly([[x-d*8,y],[x-d*22,y-10],[x-d*22,y+10]])),R(c1,ell(x,y,14,9)),R(c2,rect(x-3,y-8,6,16)),R(10,circ(x+d*7,y-2,2.6)))};
+  fish(166,40,-1,8,11);fish(36,62,1,7,6);
+  // bubbles
+  [[82,14],[122,16],[176,18],[66,30],[72,44],[64,58],[138,40],[144,54],[136,68],[186,76],[8,76]].forEach(([x,y])=>r.push(R(2,circ(x,y,3.8))));
+  // coral clumps in front
+  r.push(R(11,tube([[14,176],[14,156],[14,134]],12,8)),R(11,tube([[14,158],[5,148],[4,134]],7,6)),R(11,tube([[15,154],[26,146],[26,132]],7,6)));
+  r.push(R(8,tube([[186,176],[186,158],[186,138]],12,8)),R(8,tube([[186,160],[176,150],[176,138]],7,6)),R(8,tube([[187,156],[196,148],[195,136]],7,6)));
+  // brain coral and starfish, shells
+  r.push(R(6,circ(76,184,10)),R(13,circ(76,184,4.4)),R(7,star(30,188,10,4.6)),R(4,star(156,186,10,4.6)),R(8,star(54,194,7,3.2)));
+  // treasure chest
+  r.push(R(7,circ(118,172,5)),R(7,circ(134,171,5)));
+  r.push(R(6,rect(110,184,32,14)),R(13,rect(110,176,32,8)),R(7,rect(123,176,6,22)),R(10,circ(126,188,2.4)));
+  r.push(R(3,circ(94,192,4)),R(12,circ(168,194,4)),R(3,circ(8,194,4)));
+  add('coralcastle','Coral Castle','hard','fantasy',['#4dabf7','#a5d8ff','#ffe8a3','#f783ac','#ff922b','#9775fa','#ffd43b','#e7f5ff','#2b9348','#343a40','#e03131','#20c997','#ffc9de','#8d5524','#f76707'],r)})();
+
+ // ===== 2026-11-10  Autumn Maple Tree (Medium, Nature) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(3,circ(28,30,16)),R(2,ell(112,28,24,9)),R(2,ell(128,21,13,6)));
+  r.push(R(4,'M0,120Q50,90 110,116T200,104V200H0Z'),R(5,'M80,130Q150,100 200,124V200H80Z'),R(10,'M0,148Q60,138 110,150T200,146V200H0Z'));
+  // trunk, roots, branches
+  r.push(R(6,poly([[92,170],[96,100],[104,100],[110,170]])),R(6,poly([[92,170],[78,176],[96,166]])),R(6,poly([[110,170],[126,176],[106,166]])));
+  r.push(R(6,poly([[96,112],[66,84],[72,78],[100,102]])),R(6,poly([[104,112],[134,84],[128,78],[100,102]])));
+  // canopy
+  [[100,50,26,7],[68,66,22,8],[132,66,22,8],[50,92,18,9],[150,92,18,9],[86,86,20,9],[116,86,20,7],[100,70,18,8]].forEach(([x,y,s,c])=>r.push(R(c,circ(x,y,s))));
+  [[92,44,8,9],[112,56,7,7],[60,62,7,9],[138,70,7,9],[100,84,7,8]].forEach(([x,y,s,c])=>r.push(R(c,circ(x,y,s))));
+  // falling leaves
+  [[30,76,.5,7],[40,110,-.6,8],[160,60,.7,9],[170,100,-.4,7],[20,140,.3,9],[180,132,-.5,8],[66,128,.6,7],[140,126,-.3,9],[150,28,.4,8],[46,50,-.5,9]].forEach(([x,y,a,c])=>r.push(R(c,poly(rell(x,y,8,4.6,a,0,6.2832)))));
+  // leaf piles
+  [[40,170,7],[160,176,9],[126,190,8]].forEach(([x,y,c],i)=>{r.push(R(c,ell(x,y,24,10)));r.push(R(c==7?8:7,circ(x-8,y-2,4)),R(9,circ(x+8,y-1,4)),R(c==9?8:9,circ(x,y+4,3.6)))});
+  // mushrooms
+  r.push(R(2,rect(66,176,8,12)),R(11,ell(70,176,12,8)),R(2,circ(68,174,3.8)),R(2,rect(11,186,13,12)),R(11,ell(17.5,184,12,7)));
+  // stones
+  r.push(R(12,ell(90,194,10,5)),R(12,ell(186,160,9,5)),R(12,ell(14,160,9,5)));
+  add('maple','Autumn Maple Tree','medium','nature',['#a5d8ff','#ffffff','#ffd43b','#69db7c','#2b9348','#8d5524','#e03131','#ff922b','#f59f00','#c0eb75','#f783ac','#adb5bd'],r)})();
 })();
 
 // Spring Landscape Rose Garden — vectorized from owner-supplied line art. See LICENSES.md.
