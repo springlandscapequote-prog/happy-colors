@@ -1930,6 +1930,67 @@
   // stones
   r.push(R(12,ell(90,194,10,5)),R(12,ell(186,160,9,5)),R(12,ell(14,160,9,5)));
   add('maple','Autumn Maple Tree','medium','nature',['#a5d8ff','#ffffff','#ffd43b','#69db7c','#2b9348','#8d5524','#e03131','#ff922b','#f59f00','#c0eb75','#f783ac','#adb5bd'],r)})();
+
+ // ===== 2026-11-11  Asteroid Lighthouse (Hard, Space) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)));
+  // nebula clouds
+  r.push(R(6,poly(rell(60,24,56,14,.1,0,6.2832))),R(13,poly(rell(160,100,30,12,-.5,0,6.2832))),R(7,poly(rell(20,130,22,10,.8,0,6.2832))),R(6,poly(rell(180,170,22,9,-.3,0,6.2832))));
+  // light beams
+  r.push(R(14,poly([[91,59],[6,36],[6,86]])),R(14,poly([[109,59],[194,36],[194,86]])));
+  // stars
+  [[16,12],[96,12],[190,12],[130,20],[182,100],[12,100],[60,92],[136,98],[116,126],[8,166],[190,132],[72,134],[34,60],[168,60],[76,106],[24,28],[180,26],[126,44]].forEach(([x,y],i)=>r.push(R(i%3==0?3:i%3==1?2:9,star(x,y,i%2?6.5:7.5,3))));
+  // moon with craters
+  r.push(R(14,circ(52,20,11)),R(5,circ(48,17,3)),R(5,circ(56,24,2.6)));
+  // orange striped planet
+  r.push(R(9,circ(152,26,14)),R(4,band(152,26,14,22,28)),R(3,band(152,26,14,31,35)));
+  // ringed planet with stripes
+  r.push(R(10,circ(38,114,15)),R(8,band(38,114,15,108,113)),R(11,band(38,114,15,119,124)),R(3,poly(rell(38,114,29,6.5,-.35,0,6.2832))));
+  // spaceship
+  r.push(R(9,poly([[132,112],[150,104],[150,120]])),R(4,poly([[150,102],[166,92],[168,104]])),R(4,poly([[150,122],[166,132],[168,120]])));
+  r.push(R(8,poly(rell(168,112,26,10,0,0,6.2832))),R(10,circ(172,102,9)));
+  [[158,113],[168,114],[178,113]].forEach(([x,y])=>r.push(R(3,circ(x,y,3.2))));
+  // asteroid
+  r.push(R(5,ell(100,172,90,27)),R(12,ell(100,186,66,12)));
+  [[40,176,10,5],[150,170,12,6],[100,196,9,3.6],[72,164,8,4],[178,180,7,4]].forEach(([x,y,a,b])=>r.push(R(12,ell(x,y,a,b))));
+  // alien bulb plants (no faces)
+  [[34,156,7,3],[60,152,11,13],[126,154,6,11],[150,154,13,7],[172,160,3,8]].forEach(([x,y,c,c2])=>{r.push(R(8,rect(x-2,y-14,4,16)),R(c,circ(x,y-19,7)),R(c2,poly(rell(x-9,y-6,6,3,-.6,0,6.2832))),R(c2,poly(rell(x+9,y-6,6,3,.6,0,6.2832))))});
+  // lighthouse tower with red bands
+  const hw=y=>12-(152-y)/82*5;
+  const bandp=(y1,y2)=>poly([[100-hw(y1),y1],[100+hw(y1),y1],[100+hw(y2),y2],[100-hw(y2),y2]]);
+  r.push(R(2,poly([[88,152],[112,152],[107,70],[93,70]])));
+  r.push(R(4,bandp(122,134)),R(4,bandp(96,108)),R(4,bandp(74,86)));
+  r.push(R(15,'M94,152V144A6,6 0 0,1 106,144V152Z'));
+  r.push(R(10,circ(100,115,3.8)),R(10,circ(100,91,3.4)));
+  // gallery, lamp, roof
+  r.push(R(12,rect(83,66,34,5)),R(3,rect(90,52,20,14)),R(4,poly([[87,52],[100,38],[113,52]])),R(3,circ(100,35,3.6)));
+  // floating rocks + comet
+  r.push(R(12,ell(16,48,8,5)),R(12,ell(184,52,7,4.4)),R(12,ell(120,76,6,4)),R(12,ell(76,84,6,4)));
+  r.push(R(3,poly([[150,150],[186,144],[186,152]])),R(2,circ(150,150,5)));
+  add('asteroidlight','Asteroid Lighthouse','hard','space',['#1b2459','#ffffff','#ffd43b','#e03131','#868e96','#5f3dc4','#f783ac','#20c997','#ff922b','#74c0fc','#69db7c','#495057','#9775fa','#ffe8a3','#8d5524'],r)})();
+
+ // ===== 2026-11-11  Little Hedgehog (Easy, Animals) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(9,circ(168,30,15)));
+  r.push(R(10,ell(40,36,22,8)),R(10,ell(56,30,13,6)),R(10,ell(116,22,18,7)));
+  r.push(R(2,'M0,138Q50,118 100,134T200,128V200H0Z'));
+  // feet
+  r.push(R(5,ell(78,170,12,7)),R(5,ell(124,171,12,7)));
+  // spikes
+  for(let i=0;i<9;i++){const a=Math.PI+(i+.5)*Math.PI/9,da=.3,cx=95,cy=130,rx=44,ry=30;
+   r.push(R(4,poly([[cx+rx*.9*Math.cos(a-da),cy+ry*.9*Math.sin(a-da)],[cx+(rx+24)*Math.cos(a),cy+(ry+24)*Math.sin(a)],[cx+rx*.9*Math.cos(a+da),cy+ry*.9*Math.sin(a+da)]])))}
+  r.push(R(3,ell(95,134,46,32)));
+  r.push(R(5,ell(86,154,36,14)));
+  // face
+  r.push(R(5,poly(rell(148,142,28,21,.08,0,6.2832))),R(5,circ(128,118,9)));
+  r.push(R(6,circ(169,144,5)),R(6,circ(151,132,4.4)),R(7,circ(140,150,5.4)));
+  // apple on the back
+  r.push(R(8,circ(78,104,10)),R(2,poly(rell(90,94,8,3.6,-.5,0,6.2832))));
+  // leaves, mushroom, flowers
+  r.push(R(9,poly(rell(52,186,9,4.6,.5,0,6.2832))),R(8,poly(rell(176,176,9,4.6,-.4,0,6.2832))),R(3,poly(rell(150,188,9,4.6,-.2,0,6.2832))));
+  r.push(R(10,rect(26,170,10,16)),R(8,ell(31,170,14,9)));
+  [[16,146],[184,150],[104,190]].forEach(([x,y])=>r.push(R(7,star(x,y,8,3.4))));
+  add('hedgehog','Little Hedgehog','easy','animals',['#a5d8ff','#69db7c','#8d5524','#5c3a1e','#ffe8cc','#212529','#f783ac','#e03131','#ffd43b','#ffffff'],r)})();
 })();
 
 // Spring Landscape Rose Garden — vectorized from owner-supplied line art. See LICENSES.md.
