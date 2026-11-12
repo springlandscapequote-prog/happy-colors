@@ -1991,6 +1991,54 @@
   r.push(R(10,rect(26,170,10,16)),R(8,ell(31,170,14,9)));
   [[16,146],[184,150],[104,190]].forEach(([x,y])=>r.push(R(7,star(x,y,8,3.4))));
   add('hedgehog','Little Hedgehog','easy','animals',['#a5d8ff','#69db7c','#8d5524','#5c3a1e','#ffe8cc','#212529','#f783ac','#e03131','#ffd43b','#ffffff'],r)})();
+
+ // ===== 2026-11-12  Magic Potion Shelf (Hard, Fantasy & Castles) =====
+ (function(){const r=[];
+  const rr=(x,y,w,h,q)=>`M${x+q},${y}H${x+w-q}Q${x+w},${y} ${x+w},${y+q}V${y+h-q}Q${x+w},${y+h} ${x+w-q},${y+h}H${x+q}Q${x},${y+h} ${x},${y+h-q}V${y+q}Q${x},${y} ${x+q},${y}Z`;
+  r.push(R(1,rect(0,0,200,200)),R(2,rect(8,6,184,190)),R(3,rect(16,14,168,174)));
+  r.push(R(2,rect(16,62,168,8)),R(2,rect(16,112,168,8)),R(2,rect(16,170,168,8)));
+  const liq=[[4,5,6,7,8],[10,12,4,5,6],[8,7,12,10,4]],inner=[[2,1,2,1,2],[1,2,1,2,1],[2,1,2,1,2]];
+  const bases=[62,112,170],ss=[1,.8,1],type=[['r','t','a','r','t'],['t','a','r','t','a'],['a','r','t','a','r']];
+  for(let row=0;row<3;row++){const b=bases[row],s=ss[row];
+   for(let i=0;i<5;i++){const x=32+34*i,c=liq[row][i],k=inner[row][i],t=type[row][i];
+    if(t==='r'){const rd=14*s,cy=b-rd;
+     r.push(R(13,rect(x-4*s,b-40*s,8*s,16*s)),R(13,circ(x,cy,rd)),R(11,rect(x-5*s,b-46*s,10*s,6*s)));
+     r.push(R(c,band(x,cy,rd-2.2*s,cy-3*s,cy+rd-2.2*s)),R(9,circ(x,cy+3*s,5.4*s)),R(k,circ(x,cy+3*s,2.6*s)))}
+    else if(t==='t'){
+     r.push(R(13,rect(x-4*s,b-44*s,8*s,14*s)),R(13,rr(x-10*s,b-34*s,20*s,34*s,5*s)),R(11,rect(x-5*s,b-50*s,10*s,6*s)));
+     r.push(R(c,rr(x-8*s,b-26*s,16*s,24*s,4*s)),R(9,circ(x,b-13*s,5.4*s)),R(k,circ(x,b-13*s,2.6*s)))}
+    else{
+     r.push(R(13,rect(x-4*s,b-42*s,8*s,18*s)),R(13,poly([[x-14*s,b],[x+14*s,b],[x+5*s,b-28*s],[x-5*s,b-28*s]])),R(11,rect(x-5*s,b-48*s,10*s,6*s)));
+     r.push(R(c,poly([[x-12*s,b-2*s],[x+12*s,b-2*s],[x+7.5*s,b-14*s],[x-7.5*s,b-14*s]])),R(9,circ(x,b-8*s,4.6*s)),R(k,circ(x,b-8*s,2.2*s)))}
+   }}
+  add('potionshelf','Magic Potion Shelf','hard','fantasy',['#5f3dc4','#8d5524','#5c3a1e','#e03131','#339af0','#51cf66','#ffd43b','#f783ac','#ffffff','#ff922b','#d9a066','#20c997','#dee2e6'],r)})();
+
+ // ===== 2026-11-12  Friendly Alien Moon Flowers (Medium, Space) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)));
+  [[20,100],[50,18],[72,92],[150,104],[186,84],[130,12],[12,68],[184,128]].forEach(([x,y])=>r.push(R(9,star(x,y,7,3))));
+  r.push(R(10,circ(160,40,22)),R(11,band(160,40,22,32,41)),R(11,band(160,40,22,48,55)));
+  r.push(R(9,circ(34,44,13)));
+  r.push(R(2,ell(100,215,130,55)));
+  r.push(R(3,ell(60,188,14,5)),R(3,ell(132,190,12,4.5)),R(3,ell(100,196,9,3.6)));
+  // flowers
+  [[26,146],[150,150],[176,140]].forEach(([x,y])=>{
+   r.push(R(13,rect(x-3,y,6,34)),R(13,poly(rell(x+10,y+22,8,3.8,-.5,0,6.2832))));
+   for(let i=0;i<5;i++){const a=i*Math.PI*2/5-1.57;r.push(R(12,circ(x+8.5*Math.cos(a),y+8.5*Math.sin(a),5)))}
+   r.push(R(9,circ(x,y,4.2)))});
+  // alien: antennae, arms behind
+  r.push(R(4,poly([[88,52],[93,50],[85,26],[80,28]])),R(4,poly([[112,52],[107,50],[115,26],[120,28]])));
+  r.push(R(10,circ(80,23,6)),R(10,circ(120,23,6)));
+  r.push(R(4,poly([[78,110],[56,120],[58,128],[80,124]])),R(4,poly([[122,110],[144,120],[142,128],[120,124]])));
+  r.push(R(4,circ(55,125,6)),R(4,circ(145,125,6)));
+  r.push(R(4,rect(86,150,11,20)),R(4,rect(104,150,11,20)));
+  r.push(R(8,ell(88,172,11,5.6)),R(8,ell(114,172,11,5.6)));
+  r.push(R(4,ell(100,126,27,29)),R(5,ell(100,132,15,17)));
+  r.push(R(4,circ(100,72,27)));
+  r.push(R(6,circ(89,68,8.4)),R(6,circ(111,68,8.4)),R(7,circ(91,69,4)),R(7,circ(109,69,4)));
+  r.push(R(8,poly(rell(100,82,10,6,0,0.15,2.99))));
+  r.push(R(11,circ(78,80,4.4)),R(11,circ(122,80,4.4)));
+  add('alienmoon','Friendly Alien Moon Flowers','medium','space',['#1c1c5e','#ced4da','#868e96','#69db7c','#d8f5a2','#ffffff','#212529','#e03131','#ffd43b','#ff922b','#f783ac','#be4bdb','#2b9348'],r)})();
 })();
 
 // Spring Landscape Rose Garden — vectorized from owner-supplied line art. See LICENSES.md.
