@@ -2039,6 +2039,49 @@
   r.push(R(8,poly(rell(100,82,10,6,0,0.15,2.99))));
   r.push(R(11,circ(78,80,4.4)),R(11,circ(122,80,4.4)));
   add('alienmoon','Friendly Alien Moon Flowers','medium','space',['#1c1c5e','#ced4da','#868e96','#69db7c','#d8f5a2','#ffffff','#212529','#e03131','#ffd43b','#ff922b','#f783ac','#be4bdb','#2b9348'],r)})();
+
+ // ===== 2026-11-13  Bakery Window (Medium, Holidays & Winter) / Little Submarine (Easy, Vehicles) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)));
+  // garland + awning
+  r.push(R(8,rect(10,14,180,12)));
+  [30,62,94,126,158].forEach(x=>r.push(R(4,circ(x,20,3.2))));
+  for(let i=0;i<8;i++){const w=21.5,x=14+i*w;r.push(R(i%2?5:4,`M${f(x)},26H${f(x+w)}V48a${w/2},${w/2} 0 0 1 ${-w},0Z`))}
+  // window
+  r.push(R(3,rect(22,56,156,100)),R(2,rect(30,64,140,84)));
+  r.push(R(11,rect(0,168,200,32)),R(11,rect(16,154,168,9)));
+  [[42,72],[100,72],[158,72]].forEach(([x,y])=>r.push(R(5,star(x,y,7,3))));
+  r.push(R(3,rect(30,106,140,6)),R(3,rect(30,142,140,6)));
+  // top shelf: cupcakes, pie, gingerbread house
+  [[48,7,6],[76,4,5]].forEach(([x,c,fr])=>{r.push(R(c,poly([[x-8,106],[x+8,106],[x+6,92],[x-6,92]])),R(fr,circ(x,88,9)),R(4,circ(x,78,3.4)))});
+  r.push(R(10,poly([[96,106],[128,106],[124,92],[100,92]])),R(4,ell(112,92,13,6)),R(10,rect(104,89,16,4)));
+  r.push(R(9,rect(140,90,22,16)),R(5,poly([[137,92],[151,76],[165,92]])),R(4,rect(147,96,8,10)),R(7,circ(143,87,2.6)),R(7,circ(159,87,2.6)),R(7,circ(151,84,2.6)));
+  // counter: layer cake, bread, cookies
+  r.push(R(6,rect(34,128,52,14)),R(5,rect(42,116,36,12)),R(4,circ(60,112,4)));
+  [44,60,76].forEach(x=>r.push(R(7,circ(x,135,2.8))));
+  r.push(R(10,ell(110,134,22,9)));
+  [101,110,119].forEach(x=>r.push(R(7,poly([[x-3,129],[x+3,129],[x+1,138],[x-5,138]]))));
+  r.push(R(5,ell(152,139,20,4)),R(10,circ(143,132,8)),R(10,circ(160,132,8)),R(9,circ(143,132,3)),R(9,circ(160,132,3)));
+  add('bakerywindow','Bakery Window','medium','holidays',['#ffd8a8','#a5d8ff','#8d5524','#e03131','#ffffff','#f783ac','#ffd43b','#2b9348','#5c3a1e','#e8a95b','#e7f5ff'],r)})();
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(2,rect(0,120,200,80)));
+  r.push(R(5,poly([[20,0],[56,0],[96,120],[44,120]])),R(5,poly([[130,0],[160,0],[190,120],[150,120]])));
+  r.push(R(7,'M0,172Q50,156 100,170T200,160V200H0Z'));
+  // seaweed
+  r.push(R(8,poly([[14,176],[22,138],[30,176]])),R(8,poly([[30,176],[40,146],[48,176]])),R(8,poly([[166,172],[176,134],[186,172]])));
+  // sub: tower + periscope behind body
+  r.push(R(6,rect(110,34,8,26)),R(6,rect(110,34,20,8)),R(4,rect(86,56,34,26)));
+  r.push(R(4,poly([[52,96],[24,70],[38,62],[66,88]])),R(4,poly([[52,106],[24,132],[38,140],[66,114]])));
+  r.push(R(3,ell(100,102,58,30)),R(4,ell(34,102,6,14)));
+  r.push(R(6,circ(152,102,9)));
+  [[72,102],[100,102],[128,102]].forEach(([x,y])=>r.push(R(4,circ(x,y,13)),R(5,circ(x,y,9))));
+  r.push(R(4,circ(98,69,7)));
+  // fish, bubbles, starfish
+  r.push(R(4,ell(40,40,14,8)),R(4,poly([[54,40],[66,30],[66,50]])),R(10,circ(33,38,3)));
+  r.push(R(9,ell(160,46,14,8)),R(9,poly([[146,46],[134,36],[134,56]])),R(10,circ(167,44,3)));
+  r.push(R(5,circ(142,76,5)),R(5,circ(150,64,4)),R(5,circ(64,66,5)));
+  r.push(R(6,star(108,180,11,5)),R(9,circ(70,182,6)),R(3,circ(86,186,4)));
+  add('minisub','Little Submarine','easy','vehicles',['#4dabf7','#1c7ed6','#ffd43b','#ff922b','#e7f5ff','#e03131','#f4d6a0','#2b9348','#f783ac','#ffffff'],r)})();
 })();
 
 // Spring Landscape Rose Garden — vectorized from owner-supplied line art. See LICENSES.md.
