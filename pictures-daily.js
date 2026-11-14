@@ -2082,6 +2082,65 @@
   r.push(R(5,circ(142,76,5)),R(5,circ(150,64,4)),R(5,circ(64,66,5)));
   r.push(R(6,star(108,180,11,5)),R(9,circ(70,182,6)),R(3,circ(86,186,4)));
   add('minisub','Little Submarine','easy','vehicles',['#4dabf7','#1c7ed6','#ffd43b','#ff922b','#e7f5ff','#e03131','#f4d6a0','#2b9348','#f783ac','#ffffff'],r)})();
+
+ // ===== 2026-11-14  Snowy Owl Night (Hard, Animals) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)));
+  // moon with halo, big clouds, hills (large shapes)
+  r.push(R(2,circ(150,34,29)),R(6,circ(150,34,21)),R(4,circ(143,29,4.5)),R(4,circ(158,41,4.5)),R(4,circ(155,25,3.5)));
+  r.push(R(2,poly(rell(46,24,30,9,-.06,0,6.2832))),R(2,poly(rell(98,10,22,6,.05,0,6.2832))));
+  r.push(R(2,'M0,142Q50,116 100,138T200,124V200H0Z'),R(11,'M0,160Q60,146 120,158T200,150V200H0Z'));
+  // stars + snowflakes
+  [[14,52],[78,24],[120,12],[188,70],[30,10],[192,14],[46,56]].forEach(([x,y])=>r.push(R(6,star(x,y,7,3.2))));
+  [[62,44],[118,26],[44,40],[56,90],[56,66]].forEach(([x,y])=>r.push(R(3,star(x,y,7,3.2))));
+  // pines left and right
+  r.push(R(8,rect(20,134,8,24)),R(8,rect(172,134,8,24)));
+  [[24,0],[176,0]].forEach(([cx])=>{r.push(R(9,poly([[cx,58],[cx+20,88],[cx-20,88]])),R(9,poly([[cx,74],[cx+24,110],[cx-24,110]])),R(9,poly([[cx,92],[cx+28,136],[cx-28,136]])));
+   r.push(R(3,circ(cx,70,4)),R(3,circ(cx-9,104,4)),R(3,circ(cx+9,104,4)),R(3,circ(cx,124,4.5)))});
+  // branch behind owl
+  r.push(R(8,rect(4,172,192,10)),R(3,'M10,172Q30,162 52,172Z'));
+  // owl: body, wings, belly, head
+  r.push(R(3,ell(100,126,42,50)));
+  r.push(R(4,poly(rell(60,128,15,38,.12,0,6.2832))),R(4,poly(rell(140,128,15,38,-.12,0,6.2832))));
+  r.push(R(4,ell(100,136,24,32)));
+  [[116,0],[130,0],[144,0],[158,0]].forEach(([y])=>r.push(R(5,ell(100,y,9,3.4))));
+  [[60,108],[58,124],[60,140],[58,154]].forEach(([x,y],i)=>r.push(R(5,ell(x,y,8,3.4)),R(5,ell(200-x,y,8,3.4))));
+  r.push(R(3,circ(100,72,32)));
+  [[88,50],[100,46],[112,50],[78,60],[122,60]].forEach(([x,y])=>r.push(R(5,ell(x,y,4.4,2.6))));
+  r.push(R(4,circ(85,73,14)),R(4,circ(115,73,14)));
+  r.push(R(6,circ(85,73,10.5)),R(6,circ(115,73,10.5)),R(7,circ(85,73,5.6)),R(7,circ(115,73,5.6)));
+  r.push(R(12,poly([[94,80],[106,80],[100,94]])));
+  r.push(R(3,ell(84,176,11,6)),R(3,ell(116,176,11,6)));
+  // holly berries on branch
+  r.push(R(9,poly([[150,170],[162,158],[168,170]])),R(9,poly([[168,170],[178,158],[184,170]])),R(13,circ(166,164,4.4)),R(13,circ(160,168,3.8)),R(13,circ(174,166,3.8)));
+  // snowy ground
+  r.push(R(3,'M0,190Q40,182 90,190T200,186V200H0Z'),R(11,circ(30,196,4)),R(11,circ(112,197,4)),R(11,circ(170,196,4)),R(11,circ(70,195,4)),R(11,circ(140,195,4)));
+  add('snowyowl','Snowy Owl Night','hard','animals',['#1b2a4a','#364f7a','#ffffff','#dee2e6','#868e96','#ffd43b','#212529','#8d5524','#2b9348','#b197fc','#a5d8ff','#ff922b','#e03131'],r)})();
+
+ // ===== 2026-11-14  Fairy Door Tree (Medium, Fantasy & Castles) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(9,poly(rell(30,18,20,7,0,0,6.2832))),R(9,poly(rell(172,26,18,6,0,0,6.2832))));
+  r.push(R(10,rect(0,158,200,42)));
+  // trunk + roots
+  r.push(R(4,poly([[76,70],[124,70],[132,166],[68,166]])),R(4,poly([[72,148],[38,174],[64,174],[82,160]])),R(4,poly([[128,148],[162,174],[136,174],[118,160]])));
+  // canopy
+  r.push(R(2,circ(100,38,40)),R(2,circ(52,54,30)),R(2,circ(148,54,30)));
+  r.push(R(3,circ(80,32,16)),R(3,circ(126,40,14)),R(3,circ(50,58,12)),R(3,circ(152,62,11)));
+  [[100,16],[66,50],[134,58],[100,56],[36,64],[164,70]].forEach(([x,y],i)=>r.push(R(i%2?8:7,circ(x,y,4.2))));
+  // round window and door
+  r.push(R(5,circ(100,97,11)),R(7,circ(100,97,7)));
+  r.push(R(5,'M83,162V120a17,17 0 0 1 34,0V162Z'),R(6,'M88,162V121a12,12 0 0 1 24,0V162Z'),R(11,circ(100,122,5)),R(7,circ(106,142,2.8)));
+  r.push(R(9,rect(82,162,36,6)));
+  // stepping stones
+  r.push(R(9,ell(100,178,12,4.5)),R(9,ell(88,188,11,4.5)),R(9,ell(114,192,11,4.5)));
+  // mushrooms
+  r.push(R(9,rect(38,152,7,14)),R(8,'M26,153a19,15 0 0 1 38,0Z'),R(9,circ(36,146,3.2)),R(9,circ(48,144,3.2)));
+  r.push(R(9,rect(154,148,7,16)),R(12,'M142,149a19,15 0 0 1 38,0Z'),R(9,circ(152,142,3.2)),R(9,circ(166,141,3.2)));
+  // flowers
+  [[20,178,13],[164,184,6],[60,184,11],[142,176,8],[184,170,13],[30,194,7]].forEach(([x,y,c])=>{for(let i=0;i<5;i++){const a=i*1.2566;r.push(R(c,circ(x+6.4*Math.cos(a),y+6.4*Math.sin(a),4)))}r.push(R(7,circ(x,y,3.4)))});
+  // fireflies
+  [[16,100],[184,110],[60,120],[146,118],[12,130],[190,140]].forEach(([x,y])=>r.push(R(7,circ(x,y,4))));
+  add('fairydoor','Fairy Door Tree','medium','fantasy',['#e5dbff','#2b9348','#8ce99a','#8d5524','#5c3a1e','#f783ac','#ffd43b','#e03131','#ffffff','#51cf66','#4dabf7','#ff922b','#9775fa'],r)})();
 })();
 
 // Spring Landscape Rose Garden — vectorized from owner-supplied line art. See LICENSES.md.
