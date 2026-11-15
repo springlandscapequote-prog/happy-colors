@@ -2141,6 +2141,77 @@
   // fireflies
   [[16,100],[184,110],[60,120],[146,118],[12,130],[190,140]].forEach(([x,y])=>r.push(R(7,circ(x,y,4))));
   add('fairydoor','Fairy Door Tree','medium','fantasy',['#e5dbff','#2b9348','#8ce99a','#8d5524','#5c3a1e','#f783ac','#ffd43b','#e03131','#ffffff','#51cf66','#4dabf7','#ff922b','#9775fa'],r)})();
+
+ // ===== 2026-11-15  Snowy Cabin & Reindeer (Hard, Holidays & Winter) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)));
+  // moon, big clouds, far hills, snowy ground (large shapes)
+  r.push(R(7,circ(30,30,19)),R(3,circ(30,30,13)),R(7,circ(25,26,3.6)),R(7,circ(36,36,3.6)));
+  r.push(R(2,poly(rell(92,18,28,8,.05,0,6.2832))),R(2,poly(rell(150,44,26,7,-.05,0,6.2832))));
+  r.push(R(2,'M0,126Q50,98 100,120T200,106V200H0Z'));
+  r.push(R(3,'M0,152Q60,136 120,150T200,140V200H0Z'),R(12,'M0,178Q70,168 130,178T200,170V200H0Z'));
+  // stars + snowflakes
+  [[60,10],[120,8],[180,18],[196,70],[70,48],[10,70],[110,40]].forEach(([x,y])=>r.push(R(7,star(x,y,6,2.8))));
+  [[48,26],[170,56],[8,52],[190,38],[56,70],[130,22]].forEach(([x,y])=>r.push(R(3,star(x,y,6,2.8))));
+  // pine trees (left and right)
+  r.push(R(6,rect(22,140,8,16)),R(6,rect(170,140,8,16)));
+  [[26,0],[174,0]].forEach(([cx],k)=>{
+   r.push(R(9,poly([[cx,66],[cx+16,94],[cx-16,94]])),R(9,poly([[cx,82],[cx+20,116],[cx-20,116]])),R(9,poly([[cx,100],[cx+24,142],[cx-24,142]])));
+   r.push(R(3,poly([[cx,66],[cx+6,76],[cx-6,76]])));
+   r.push(R(8,circ(cx-6,92,3.8)),R(7,circ(cx+8,108,3.8)),R(11,circ(cx-10,126,3.8)),R(8,circ(cx+12,128,3.8)))});
+  // chimney + smoke (behind roof)
+  r.push(R(4,rect(122,74,14,30)),R(3,rect(120,70,18,6)));
+  r.push(R(4,circ(129,58,5.5)),R(4,circ(136,46,6.5)),R(4,circ(146,34,7.5)));
+  // cabin body + log strips
+  r.push(R(5,rect(64,106,76,52)));
+  [114,124,134,144,152].forEach(y=>r.push(R(6,rect(64,y,76,3.6))));
+  // roof with snow cap
+  r.push(R(8,poly([[54,110],[102,70],[150,110]])));
+  r.push(R(3,poly([[60,106],[102,74],[144,106],[135,106],[102,83],[69,106]])));
+  r.push(R(12,poly([[56,110],[62,110],[59,118]])),R(12,poly([[70,110],[76,110],[73,118]])),R(12,poly([[132,110],[138,110],[135,118]])),R(12,poly([[142,110],[148,110],[145,118]])));
+  // gable window
+  r.push(R(6,circ(102,98,8)),R(7,circ(102,98,5)));
+  // windows
+  [[68,122],[116,122]].forEach(([x,y])=>{r.push(R(6,rect(x,y,20,20)),R(7,rect(x+3,y+3,14,14)),R(3,rect(x-2,y+20,24,4)))});
+  // door, wreath, step
+  r.push(R(6,rect(92,126,20,32)),R(9,circ(102,138,7)),R(6,circ(102,138,3.6)),R(8,circ(102,131,2.4)),R(7,circ(108,150,2.6)));
+  r.push(R(4,rect(88,158,28,4)));
+  // gifts by the door
+  r.push(R(8,rect(122,150,14,12)),R(7,rect(127,150,4,12)),R(11,rect(42,152,12,10)),R(3,rect(46,152,4,10)));
+  // footprints
+  [[96,172],[108,180],[120,172],[132,180],[84,182]].forEach(([x,y])=>r.push(R(12,ell(x,y,4.5,3))));
+  // reindeer (legs, tail, body, neck, head, antlers)
+  r.push(R(6,rect(146,176,5,14)),R(6,rect(153,178,5,14)),R(6,rect(165,178,5,14)),R(6,rect(172,176,5,14)));
+  r.push(R(3,circ(143,166,5)));
+  r.push(R(5,ell(160,170,19,11)));
+  r.push(R(5,poly([[170,168],[177,150],[187,154],[180,174]])));
+  r.push(R(6,'M181,142L186,142L191,122L186,122Z'),R(6,'M188,134L197,127L199,131L190,138Z'),R(6,'M184,131L176,125L174,129L183,136Z'));
+  r.push(R(5,ell(184,149,9,6.5)),R(5,ell(177,142,3.6,5.5)));
+  r.push(R(8,circ(192,151,3.6)),R(8,circ(160,170,8)),R(7,circ(160,170,3.4)),R(3,circ(150,172,2.6)),R(3,circ(170,176,2.6)),R(7,circ(178,162,3.2)),R(6,circ(183,147,2)));
+  add('snowcabin','Snowy Cabin & Reindeer','hard','holidays',['#1b2a4a','#364f7a','#ffffff','#dee2e6','#8d5524','#5c3a1e','#ffd43b','#e03131','#2b9348','#51cf66','#ff922b','#a5d8ff','#b197fc'],r)})();
+
+ // ===== 2026-11-15  Big Autumn Leaf (Easy, Nature) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(6,circ(172,28,14)));
+  r.push(R(2,'M0,150Q50,128 100,146T200,134V200H0Z'));
+  // leaf: rotated pointed shape (axis from tip (96,16) down to base (100,150))
+  const rot=(x,y)=>[100+(x-100)*Math.cos(.18)-(y-90)*Math.sin(.18),90+(x-100)*Math.sin(.18)+(y-90)*Math.cos(.18)];
+  const side=s=>{const a=[];for(let i=0;i<=16;i++){const t=i/16,y=14+t*140,w=s*46*Math.pow(Math.sin(Math.PI*Math.pow(t,.8)),.9);a.push(rot(100+w,y))}return a};
+  const mid=[];for(let i=0;i<=16;i++)mid.push(rot(100,14+i/16*140));
+  r.push(R(3,poly(side(-1).concat(mid.slice().reverse()))),R(4,poly(side(1).concat(mid.slice().reverse()))));
+  // veins
+  [[40,1],[62,1],[86,1],[110,1],[40,-1],[62,-1],[86,-1],[110,-1]].forEach(([y,s])=>{
+   const p=(x,yy)=>rot(x,yy);r.push(R(6,poly([p(100,y+5),p(100,y-1),p(100+s*(19-(y-40)*.05),y-16),p(100+s*(19-(y-40)*.05),y-10)])))});
+  r.push(R(5,poly([rot(98,18),rot(102,18),rot(103,152),rot(97,152)])));
+  r.push(R(5,poly([rot(97,150),rot(103,150),rot(106,176),rot(100,178)])));
+  // ladybug on the leaf
+  r.push(R(7,circ(120,100,8)),R(8,circ(120,91,4)),R(8,circ(116,100,2.2)),R(8,circ(124,104,2.2)));
+  // small floating leaves and acorn
+  r.push(R(7,poly(rell(30,50,14,7,-.6,0,6.2832))),R(6,poly(rell(168,84,13,6,.7,0,6.2832))),R(4,poly(rell(40,120,13,6,.4,0,6.2832))));
+  r.push(R(5,ell(152,176,9,11)),R(8,'M141,170a11,8 0 0 1 22,0Z'),R(5,rect(150,158,4,7)));
+  // grass tufts
+  [[20,172],[60,182],[196,150]].forEach(([x,y])=>r.push(R(9,poly([[x-8,y+12],[x-5,y-6],[x-1,y+8],[x+3,y-8],[x+7,y+12]]))));
+  add('autumnleaf','Big Autumn Leaf','easy','nature',['#fff3bf','#8ce99a','#e8590c','#ff922b','#8d5524','#ffd43b','#e03131','#212529','#51cf66'],r)})();
 })();
 
 // Spring Landscape Rose Garden — vectorized from owner-supplied line art. See LICENSES.md.
