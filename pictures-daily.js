@@ -2212,6 +2212,63 @@
   // grass tufts
   [[20,172],[60,182],[196,150]].forEach(([x,y])=>r.push(R(9,poly([[x-8,y+12],[x-5,y-6],[x-1,y+8],[x+3,y-8],[x+7,y+12]]))));
   add('autumnleaf','Big Autumn Leaf','easy','nature',['#fff3bf','#8ce99a','#e8590c','#ff922b','#8d5524','#ffd43b','#e03131','#212529','#51cf66'],r)})();
+ // ===== 2026-11-16  Airport Runway (Hard, Vehicles) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(6,circ(24,26,13)));
+  r.push(R(2,ell(80,22,22,8)),R(2,ell(150,34,24,9)),R(2,ell(176,14,14,6)));
+  r.push(R(4,'M0,118Q50,108 100,116T200,112V200H0Z'));
+  r.push(R(3,rect(0,150,200,40)));
+  for(let i=0;i<8;i++)r.push(R(2,rect(6+i*25,181,14,4)));
+  // terminal
+  r.push(R(8,rect(8,92,92,44)),R(10,rect(4,86,100,8)));
+  for(let i=0;i<7;i++){r.push(R(9,rect(14+i*12.5,100,9,10)));if(i!=3)r.push(R(9,rect(14+i*12.5,116,9,10)))}
+  r.push(R(5,rect(48,114,14,22)),R(2,rect(52,118,6,18)));
+  // control tower
+  r.push(R(8,rect(122,70,14,66)));
+  [78,94,110].forEach(y=>r.push(R(5,rect(122,y,14,7))));
+  r.push(R(7,rect(112,50,34,20)),R(9,rect(115,54,9,11)),R(9,rect(127,54,9,11)),R(9,rect(139,54,5,11)));
+  r.push(R(5,poly([[108,50],[129,36],[150,50]])),R(10,rect(127,22,4,16)),R(11,circ(129,21,3.2)));
+  // windsock
+  r.push(R(10,rect(176,112,4,36)),R(11,poly([[180,114],[198,118],[198,128],[180,128]])),R(2,poly([[187,115.5],[192,116.5],[192,127],[187,127]])));
+  // trees on grass
+  [[160,134],[188,140]].forEach(([x,y])=>r.push(R(12,rect(x-2,y,5,12)),R(13,circ(x,y-4,10))));
+  // big jet taxiing
+    r.push(R(2,ell(110,158,38,10)),R(5,poly([[76,154],[68,134],[82,134],[92,150]])));
+  r.push(R(7,poly([[104,160],[124,160],[112,176],[100,176]])),R(7,poly([[92,152],[116,152],[104,138],[96,138]])));
+  r.push(R(10,ell(106,166,9,5)),R(9,'M138,152a8,6 0 0 1 10,0Z'));
+  for(let i=0;i<6;i++)r.push(R(9,circ(92+i*8,156,2.4)));
+  [[94,170],[128,170]].forEach(([x,y])=>r.push(R(10,circ(x,y,4.4)),R(2,circ(x,y,2))));
+  // little prop plane in the sky
+  r.push(R(7,poly([[38,60],[48,46],[56,46],[50,62]])));
+  r.push(R(11,ell(50,64,22,6)),R(5,poly([[30,62],[24,52],[34,52],[38,60]])),R(5,poly([[42,66],[62,66],[56,76],[46,76]])));
+  r.push(R(9,circ(56,62,3)),R(9,circ(48,62,2.4)),R(10,rect(70,56,4,16)),R(6,circ(72,64,2.6)));
+  // cones and fuel truck
+  [[6,138],[24,138]].forEach(([x,y])=>r.push(R(11,poly([[x,y+10],[x+6,y-8],[x+12,y+10]])),R(2,poly([[x+3.3,y],[x+8.7,y],[x+10.3,y+5],[x+1.7,y+5]]))));
+  r.push(R(6,rect(10,156,34,16)),R(9,rect(12,159,9,7)),R(5,ell(34,156,11,4.4)),R(10,circ(18,173,4.4)),R(2,circ(18,173,2)),R(10,circ(36,173,4.4)),R(2,circ(36,173,2)));
+  // birds
+  [[96,70],[158,80]].forEach(([x,y])=>r.push(R(10,'M'+(x-8)+','+y+'Q'+(x-4)+','+(y-7)+' '+x+','+y+'Q'+(x+4)+','+(y-7)+' '+(x+8)+','+y+'L'+(x+8)+','+(y+3)+'Q'+(x+4)+','+(y-3)+' '+x+','+(y+4)+'Q'+(x-4)+','+(y-3)+' '+(x-8)+','+(y+3)+'Z')));
+  // flowers
+  [[20,120],[70,132],[140,126]].forEach(([x,y],i)=>r.push(R(i%2?5:6,circ(x,y,3.2))));
+  add('airport','Airport Runway','hard','vehicles',['#a5d8ff','#ffffff','#868e96','#69db7c','#e03131','#ffd43b','#339af0','#ffe8cc','#74c0fc','#495057','#ff922b','#8d5524','#2b9348'],r)})();
+
+ // ===== 2026-11-16  Little Satellite (Easy, Space) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)));
+  [[20,20],[60,14],[140,12],[184,60],[16,86],[176,104],[40,130]].forEach(([x,y],i)=>r.push(R(i%2?3:2,star(x,y,6,2.6))));
+  r.push(R(8,circ(166,28,14)),R(9,circ(161,24,3)),R(9,circ(171,34,2.6)));
+  // earth at bottom
+  r.push(R(4,circ(100,270,112)),R(5,poly([[44,170],[70,160],[84,176],[66,196],[46,190]])),R(5,poly([[118,164],[150,170],[160,194],[130,200],[114,184]])),R(6,ell(100,166,18,5)));
+  // satellite
+  r.push(R(7,rect(97,52,6,20)));
+  r.push(R(6,rect(34,78,46,26)),R(6,rect(120,78,46,26)));
+  [[37,81],[51,81],[65,81],[123,81],[137,81],[151,81]].forEach(([x,y])=>r.push(R(3,rect(x,y,12,20))));
+  r.push(R(7,rect(80,88,6,8)),R(7,rect(114,88,6,8)));
+  r.push(R(9,rect(84,68,32,40)),R(10,rect(84,80,32,8)),R(2,circ(100,98,6)),R(7,circ(100,98,3)));
+  r.push(R(2,'M78,54Q100,80 122,54Z'),R(10,circ(100,46,3.6)));
+  // little beeps to Earth
+  [[110,124],[116,138],[122,152]].forEach(([x,y])=>r.push(R(10,circ(x,y,3.4))));
+  add('satellite','Little Satellite','easy','space',['#1c1c5e','#ffd43b','#ffffff','#339af0','#1c7ed6','#51cf66','#ff922b','#868e96','#adb5bd','#e03131'],r)})();
+
 })();
 
 // Spring Landscape Rose Garden — vectorized from owner-supplied line art. See LICENSES.md.
