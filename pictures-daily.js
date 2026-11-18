@@ -2318,6 +2318,36 @@
   r.push(R(8,star(138,78,10,4.4)),R(5,circ(176,40,5)));
   add('stocking','Christmas Stocking','easy','holidays',['#a5d8ff','#ffffff','#e03131','#2f9e44','#ffd43b','#339af0','#f783ac','#ff922b'],r)})();
 
+ // ===== 2026-11-18  Royal Crown (Easy, Fantasy) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(3,circ(176,26,14)),R(7,ell(40,26,20,8)),R(7,ell(120,16,18,7)));
+  r.push(R(2,'M0,150Q50,134 100,148T200,142V200H0Z'));
+  [[20,70],[170,76],[30,108],[176,112],[150,40]].forEach(([x,y])=>r.push(R(7,star(x,y,7,3))));
+  [[16,166],[184,170],[36,184],[168,186]].forEach(([x,y])=>r.push(R(9,circ(x,y,4))));
+  r.push(R(8,ell(100,164,58,19)),R(3,rect(46,160,108,7)),R(3,circ(44,166,6)),R(3,circ(156,166,6)));
+  r.push(R(3,poly([[60,154],[140,154],[150,84],[125,110],[100,72],[75,110],[50,84]])));
+  r.push(R(4,rect(60,130,80,16)));
+  r.push(R(5,circ(78,138,5.5)),R(6,circ(100,138,5.5)),R(5,circ(122,138,5.5)));
+  r.push(R(5,poly([[100,86],[111,102],[100,118],[89,102]])));
+  r.push(R(9,circ(50,80,7)),R(9,circ(100,66,8)),R(9,circ(150,80,7)));
+  r.push(R(10,circ(70,112,4)),R(10,circ(130,112,4)));
+  add('royalcrown','Royal Crown','easy','fantasy',['#d0bfff','#8ce99a','#ffd43b','#e03131','#339af0','#2f9e44','#ffffff','#7048e8','#f783ac','#ff922b'],r)})();
+
+ // ===== 2026-11-18  Bee Hive & Flowers (Medium, Animals) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(5,circ(24,26,13)),R(2,ell(76,24,20,8)),R(2,ell(160,20,22,8)),R(2,ell(176,60,14,6)));
+  r.push(R(3,'M0,150Q50,134 100,150T200,146V200H0Z'));
+  [[14,176],[100,190],[188,184]].forEach(([x,y])=>r.push(R(4,poly([[x-9,y+9],[x-5,y-7],[x-1,y+5],[x+3,y-9],[x+8,y+9]]))));
+  r.push(R(6,rect(58,158,84,8)),R(6,rect(66,166,8,20)),R(6,rect(126,166,8,20)));
+  [[66,84,5],[84,102,10],[102,120,5],[120,138,10],[138,156,5]].forEach(([a,b,c])=>r.push(R(c,band(100,110,46,a,b))));
+  r.push(R(7,ell(100,140,12,14)),R(6,rect(84,152,32,6)),R(6,circ(100,63,5.5)));
+  const fl=(x,y,c)=>{r.push(R(4,rect(x-3,y,6,190-y)),R(4,poly(rell(x+10,y+26,9,4.5,-.5,0,6.2832))));
+   for(let i=0;i<5;i++){const a=i*1.2566-1.57;r.push(R(c,circ(x+9*Math.cos(a),y+9*Math.sin(a),5.6)))}r.push(R(5,circ(x,y,5)))};
+  fl(24,126,9);fl(50,146,11);fl(152,146,8);fl(178,124,10);
+  const bee=(x,y)=>{r.push(R(2,ell(x-3,y-9,5,7)),R(2,ell(x+5,y-9,5,7)),R(5,ell(x,y,10,7)),R(7,rect(x-4,y-6,4,12)),R(7,circ(x+11,y,4.4)))};
+  bee(36,86);bee(162,90);bee(96,40);
+  add('beehive','Bee Hive & Flowers','medium','animals',['#a5d8ff','#ffffff','#51cf66','#2f9e44','#ffd43b','#8d5524','#212529','#e03131','#f783ac','#ff922b','#b197fc'],r)})();
+
 })();
 
 // Spring Landscape Rose Garden — vectorized from owner-supplied line art. See LICENSES.md.
