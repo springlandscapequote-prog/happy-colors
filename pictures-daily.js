@@ -2348,6 +2348,59 @@
   bee(36,86);bee(162,90);bee(96,40);
   add('beehive','Bee Hive & Flowers','medium','animals',['#a5d8ff','#ffffff','#51cf66','#2f9e44','#ffd43b','#8d5524','#212529','#e03131','#f783ac','#ff922b','#b197fc'],r)})();
 
+
+ // ===== 2026-11-19  Rescue Helicopter (Medium, Vehicles) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(8,circ(170,28,15)));
+  r.push(R(2,ell(40,36,24,9)),R(2,ell(56,30,14,8)),R(2,ell(130,60,22,8)),R(2,ell(146,54,12,7)));
+  r.push(R(3,'M0,150Q50,118 100,146T200,134V200H0Z'),R(4,'M0,176Q60,152 120,172T200,164V200H0Z'));
+  // pad and trees
+  r.push(R(6,ell(100,186,40,9)),R(8,ell(100,186,24,5)));
+  [[22,150],[176,142]].forEach(([x,y])=>{r.push(R(10,rect(x-3,y+8,6,20)),R(4,circ(x,y,14)),R(3,circ(x-4,y-3,6)))});
+  // tail boom, tail fin, tail rotor
+  r.push(R(5,poly([[130,92],[184,80],[184,90],[130,108]])),R(5,poly([[172,82],[184,56],[190,58],[184,88]])));
+  r.push(R(7,circ(188,62,5.5)),R(8,rect(184,44,6,36)));
+  // skids
+  r.push(R(7,rect(62,150,76,6)),R(7,rect(76,132,6,20)),R(7,rect(118,132,6,20)));
+  // body
+  r.push(R(5,ell(98,106,40,26)),R(2,rect(60,112,76,7)),R(6,poly(rell(78,100,15,13,0,0,6.2832))),R(9,poly(rell(78,100,11,9,0,0,6.2832))));
+  r.push(R(9,rect(102,92,14,14)),R(9,rect(120,92,10,14)));
+  r.push(R(8,circ(78,128,5)),R(2,rect(92,122,14,6)));
+  // red cross on door: plus shape
+  // main rotor
+  r.push(R(7,rect(28,62,144,7)),R(8,circ(98,66,8)));
+  // fluffy cloud puffs
+  r.push(R(2,circ(20,100,9)),R(2,circ(32,104,7)),R(2,circ(180,110,8)));
+  // flowers on hill
+  [[40,172,11],[70,184,8],[150,176,11],[168,190,8]].forEach(([x,y,c])=>{for(let i=0;i<5;i++){const a=i*1.2566;r.push(R(c,circ(x+5*Math.cos(a),y+5*Math.sin(a),2.6)))}r.push(R(8,circ(x,y,2.4)))});
+  add('rescuecopter','Rescue Helicopter','medium','vehicles',['#a5d8ff','#ffffff','#51cf66','#2f9e44','#e03131','#868e96','#212529','#ffd43b','#74c0fc','#8d5524','#f783ac'],r)})();
+
+ // ===== 2026-11-19  Cozy Campsite (Medium, Nature) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(8,circ(160,30,14)),R(8,circ(154,26,4)));
+  r.push(R(2,star(30,30,6,2.6)),R(2,star(80,18,5,2.2)),R(2,star(118,40,5,2.2)),R(2,star(190,70,5,2.2)),R(2,star(12,76,5,2.2)));
+  // mountains with snowcaps
+  r.push(R(3,poly([[0,120],[50,52],[110,120]])),R(3,poly([[70,120],[140,40],[210,120]])));
+  r.push(R(2,poly([[50,52],[38,72],[46,68],[52,76],[60,68],[64,70]])),R(2,poly([[140,40],[124,66],[134,60],[142,70],[152,60],[158,64]])));
+  // lake and ground
+  r.push(R(5,rect(0,112,200,88)),R(6,'M0,124Q40,114 90,126T200,120V150H0Z'));
+  r.push(R(4,ell(40,134,20,5)),R(4,ell(150,132,16,4)));
+  r.push(R(7,'M0,150Q60,138 120,152T200,146V200H0Z'));
+  // pine trees
+  const pine=(x,y,s)=>{r.push(R(9,rect(x-3,y+22*s,6,12*s)),R(10,poly([[x,y-4*s],[x+14*s,y+14*s],[x-14*s,y+14*s]])),R(10,poly([[x,y+8*s],[x+18*s,y+30*s],[x-18*s,y+30*s]])))};
+  pine(20,100,1);pine(180,98,1.1);pine(166,116,.8);
+  // tent
+  r.push(R(11,poly([[100,106],[142,160],[58,160]])),R(12,poly([[100,106],[116,160],[84,160]])),R(13,poly([[100,126],[110,160],[90,160]])));
+  r.push(R(9,rect(97,100,6,8)),R(13,poly([[103,100],[116,104],[103,108]])));
+  // log seats
+  r.push(R(9,rect(24,170,34,13)),R(8,ell(24,176.5,3.5,6.5)),R(9,rect(142,176,34,13)),R(8,ell(176,182.5,3.5,6.5)));
+  // campfire
+  r.push(R(9,rect(78,186,44,7)),R(15,poly([[100,152],[116,184],[84,184]])),R(8,poly([[100,164],[110,184],[90,184]])),R(14,circ(100,178,4)));
+  // stones
+  [[72,190],[84,196],[100,197],[116,196],[128,190]].forEach(([x,y])=>r.push(R(3,circ(x,y,3.6))));
+  // sparks / fireflies
+  [[60,150],[140,148],[120,140],[84,138]].forEach(([x,y])=>r.push(R(8,star(x,y,4.5,2))));
+  add('campsite','Cozy Campsite','medium','nature',['#1c1c5e','#ffffff','#ced4da','#74c0fc','#4dabf7','#2b6e44','#51cf66','#ffd43b','#8d5524','#2f9e44','#ff922b','#ffa94d','#e03131','#fff3bf','#f76707'],r)})();
 })();
 
 // Spring Landscape Rose Garden — vectorized from owner-supplied line art. See LICENSES.md.
