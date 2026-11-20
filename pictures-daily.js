@@ -2401,6 +2401,68 @@
   // sparks / fireflies
   [[60,150],[140,148],[120,140],[84,138]].forEach(([x,y])=>r.push(R(8,star(x,y,4.5,2))));
   add('campsite','Cozy Campsite','medium','nature',['#1c1c5e','#ffffff','#ced4da','#74c0fc','#4dabf7','#2b6e44','#51cf66','#ffd43b','#8d5524','#2f9e44','#ff922b','#ffa94d','#e03131','#fff3bf','#f76707'],r)})();
+
+ // ===== 2026-11-20  Rainy Day Umbrella (Easy, Nature) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)));
+  r.push(R(2,ell(50,28,28,11)),R(2,ell(76,36,22,9)),R(2,ell(150,24,30,11)),R(2,ell(172,34,20,8)));
+  r.push(R(3,'M0,160Q50,148 100,160T200,156V200H0Z'));
+  r.push(R(4,ell(100,184,50,9)));
+  // umbrella panels
+  const P=Math.PI,cols=[5,6,5,6,5];
+  for(let i=0;i<5;i++){const a0=P+P*i/5,a1=P+P*(i+1)/5;r.push(R(cols[i],poly([[100,104]].concat(rell(100,104,62,52,0,a0,a1)))))}
+  for(let i=0;i<5;i++){const cx=100-62+12.4+i*24.8;r.push(R(cols[i],circ(cx,104,12.4)))}
+  r.push(R(7,rect(98,104,4,52)),R(7,'M98,156Q98,172 84,172Q76,172 76,164L82,164Q82,166 84,166Q92,166 92,156Z'));
+  r.push(R(7,circ(100,48,3.2)));
+  // raindrops
+  [[24,70],[30,128],[176,106],[158,132]].forEach(([x,y])=>r.push(R(8,poly([[x,y-6],[x+3.6,y+1],[x,y+5],[x-3.6,y+1]]))));
+  // flowers
+  [[20,176,5],[180,178,6],[36,190,6]].forEach(([x,y,c])=>{r.push(R(9,rect(x-1.5,y,3,10)),R(c,circ(x,y,5)),R(10,circ(x,y,2)))});
+  // puddle ripples
+  r.push(R(8,ell(100,184,30,5)));
+  add('rainyumbrella','Rainy Day Umbrella','easy','nature',['#a5d8ff','#ffffff','#51cf66','#74c0fc','#e03131','#ffd43b','#7048e8','#339af0','#2f9e44','#ff922b'],r)})();
+
+ // ===== 2026-11-20  Farmyard Barn (Hard, Animals) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(2,circ(168,24,14)),R(3,ell(40,26,24,9)),R(3,ell(70,34,18,7)),R(3,ell(120,22,22,8)));
+  r.push(R(4,'M0,110Q50,90 100,108T200,100V200H0Z'),R(5,'M0,130Q60,116 120,132T200,126V200H0Z'));
+  // barn
+  r.push(R(6,rect(40,84,92,70)),R(7,poly([[34,86],[86,46],[138,86]])),R(8,poly([[86,56],[116,80],[56,80]])));
+  r.push(R(9,rect(66,104,40,50)),R(3,poly([[66,104],[86,154],[66,154]])),R(3,poly([[106,104],[86,154],[106,154]])));
+  r.push(R(3,rect(46,96,14,14)),R(3,rect(112,96,14,14)),R(10,rect(51,96,4,14)),R(10,rect(117,96,4,14)));
+  // silo
+  r.push(R(11,rect(140,70,24,84)),R(7,'M140,70Q152,50 164,70Z'),R(12,rect(140,92,24,5)),R(12,rect(140,118,24,5)));
+  // fence
+  for(let i=0;i<6;i++){r.push(R(13,rect(8+i*7,160,4,24)))}
+  r.push(R(13,rect(6,166,46,4)),R(13,rect(6,176,46,4)));
+  // hay bale
+  r.push(R(14,rect(150,160,34,22)),R(15,rect(150,168,34,3)),R(15,rect(150,176,34,3)),R(15,rect(164,160,4,22)));
+  // cow
+  r.push(R(3,ell(104,176,18,11)),R(3,rect(88,180,5,14)),R(3,rect(98,182,5,12)),R(3,rect(110,182,5,12)),R(3,rect(118,180,5,14)));
+  r.push(R(3,ell(126,166,9,8)),R(16,ell(130,170,6,4)),R(10,ell(98,174,6,5)),R(10,ell(110,180,5,4)),R(17,poly([[122,160],[124,152],[128,160]])),R(17,poly([[130,160],[134,153],[134,162]])),R(10,circ(124,164,1.8)),R(10,circ(131,164,1.8)));
+  // chicken
+  r.push(R(3,ell(30,196,8,6)),R(18,poly([[26,190],[30,184],[34,190]])),R(3,circ(38,188,4)),R(19,poly([[41,187],[46,188],[41,190]])),R(18,poly([[38,184],[40,180],[42,185]])));
+  // flowers + clouds of grass
+  [[56,192],[148,192],[190,192]].forEach(([x,y])=>{r.push(R(6,circ(x,y,4)),R(2,circ(x,y,1.8)))});
+  // extra details
+  [[26,62],[108,52],[172,66]].forEach(([x,y])=>r.push(R(10,ell(x,y,8,4))));
+  r.push(R(7,rect(48,128,5,26)),R(7,rect(57,128,5,26)),R(7,rect(110,128,5,26)),R(7,rect(119,128,5,26)));
+  r.push(R(7,rect(40,84,92,5)));
+  r.push(R(5,circ(14,86,13)),R(7,rect(11,92,6,18)),R(5,circ(24,96,9)),R(5,circ(5,98,8)),R(6,circ(12,84,2.6)),R(6,circ(22,94,2.4)),R(6,circ(6,98,2.4)));
+  r.push(R(12,circ(86,72,10)),R(10,circ(86,72,6)));
+  // sheep
+  r.push(R(3,circ(166,196,9)),R(3,circ(176,194,8)),R(10,circ(184,196,5)));
+  // pig
+  r.push(R(16,ell(66,190,10,7)),R(17,ell(77,190,5,4.5)),R(10,circ(79,189,1.6)),R(16,poly([[60,184],[63,179],[66,184]])));
+  // pond
+  r.push(R(4,ell(128,150,16,5)),R(1,ell(124,150,8,2.6)));
+  // mailbox
+  r.push(R(13,rect(192,132,3,22)),R(6,rect(188,124,12,9)));
+  // birds on silo roof
+  r.push(R(10,ell(180,84,7,3.5)));
+  // weathervane
+  r.push(R(10,rect(83,36,6,12)),R(6,poly([[78,40],[94,40],[86,34]])),R(2,star(86,30,5,2.2)));
+  add('farmbarn','Farmyard Barn','hard','animals',['#a5d8ff','#ffd43b','#ffffff','#8ce99a','#51cf66','#e03131','#8d5524','#ffc9c9','#f1f3f5','#212529','#ced4da','#868e96','#ff922b','#fcc419','#e8a55a','#f783ac','#f9a8d4','#ffa94d','#f08c00'],r)})();
 })();
 
 // Spring Landscape Rose Garden — vectorized from owner-supplied line art. See LICENSES.md.
