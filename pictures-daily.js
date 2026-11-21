@@ -2463,6 +2463,46 @@
   // weathervane
   r.push(R(10,rect(83,36,6,12)),R(6,poly([[78,40],[94,40],[86,34]])),R(2,star(86,30,5,2.2)));
   add('farmbarn','Farmyard Barn','hard','animals',['#a5d8ff','#ffd43b','#ffffff','#8ce99a','#51cf66','#e03131','#8d5524','#ffc9c9','#f1f3f5','#212529','#ced4da','#868e96','#ff922b','#fcc419','#e8a55a','#f783ac','#f9a8d4','#ffa94d','#f08c00'],r)})();
+
+ // ===== 2026-11-21  Sunflower Field (Medium, Nature) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(3,circ(176,22,14)));
+  r.push(R(2,ell(30,24,24,9)),R(2,ell(52,32,18,7)),R(2,ell(116,20,22,8)));
+  r.push(R(9,'M0,140Q50,118 100,138T200,128V200H0Z'),R(6,'M0,164Q60,150 110,164T200,158V200H0Z'));
+  // stems and leaves first
+  r.push(R(7,rect(53,70,5,96)),R(7,rect(143,58,5,108)),R(7,rect(98,118,6,60)));
+  r.push(R(7,poly(rell(72,124,16,6,-.5,0,6.2832))),R(7,poly(rell(38,132,15,6,.5,0,6.2832))),R(7,poly(rell(124,126,15,6,-.4,0,6.2832))),R(7,poly(rell(162,134,15,6,.5,0,6.2832))),R(7,poly(rell(84,160,14,5.5,.5,0,6.2832))),R(7,poly(rell(118,166,14,5.5,-.5,0,6.2832))));
+  // sunflowers: petals then center
+  [[55,62,13,8],[145,52,11,8],[101,108,15,9]].forEach(([x,y,c,n],k)=>{
+   for(let i=0;i<n;i++){const a=i*2*Math.PI/n+k*.3,d=c+10;r.push(R(4,poly(rell(x+d*Math.cos(a),y+d*Math.sin(a),14,6.5,a,0,6.2832))))}
+   r.push(R(5,circ(x,y,c)),R(8,circ(x,y,c*.45)))});
+  // bee
+  r.push(R(2,circ(26,84,4)),R(2,circ(34,82,4)),R(4,ell(30,90,8,5.5)),R(10,rect(28,85,3,10)),R(10,rect(34,86,3,8)));
+  // grass tufts and little flowers
+  [[14,176],[186,176],[70,184],[132,184]].forEach(([x,y])=>r.push(R(7,poly([[x-8,y+10],[x-3,y-6],[x,y+10],[x+3,y-8],[x+8,y+10]]))));
+  [[24,150,11],[176,148,11],[80,150,8]].forEach(([x,y,c])=>r.push(R(c,circ(x,y,4.5))));
+  add('sunflowers','Sunflower Field','medium','nature',['#a5d8ff','#ffffff','#ffd43b','#fcc419','#8d5524','#51cf66','#2f9e44','#ff922b','#8ce99a','#212529','#f783ac'],r)})();
+
+ // ===== 2026-11-21  Little Bunny (Easy, Animals) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(2,circ(168,30,16)));
+  r.push(R(3,ell(40,34,24,9)),R(3,ell(64,42,18,7)));
+  r.push(R(4,'M0,150Q50,132 100,148T200,140V200H0Z'));
+  // ears (outer then inner pink), body, head
+  r.push(R(5,poly(rell(82,40,11,30,-.12,0,6.2832))),R(5,poly(rell(118,40,11,30,.12,0,6.2832))));
+  r.push(R(6,poly(rell(82,42,5,22,-.12,0,6.2832))),R(6,poly(rell(118,42,5,22,.12,0,6.2832))));
+  r.push(R(5,poly(rell(100,140,40,32,0,0,6.2832))),R(5,circ(100,88,30)));
+  r.push(R(5,poly(rell(66,166,16,8,0,0,6.2832))),R(5,poly(rell(134,166,16,8,0,0,6.2832))));
+  r.push(R(3,poly(rell(100,146,20,20,0,0,6.2832))),R(5,circ(142,140,10)));
+  r.push(R(3,circ(142,140,6)));
+  r.push(R(7,circ(88,84,5)),R(7,circ(112,84,5)));
+  r.push(R(6,poly([[94,96],[106,96],[100,104]])));
+  r.push(R(6,circ(76,98,6)),R(6,circ(124,98,6)));
+  // carrot
+  r.push(R(8,poly([[150,158],[176,150],[162,184]])),R(9,poly([[150,158],[142,148],[152,152],[150,142],[158,152]])));
+  // flowers
+  [[20,160,10],[34,182,6],[184,184,10]].forEach(([x,y,c])=>{r.push(R(9,rect(x-1.5,y,3,10)),R(c,circ(x,y,5)),R(11,circ(x,y,2)))});
+  add('bunny','Little Bunny','easy','animals',['#a5d8ff','#ffffff','#f1f3f5','#8ce99a','#ced4da','#f783ac','#212529','#ff922b','#2f9e44','#ffd43b','#ffd43b','#ffd43b'],r)})();
 })();
 
 // Spring Landscape Rose Garden — vectorized from owner-supplied line art. See LICENSES.md.
