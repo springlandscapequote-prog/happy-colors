@@ -2503,6 +2503,58 @@
   // flowers
   [[20,160,10],[34,182,6],[184,184,10]].forEach(([x,y,c])=>{r.push(R(9,rect(x-1.5,y,3,10)),R(c,circ(x,y,5)),R(11,circ(x,y,2)))});
   add('bunny','Little Bunny','easy','animals',['#a5d8ff','#ffffff','#f1f3f5','#8ce99a','#ced4da','#f783ac','#212529','#ff922b','#2f9e44','#ffd43b','#ffd43b','#ffd43b'],r)})();
+ // ===== 2026-11-22  Beach Sandcastle Day (Hard, Nature) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,104)),R(2,circ(166,26,15)));
+  r.push(R(3,ell(28,22,22,8)),R(3,ell(98,30,20,7)),R(3,ell(120,24,14,6)));
+  r.push(R(6,rect(0,100,200,40)));
+  [[22,126],[78,122],[132,130],[180,120],[50,112],[160,110],[110,114]].forEach(([x,y])=>r.push(R(7,ell(x,y,14,3.8))));
+  r.push(R(4,'M0,134Q50,124 100,134T200,130V200H0Z'));
+  [[24,148],[100,180],[150,146],[60,182],[126,160]].forEach(([x,y])=>r.push(R(5,ell(x,y,10,3.6))));
+  // sailboat
+  r.push(R(8,poly([[14,106],[50,106],[43,117],[21,117]])),R(3,poly([[32,80],[32,104],[16,104]])),R(11,poly([[35,86],[35,104],[48,104]])));
+  // gulls
+  r.push(R(3,poly([[62,56],[72,46],[76,56],[80,46],[90,56],[76,60]])));
+  // castle
+  r.push(R(5,rect(80,90,40,80)),R(5,rect(52,108,24,62)),R(5,rect(124,108,24,62)));
+  [80,91,102,113].forEach(x=>r.push(R(5,rect(x,82,7,8))));
+  [52,61,70].forEach(x=>r.push(R(5,rect(x,100,6,8))));
+  [124,133,142].forEach(x=>r.push(R(5,rect(x,100,6,8))));
+  [128,138].forEach(y=>[84,95,106].forEach(x=>r.push(R(11,rect(x,y,9,7)))));
+  r.push(R(13,'M92,170V148a8,8 0 0 1 16,0V170Z'));
+  r.push(R(10,rect(60,120,8,10)),R(10,rect(132,120,8,10)),R(10,circ(100,108,6)));
+  r.push(R(13,rect(98,62,4,20)),R(8,poly([[102,62],[122,67],[102,72]])));
+  r.push(R(12,rect(52,150,24,7)),R(12,rect(124,150,24,7)));
+  r.push(R(11,rect(58,136,12,8)),R(11,rect(130,136,12,8)));
+  [[64,134],[142,122],[8,128],[190,136]].forEach(([x,y])=>r.push(R(3,ell(x,y,8,3.6))));
+  r.push(R(12,circ(76,190,5)),R(3,circ(100,194,6)),R(3,circ(140,196,5)),R(12,circ(188,182,5)));
+  r.push(R(3,poly([[120,40],[128,32],[131,40],[135,32],[143,40],[131,44]])),R(3,poly([[140,58],[148,50],[151,58],[155,50],[163,58],[151,62]])));
+  // pail and shovel
+  r.push(R(13,rect(46,178,22,4)),R(9,rect(66,174,10,12)));
+  r.push(R(8,poly([[14,160],[40,160],[37,185],[17,185]])),R(11,rect(12,156,30,5)),R(3,rect(17,168,20,7)));
+  // umbrella
+  r.push(R(13,rect(168,90,4,64)),R(8,'M146,96A24,24 0 0 1 194,96Z'),R(3,poly([[170,72],[160,95],[172,95]])),R(3,poly([[170,72],[181,95],[191,95]])));
+  // starfish, shells
+  r.push(R(11,star(116,188,9,4.5)),R(12,star(152,176,8,4)));
+  r.push(R(12,circ(134,186,5)),R(14,circ(90,186,5)),R(14,circ(34,194,5)));
+  // pebbles
+  [[8,176],[58,194],[188,194],[190,166]].forEach(([x,y])=>r.push(R(13,circ(x,y,4))));
+  // crab
+  r.push(R(8,circ(162,168,4)),R(8,circ(188,168,4)),R(8,ell(175,174,10,7)),R(3,circ(171,170,3)),R(3,circ(180,170,3)));
+  add('sandcastle','Beach Sandcastle Day','hard','nature',['#a5d8ff','#ffd43b','#ffffff','#f4d58d','#e0b25a','#339af0','#74c0fc','#e03131','#51cf66','#212529','#ff922b','#f783ac','#8d5524','#9775fa'],r)})();
+
+ // ===== 2026-11-22  Christmas Wreath (Easy, Holidays & Winter) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(2,circ(100,100,52)),R(6,circ(100,100,30)));
+  for(let i=0;i<12;i++){const a=i*Math.PI/6,cx=100+41*Math.cos(a),cy=100+41*Math.sin(a);r.push(R(i%2?3:2,poly(rell(cx,cy,10,5,a+Math.PI/2,0,6.2832))))}
+  [15,105,195,285].forEach(d=>{const a=d*Math.PI/180;r.push(R(4,circ(100+41*Math.cos(a),100+41*Math.sin(a),4.5)))});
+  [60,150,240,330].forEach(d=>{const a=d*Math.PI/180;r.push(R(7,circ(100+41*Math.cos(a),100+41*Math.sin(a),6)))});
+  r.push(R(5,star(100,100,18,8)));
+  r.push(R(4,poly([[96,150],[80,184],[90,182],[98,160]])),R(4,poly([[104,150],[120,184],[110,182],[102,160]])));
+  r.push(R(4,poly(rell(84,148,14,8,-.4,0,6.2832))),R(4,poly(rell(116,148,14,8,.4,0,6.2832))),R(5,circ(100,150,6)));
+  [[20,24],[178,30],[24,172],[176,168]].forEach(([x,y])=>r.push(R(6,circ(x,y,5))));
+  add('wreath','Christmas Wreath','easy','holidays',['#d0ebff','#2f9e44','#51cf66','#e03131','#ffd43b','#ffffff','#ff922b'],r)})();
+
 })();
 
 // Spring Landscape Rose Garden — vectorized from owner-supplied line art. See LICENSES.md.
