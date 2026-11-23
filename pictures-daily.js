@@ -2555,6 +2555,45 @@
   [[20,24],[178,30],[24,172],[176,168]].forEach(([x,y])=>r.push(R(6,circ(x,y,5))));
   add('wreath','Christmas Wreath','easy','holidays',['#d0ebff','#2f9e44','#51cf66','#e03131','#ffd43b','#ffffff','#ff922b'],r)})();
 
+ // ===== 2026-11-23  Ice Cream Truck (Medium, Vehicles) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(2,circ(172,28,14)));
+  r.push(R(3,ell(36,30,22,8)),R(3,ell(24,58,16,6)),R(3,ell(124,22,18,7)));
+  r.push(R(4,'M0,124Q50,102 100,120T200,114V200H0Z'));
+  r.push(R(5,rect(0,150,200,50)),R(2,rect(14,182,30,5)),R(2,rect(84,182,30,5)),R(2,rect(154,182,30,5)));
+  // trees and lamp behind the truck
+  r.push(R(11,rect(8,100,6,34)),R(4,circ(11,92,13)));
+  r.push(R(9,rect(186,100,4,40)),R(2,circ(188,96,6)));
+  [[180,138],[193,142],[174,146]].forEach(([x,y])=>r.push(R(8,circ(x,y,4)),R(2,circ(x,y,1.8))));
+  // truck
+  r.push(R(6,rect(30,70,100,76)),R(7,poly([[130,92],[152,92],[170,114],[170,146],[130,146]])));
+  r.push(R(1,poly([[136,98],[149,98],[160,114],[136,114]])),R(3,rect(30,122,100,7)));
+  r.push(R(9,rect(48,86,50,30)),R(8,rect(44,78,58,9)),R(3,rect(52,78,7,9)),R(3,rect(68,78,7,9)),R(3,rect(84,78,7,9)),R(10,rect(48,110,50,6)));
+  [[36,70],[45,70],[54,70],[107,70],[116,70],[125,70]].forEach(([x,y],i)=>r.push(R([8,2,7][i%3],poly([[x-4,y],[x+4,y],[x,y+8]]))));
+  [[112,92],[112,106],[120,99],[104,99]].forEach(([x,y])=>r.push(R(3,circ(x,y,3.2))));
+  // cone sign on the roof
+  r.push(R(10,poly([[70,52],[84,52],[77,72]])),R(6,circ(77,45,8)),R(8,circ(77,35,3)));
+  // bumper, headlight, wheels
+  r.push(R(12,rect(166,134,8,8)),R(2,circ(165,122,4)));
+  r.push(R(9,circ(60,148,13)),R(12,circ(60,148,6)),R(9,circ(148,148,13)),R(12,circ(148,148,6)));
+  add('icecreamtruck','Ice Cream Truck','medium','vehicles',['#a5d8ff','#ffd43b','#ffffff','#69db7c','#868e96','#f783ac','#4dabf7','#e03131','#212529','#ff922b','#8d5524','#ced4da','#8ce99a'],r)})();
+
+ // ===== 2026-11-23  Wizard Hat (Easy, Fantasy & Castles) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(4,circ(166,34,13)));
+  [[30,40,8],[176,84,9],[34,100,6],[132,20,6]].forEach(([x,y,s])=>r.push(R(4,star(x,y,s,s*.45))));
+  r.push(R(6,rect(0,158,200,42)));
+  r.push(R(2,poly([[100,24],[62,138],[138,138]])));
+  r.push(R(4,poly([[71,112],[129,112],[134.7,128],[65.3,128]])),R(5,rect(94,114,12,12)));
+  r.push(R(3,ell(100,142,66,14)));
+  r.push(R(4,circ(100,22,6)),R(4,star(100,66,9,4)));
+  r.push(R(8,circ(90,86,3.5)),R(8,circ(112,92,3.5)));
+  r.push(R(4,circ(62,144,3.5)),R(4,circ(138,144,3.5)));
+  r.push(R(7,poly([[20,186],[80,170],[81,176],[22,192]])),R(4,star(18,189,7,3)));
+  r.push(R(8,star(160,176,7,3)),R(4,star(184,184,5,2.2)));
+  add('wizardhat','Wizard Hat','easy','fantasy',['#3b5bdb','#9775fa','#7048e8','#ffd43b','#fff3bf','#8d5524','#c08457','#f783ac'],r)})();
+
+
 })();
 
 // Spring Landscape Rose Garden — vectorized from owner-supplied line art. See LICENSES.md.
