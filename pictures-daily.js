@@ -2594,6 +2594,41 @@
   add('wizardhat','Wizard Hat','easy','fantasy',['#3b5bdb','#9775fa','#7048e8','#ffd43b','#fff3bf','#8d5524','#c08457','#f783ac'],r)})();
 
 
+ // ===== 2026-11-24  Desert Cactus (Easy, Nature) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(2,circ(168,30,14)));
+  r.push(R(8,ell(40,34,22,8)),R(8,ell(120,22,18,7)));
+  r.push(R(9,poly([[0,120],[28,84],[84,84],[104,120]])),R(9,poly([[120,120],[146,96],[200,96],[200,120]])));
+  r.push(R(3,'M0,126Q50,110 100,124T200,120V200H0Z'),R(10,rect(0,166,200,34)));
+  // little cactus behind
+  r.push(R(4,rect(150,126,14,36)),R(4,circ(157,126,7)),R(6,circ(157,118,4)));
+  // big saguaro
+  r.push(R(4,rect(62,92,30,12)),R(4,rect(62,70,12,34)),R(4,circ(68,70,6)));
+  r.push(R(4,rect(110,108,30,12)),R(4,rect(128,86,12,34)),R(4,circ(134,86,6)));
+  r.push(R(4,rect(86,62,28,108)),R(4,circ(100,62,14)));
+  r.push(R(5,rect(97,66,6,100)),R(5,rect(66,76,4,24)),R(5,rect(132,92,4,24)));
+  r.push(R(6,circ(100,46,7)),R(2,circ(100,46,3)));
+  // rocks and grass
+  r.push(R(7,ell(34,164,18,10)),R(7,ell(180,168,14,8)),R(7,ell(52,172,9,5)));
+  r.push(R(4,poly([[20,186],[26,166],[32,186]])),R(4,poly([[166,190],[172,174],[178,190]])));
+  [[50,140],[24,150],[182,146],[120,150]].forEach(([x,y])=>r.push(R(2,star(x,y,6,2.6))));
+  add('desertcactus','Desert Cactus','easy','nature',['#a5d8ff','#ffd43b','#f4d58d','#51cf66','#b2f2bb','#f783ac','#868e96','#ffffff','#ff922b','#e0b25a'],r)})();
+
+ // ===== 2026-11-24  Winter Mittens (Easy, Holidays & Winter) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(2,'M0,150Q50,130 100,148T200,142V200H0Z'));
+  [[24,26],[70,18],[130,24],[178,20],[40,70],[168,66],[100,40]].forEach(([x,y])=>r.push(R(2,circ(x,y,4))));
+  const m=(cx,bc,pc,kc,thx,ts,sx)=>{
+   r.push(R(bc,poly(rell(cx+thx,114,10,17,ts,0,6.2832))));
+   r.push(R(bc,ell(cx,104,30,42)));
+   r.push(R(kc,rect(cx-24,138,48,28)),R(pc,rect(cx-24,146,48,6)));
+   r.push(R(pc,star(cx,100,15,6.5)),R(5,circ(cx-14,126,3.5)),R(5,circ(cx+14,126,3.5)),R(5,circ(cx,126,3.5)));
+  };
+  m(66,3,5,2,-30,-.7);m(134,4,6,2,30,.7);
+  r.push(R(7,star(104,176,7,3)),R(7,star(28,180,6,2.6)),R(7,star(176,184,6,2.6)));
+  add('mittens','Winter Mittens','easy','holidays',['#d0ebff','#ffffff','#e03131','#4dabf7','#ffd43b','#51cf66','#ff922b'],r)})();
+
+
 })();
 
 // Spring Landscape Rose Garden — vectorized from owner-supplied line art. See LICENSES.md.

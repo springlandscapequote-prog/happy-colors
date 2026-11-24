@@ -126,6 +126,7 @@ Clean up: `kill $(cat /tmp/hc_server.pid)`, make sure no Playwright browser (`pg
 - [x] 2026-11-07 Spring Landscape Rose Garden (Hard, Nature) / Fire Station Dog & Hose (Medium, Vehicles)
 - [x] 2026-11-12 Magic Potion Shelf (Hard, Fantasy) / Friendly Alien Moon Flowers (Medium, Space)
 - [x] 2026-11-13 Bakery Window (Medium, Holidays) / Little Submarine (Easy, Vehicles)
+- [x] 2026-11-24 Desert Cactus (Easy, Nature) / Winter Mittens (Easy, Holidays)
 - [x] 2026-11-11 Asteroid Lighthouse (Hard, Space) / Little Hedgehog (Easy, Animals)
 - [x] 2026-11-14 Snowy Owl Night (Hard, Animals) / Fairy Door Tree (Medium, Fantasy)
 - [x] 2026-11-15 Snowy Cabin & Reindeer (Hard, Holidays) / Big Autumn Leaf (Easy, Nature)
