@@ -2629,6 +2629,38 @@
   add('mittens','Winter Mittens','easy','holidays',['#d0ebff','#ffffff','#e03131','#4dabf7','#ffd43b','#51cf66','#ff922b'],r)})();
 
 
+ // ===== 2026-11-25  Pond Lily Morning (Easy, Nature) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)),R(5,circ(168,28,14)));
+  r.push(R(6,ell(40,30,22,8)),R(6,ell(118,50,18,7)));
+  r.push(R(9,'M0,92Q50,68 100,88T200,82V108H0Z'),R(2,rect(0,100,200,100)));
+  r.push(R(7,rect(14,62,8,42)),R(8,rect(11,50,14,22)),R(7,rect(176,66,8,40)),R(8,rect(173,54,14,22)));
+  r.push(R(3,ell(48,152,34,14)),R(3,ell(152,162,32,13)),R(3,ell(100,152,46,15)),R(3,ell(96,188,28,9)));
+  r.push(R(7,ell(48,152,12,5)),R(7,ell(152,162,12,5)));
+  r.push(R(4,poly(rell(80,134,10,20,-.6,0,6.2832))),R(4,poly(rell(120,134,10,20,.6,0,6.2832))),R(6,poly(rell(100,126,12,24,0,0,6.2832))),R(5,circ(100,142,6)));
+  r.push(R(4,circ(36,150,6)),R(5,circ(36,150,2.6)));
+  r.push(R(8,poly(rell(150,100,14,3.5,0,0,6.2832))),R(8,circ(166,100,5)),R(6,ell(146,91,9,4)),R(6,ell(157,91,9,4)));
+  r.push(R(6,ell(18,126,12,3.5)),R(6,ell(176,130,12,3.5)),R(6,ell(124,112,10,3)));
+  add('pondlily','Pond Lily Morning','easy','nature',['#a5d8ff','#4dabf7','#51cf66','#f783ac','#ffd43b','#ffffff','#2b9348','#ff922b','#b2f2bb'],r)})();
+
+ // ===== 2026-11-25  Little Robot Explorer (Medium, Space) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)));
+  [[18,100,6],[60,20,5],[100,16,6],[140,30,5],[190,98,5],[130,92,4],[26,70,4]].forEach(([x,y,s])=>r.push(R(4,star(x,y,s,s*.45))));
+  r.push(R(6,circ(36,44,18)),R(5,circ(30,38,5)),R(5,circ(42,52,4)));
+  r.push(R(3,circ(164,52,16)),R(4,poly([[148,50],[180,50],[179,56],[149,56]])));
+  r.push(R(2,'M0,150Q100,122 200,150V200H0Z'));
+  r.push(R(7,rect(84,148,10,20)),R(7,rect(106,148,10,20)),R(8,rect(78,166,20,9)),R(8,rect(102,166,20,9)));
+  r.push(R(7,rect(160,120,6,36)),R(8,poly([[166,120],[190,128],[166,136]])));
+  r.push(R(7,rect(97,44,6,18)),R(8,circ(100,42,6)));
+  r.push(R(5,rect(60,104,18,10)),R(5,rect(122,104,18,10)),R(7,circ(58,109,6)),R(7,circ(142,109,6)));
+  r.push(R(5,rect(74,96,52,54)),R(6,rect(78,60,44,36)));
+  r.push(R(3,circ(91,76,7)),R(1,circ(91,76,3)),R(3,circ(109,76,7)),R(1,circ(109,76,3)),R(8,rect(92,86,16,5)));
+  r.push(R(3,rect(86,106,28,16)),R(9,circ(92,138,4.5)),R(10,circ(108,138,4.5)));
+  r.push(R(10,circ(30,176,5)),R(10,circ(176,178,6)));
+  add('robotexplorer','Little Robot Explorer','medium','space',['#1b1f4b','#7048e8','#74c0fc','#ffd43b','#ced4da','#ffffff','#495057','#e03131','#51cf66','#ff922b'],r)})();
+
+
 })();
 
 // Spring Landscape Rose Garden — vectorized from owner-supplied line art. See LICENSES.md.
