@@ -128,6 +128,8 @@ Clean up: `kill $(cat /tmp/hc_server.pid)`, make sure no Playwright browser (`pg
 - [x] 2026-11-13 Bakery Window (Medium, Holidays) / Little Submarine (Easy, Vehicles)
 - [x] 2026-11-24 Desert Cactus (Easy, Nature) / Winter Mittens (Easy, Holidays)
 - [x] 2026-11-25 Pond Lily Morning (Easy, Nature) / Little Robot Explorer (Medium, Space)
+- [x] 2026-11-26 Bicycle & Flower Basket (Easy, Vehicles) / Magic Carpet Ride (Medium, Fantasy)
+- Design tip learned 11-26: both pictures 0 nolabel/misfill fixes on first render (bicycle = 5 thick bars via bar() helper, 31 regions; carpet = parallelogram polys + fringe triangles, 47). Grid after 11-26: Animals 6/5/6 Nature 8/6/6 Vehicles 6/6/5 Holidays 7/5/5 Fantasy 6/6/5 Space 5/6/5. Next: Easy Space, Hard Vehicles/Holidays/Fantasy/Space, Medium Holidays/Animals. Backlog: Sailboat Bay (Medium, Vehicles), Valentine heart (Easy, Holidays), Fish (Easy, Animals).
 - [x] 2026-11-11 Asteroid Lighthouse (Hard, Space) / Little Hedgehog (Easy, Animals)
 - [x] 2026-11-14 Snowy Owl Night (Hard, Animals) / Fairy Door Tree (Medium, Fantasy)
 - [x] 2026-11-15 Snowy Cabin & Reindeer (Hard, Holidays) / Big Autumn Leaf (Easy, Nature)

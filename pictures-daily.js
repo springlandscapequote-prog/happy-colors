@@ -2660,6 +2660,38 @@
   r.push(R(10,circ(30,176,5)),R(10,circ(176,178,6)));
   add('robotexplorer','Little Robot Explorer','medium','space',['#1b1f4b','#7048e8','#74c0fc','#ffd43b','#ced4da','#ffffff','#495057','#e03131','#51cf66','#ff922b'],r)})();
 
+ // ===== 2026-11-26  Bicycle & Flower Basket (Easy, Vehicles) =====
+ (function(){const r=[];
+  const bar=(x1,y1,x2,y2,w)=>{const dx=x2-x1,dy=y2-y1,l=Math.hypot(dx,dy),nx=-dy/l*w/2,ny=dx/l*w/2;return poly([[x1+nx,y1+ny],[x2+nx,y2+ny],[x2-nx,y2-ny],[x1-nx,y1-ny]])};
+  r.push(R(1,rect(0,0,200,200)),R(5,circ(166,30,14)),R(6,ell(40,34,22,8)),R(6,ell(112,52,18,7)));
+  r.push(R(10,'M0,112Q50,86 100,108T200,100V150H0Z'),R(2,rect(0,126,200,40)),R(7,rect(0,164,200,36)));
+  [8,76,144].forEach(x=>r.push(R(6,rect(x,184,34,6))));
+  [[56,142],[146,142]].forEach(([x,y])=>r.push(R(4,circ(x,y,23)),R(6,circ(x,y,16)),R(3,circ(x,y,6))));
+  r.push(R(3,bar(56,142,98,142,6)),R(3,bar(82,100,98,142,7)),R(3,bar(98,142,124,102,7)),R(3,bar(82,100,124,102,6)),R(3,bar(124,102,146,142,6)));
+  r.push(R(4,ell(80,93,13,5)),R(4,bar(124,102,118,86,5)),R(4,ell(112,85,9,3.6)));
+  r.push(R(5,circ(98,142,10)),R(8,rect(104,146,14,6)));
+  r.push(R(5,rect(124,70,28,18)),R(9,circ(130,66,6)),R(8,circ(139,63,6)),R(9,circ(148,66,6)),R(10,ell(136,76,5,3)));
+  add('bicycle','Bicycle & Flower Basket','easy','vehicles',['#bde0fe','#80ed99','#e63946','#343a40','#ffd60a','#ffffff','#adb5bd','#ff922b','#f783ac','#2f9e44'],r)})();
+
+ // ===== 2026-11-26  Magic Carpet Ride (Medium, Fantasy) =====
+ (function(){const r=[];
+  r.push(R(1,rect(0,0,200,200)));
+  [[18,18,5],[58,12,5],[96,24,6],[126,12,5],[190,14,5],[112,58,4],[18,46,4],[76,50,5]].forEach(([x,y,s])=>r.push(R(3,star(x,y,s,s*.45))));
+  r.push(R(2,circ(160,36,18)),R(8,circ(154,32,4)),R(8,circ(167,42,3.5)));
+  r.push(R(12,ell(34,72,22,7)),R(12,ell(172,72,18,6)),R(12,ell(110,160,26,7)));
+  r.push(R(4,rect(0,170,200,30)));
+  const arc=(cx,cy,rx,ry)=>poly(rell(cx,cy,rx,ry,0,Math.PI,2*Math.PI));
+  r.push(R(11,rect(8,134,34,38)),R(5,arc(25,134,17,14)),R(3,rect(19,146,12,14)));
+  r.push(R(9,rect(54,114,22,58)),R(10,poly([[54,114],[76,114],[65,92]])),R(3,circ(65,128,4.5)));
+  r.push(R(10,rect(98,148,36,24)),R(5,arc(116,148,18,12)),R(11,rect(110,158,12,14)));
+  r.push(R(11,rect(148,122,28,50)),R(5,arc(162,122,14,12)),R(3,circ(162,138,5)),R(8,rect(156,152,12,20)));
+  r.push(R(6,poly([[44,104],[150,84],[160,106],[54,128]])),R(3,poly([[52,106],[142,90],[150,104],[60,122]])),R(6,poly([[62,108],[134,95],[140,103],[68,118]])));
+  [[82,110],[102,106],[122,102]].forEach(([x,y])=>r.push(R(9,poly(rell(x,y,6,5,-.2,0,6.2832)))));
+  [.15,.38,.62,.85].forEach(t=>{let x=44+10*t,y=104+24*t;r.push(R(3,poly([[x,y-3.5],[x,y+3.5],[x-9,y]])));x=150+10*t;y=84+22*t;r.push(R(3,poly([[x,y-3.5],[x,y+3.5],[x+9,y]])))});
+  r.push(R(10,poly(rell(88,90,13,7,-.2,0,6.2832))),R(8,circ(88,90,3.2)));
+  r.push(R(12,circ(134,74,12)),R(3,circ(134,74,6.5)));
+  add('magiccarpet','Magic Carpet Ride','medium','fantasy',['#2b2d6e','#fff3bf','#ffd43b','#e8c07d','#20c997','#e03131','#ffffff','#868e96','#9775fa','#f783ac','#5f3dc4','#a5d8ff'],r)})();
+
 
 })();
 
