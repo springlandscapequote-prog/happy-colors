@@ -2693,6 +2693,59 @@
   add('magiccarpet','Magic Carpet Ride','medium','fantasy',['#2b2d6e','#fff3bf','#ffd43b','#e8c07d','#20c997','#e03131','#ffffff','#868e96','#9775fa','#f783ac','#5f3dc4','#a5d8ff'],r)})();
 
 
+ // ===== 2026-11-27  Floating Sky Islands (Hard, Fantasy & Castles) =====
+ (function(){const r=[];
+  const arc=(cx,cy,rx,ry)=>poly(rell(cx,cy,rx,ry,0,Math.PI,2*Math.PI));
+  r.push(R(1,rect(0,0,200,200)),R(2,circ(20,20,12)));
+  // rainbow (half disks stacked big to small)
+  [[56,4],[51,5],[46,2],[41,8],[36,9],[31,12],[26,1]].forEach(([rad,c])=>r.push(R(c,arc(50,124,rad,rad))));
+  r.push(R(3,ell(12,126,18,8)),R(3,ell(52,124,14,6)),R(3,ell(20,44,14,5)),R(3,ell(70,24,16,6)),R(3,ell(140,26,12,5)),R(3,ell(100,12,12,5)));
+  // main island (shifted right of rainbow)
+  const X=14;
+  r.push(R(6,poly([[44+X,128],[160+X,128],[140+X,160],[120+X,176],[100+X,196],[84+X,176],[62+X,158]])));
+  r.push(R(7,poly([[70+X,134],[84+X,134],[78+X,152]])),R(7,poly([[100+X,134],[118+X,134],[110+X,162]])),R(7,poly([[128+X,134],[142+X,134],[136+X,152]])));
+  r.push(R(9,rect(160,132,9,56)),R(3,ell(164,190,12,5)));
+  r.push(R(8,arc(102+X,128,58,10)));
+  // trees behind the castle
+  [[60+X,0],[140+X,0]].forEach(([x])=>r.push(R(6,rect(x-2,114,4,12)),R(11,circ(x,108,8))));
+  // castle
+  r.push(R(10,rect(84+X,92,36,32)),R(14,rect(78+X,80,12,44)),R(14,rect(114+X,80,12,44)),R(14,rect(94+X,76,16,48)));
+  r.push(R(4,poly([[76+X,80],[92+X,80],[84+X,64]])),R(4,poly([[112+X,80],[128+X,80],[120+X,64]])),R(4,poly([[92+X,76],[112+X,76],[102+X,56]])));
+  r.push(R(5,poly([[102+X,46],[114+X,50],[102+X,54]])),R(5,poly([[84+X,54],[94+X,57],[84+X,61]])),R(5,poly([[120+X,54],[130+X,57],[120+X,61]])));
+  r.push(R(6,rect(98+X,106,8,18)),R(9,rect(81+X,88,6,8)),R(9,rect(117+X,88,6,8)),R(9,rect(98+X,86,8,10)),R(9,rect(87+X,100,6,8)),R(9,rect(111+X,100,6,8)));
+  // flowers on the grass
+  [[64+X],[80+X],[128+X],[146+X]].forEach(([x],i)=>r.push(R(i%2?13:2,circ(x,125,3.6))));
+  // island 2 (bottom left) with a cottage
+  r.push(R(6,poly([[4,166],[56,166],[46,182],[30,194],[16,180]])),R(8,arc(30,166,26,8)));
+  r.push(R(14,rect(20,146,20,20)),R(4,poly([[16,146],[44,146],[30,130]])),R(4,rect(36,134,5,8)),R(6,rect(27,154,7,12)),R(9,rect(35,150,5,5)),R(9,rect(20,150,5,5)));
+  r.push(R(13,circ(10,164,3.6)),R(2,circ(48,164,3.6)));
+  // island 3 (top right) with an apple tree
+  r.push(R(6,poly([[150,72],[196,72],[186,86],[172,98],[158,84]])),R(8,arc(173,72,24,8)));
+  r.push(R(6,rect(168,50,8,22)),R(11,circ(172,44,14)));
+  [[166,42],[178,48],[172,36]].forEach(([x,y])=>r.push(R(4,circ(x,y,3.6))));
+  r.push(R(13,circ(158,70,3.6)),R(2,circ(188,70,3.6)));
+  // hot air balloons
+  [[24,96,9,13],[190,124,8,12]].forEach(([x,y,rad,c])=>{r.push(R(c,circ(x,y,rad)),R(2,band(x,y,rad,y-3,y+3)),R(6,rect(x-3,y+rad+3,6,5)))});
+  // friendly baby dragon
+  r.push(R(12,poly([[48,44],[38,40],[40,50]])),R(12,ell(60,44,12,6)),R(14,ell(60,46,8,3.6)),R(9,poly([[54,42],[57,28],[68,40]])),R(12,circ(74,42,5.5)));
+  // sparkles
+  [[96,40],[10,72],[156,108],[190,160],[8,110],[134,42],[196,200-52],[150,10]].forEach(([x,y])=>r.push(R(2,star(x,y,5,2.2))));
+  add('skyislands','Floating Sky Islands','hard','fantasy',['#a5d8ff','#ffd43b','#ffffff','#e03131','#ff922b','#8d5524','#5c3a1e','#69db7c','#339af0','#ced4da','#2f9e44','#9775fa','#f783ac','#ffe8cc'],r)})();
+
+ // ===== 2026-11-27  Little Telescope Night (Easy, Space) =====
+ (function(){const r=[];
+  const bar=(x1,y1,x2,y2,w)=>{const dx=x2-x1,dy=y2-y1,l=Math.hypot(dx,dy),nx=-dy/l*w/2,ny=dx/l*w/2;return poly([[x1+nx,y1+ny],[x2+nx,y2+ny],[x2-nx,y2-ny],[x1-nx,y1-ny]])};
+  r.push(R(1,rect(0,0,200,200)),R(2,circ(160,34,16)),R(3,circ(155,30,4)),R(3,circ(166,41,3.6)));
+  [[20,14],[70,16],[110,12],[190,12],[100,50],[22,84],[184,94],[64,78]].forEach(([x,y])=>r.push(R(4,star(x,y,6,2.6))));
+  r.push(R(6,poly(rell(40,44,26,8,-.3,0,6.2832))),R(5,circ(40,44,13)),R(6,poly(rell(40,44,26,8,-.3,0,3.1416).concat(rell(40,44,16,3,-.3,3.1416,0)))));
+  r.push(R(7,'M0,150Q60,128 110,144T200,136V200H0Z'));
+  r.push(R(8,bar(100,142,100,192,6)),R(8,bar(100,142,76,186,6)),R(8,bar(100,142,124,186,6)));
+  r.push(R(9,bar(92,146,126,102,18)),R(6,bar(106,129,114,119,20)),R(10,bar(124,104,132,94,22)),R(8,bar(86,154,92,147,8)),R(10,circ(100,142,6)));
+  r.push(R(4,poly([[172,76],[150,92],[170,88]])),R(4,star(176,76,8,3.4)));
+  r.push(R(10,ell(34,176,12,6)),R(10,ell(160,182,10,5)));
+  add('telescope','Little Telescope Night','easy','space',['#1c1c5e','#fff3bf','#e0d28a','#ffd43b','#9775fa','#ffa94d','#2b9348','#8d5524','#339af0','#adb5bd'],r)})();
+
+
 })();
 
 // Spring Landscape Rose Garden — vectorized from owner-supplied line art. See LICENSES.md.
