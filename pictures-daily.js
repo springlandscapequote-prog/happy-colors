@@ -2746,6 +2746,63 @@
   add('telescope','Little Telescope Night','easy','space',['#1c1c5e','#fff3bf','#e0d28a','#ffd43b','#9775fa','#ffa94d','#2b9348','#8d5524','#339af0','#adb5bd'],r)})();
 
 
+ // ===== 2026-11-28  Tall Ship at Sunset Cove (Hard, Vehicles) =====
+ (function(){const r=[];
+  const bar=(x1,y1,x2,y2,w)=>{const dx=x2-x1,dy=y2-y1,l=Math.hypot(dx,dy),nx=-dy/l*w/2,ny=dx/l*w/2;return poly([[x1+nx,y1+ny],[x2+nx,y2+ny],[x2-nx,y2-ny],[x1-nx,y1-ny]])};
+  r.push(R(1,rect(0,0,200,200)),R(2,rect(0,66,200,60)),R(4,circ(160,104,26)),R(5,circ(160,104,16)));
+  // clouds and gulls
+  [[30,26],[104,16],[176,40]].forEach(([x,y])=>r.push(R(3,poly(rell(x,y,20,7,0,0,6.2832))),R(13,poly(rell(x+6,y+5,11,3.6,0,0,6.2832)))));
+  [[60,50],[184,60],[22,70],[44,30],[128,46]].forEach(([x,y])=>r.push(R(3,poly(rell(x,y,7,3.6,-.3,0,6.2832)))));
+  [[12,96],[190,84],[8,46]].forEach(([x,y])=>r.push(R(3,star(x,y,6,2.6))));
+  // sea
+  r.push(R(6,rect(0,122,200,78)));
+  // sun glitter
+  [[160,130,22],[160,138,16]].forEach(([x,y,w])=>r.push(R(4,poly(rell(x,y,w,3.4,0,0,6.2832)))));
+  // far waves
+  [[130,0],[146,18]].forEach(([y,o])=>{for(let i=0;i<6;i++){const x=o+i*36;if(x>52&&x<148)continue;r.push(R(i%2?3:7,poly(rell(x,y,14,4.5,0,0,6.2832))))}});
+  // island (left)
+  r.push(R(12,poly(rell(26,128,36,11,0,Math.PI,2*Math.PI).concat([[62,128],[-10,128]]))));
+  r.push(R(9,bar(30,124,26,84,6)));
+  [[-.9,30],[.1,28],[-1.9,28],[-2.9,28]].forEach(([a,l])=>r.push(R(11,poly(rell(26+Math.cos(a)*l*.45,84+Math.sin(a)*l*.3,l*.5,6,a*.6,0,6.2832)))));
+  r.push(R(8,circ(24,88,3.6)),R(8,circ(31,89,3.6)));
+  // ship: masts, then hull
+  r.push(R(9,bar(70,128,70,56,5)),R(9,bar(105,128,105,22,6)),R(9,bar(140,128,140,48,5)),R(9,bar(40,126,66,112,4)));
+  r.push(R(9,'M44,124L156,124L142,166L60,166Z'),R(8,'M47,132L153,132L150,140L50,140Z'),R(10,rect(48,119,104,6)));
+  [72,92,112,132].forEach(x=>r.push(R(4,circ(x,153,4.4))));
+  // sails
+  r.push(R(3,rect(86,30,38,30)),R(3,rect(86,66,38,40)),R(3,rect(54,62,32,40)),R(3,rect(124,54,32,44)));
+  r.push(R(10,rect(86,38,38,8)),R(10,rect(54,70,32,8)),R(10,rect(124,62,32,8)),R(5,circ(105,86,9)),R(10,rect(88,96,34,6)),R(10,rect(56,92,28,6)),R(5,rect(124,86,28,6)));
+  r.push(R(13,poly([[40,124],[64,112],[64,124]])),R(13,poly([[64,126],[98,112],[98,126]])));
+  r.push(R(10,poly([[105,6],[124,12],[105,18]])),R(5,poly([[70,48],[84,53],[70,58]])),R(10,poly([[140,40],[154,45],[140,50]])));
+  r.push(R(8,ell(105,24,10,4)));
+  // front waves
+  [[164,10],[180,28],[194,0]].forEach(([y,o])=>{for(let i=0;i<6;i++)r.push(R(i%2?7:3,poly(rell(o+i*36,y,14,4.5,0,0,6.2832))))});
+  // dolphin
+  r.push(R(14,poly(rell(170,168,16,6,-.5,0,6.2832))),R(14,poly([[160,160],[158,146],[170,156]])),R(14,poly([[184,160],[192,152],[190,168]])));
+  add('tallship','Tall Ship at Sunset Cove','hard','vehicles',['#74c0fc','#ffd8a8','#ffffff','#ffd43b','#ff922b','#339af0','#1c7ed6','#a0662d','#5c3a1e','#e03131','#2b9348','#f1d9a0','#f783ac','#adb5bd'],r)})();
+
+ // ===== 2026-11-28  Gift Sleigh Night (Medium, Holidays & Winter) =====
+ (function(){const r=[];
+  const bar=(x1,y1,x2,y2,w)=>{const dx=x2-x1,dy=y2-y1,l=Math.hypot(dx,dy),nx=-dy/l*w/2,ny=dx/l*w/2;return poly([[x1+nx,y1+ny],[x2+nx,y2+ny],[x2-nx,y2-ny],[x1-nx,y1-ny]])};
+  r.push(R(1,rect(0,0,200,200)),R(2,circ(166,30,15)),R(1,circ(172,26,12)));
+  [[20,16],[56,38],[96,14],[128,44],[188,70],[30,70],[80,70],[150,12]].forEach(([x,y],i)=>r.push(R(i%2?3:2,star(x,y,6,2.6))));
+  // hills
+  r.push(R(3,'M0,110Q50,84 100,106T200,94V200H0Z'),R(4,'M0,150Q60,128 120,148T200,138V200H0Z'));
+  // pine trees
+  [[24,118],[176,112],[150,124]].forEach(([x,y])=>{r.push(R(8,rect(x-3,y,6,12)),R(7,poly([[x,y-34],[x+15,y-12],[x-15,y-12]])),R(7,poly([[x,y-20],[x+19,y+2],[x-19,y+2]])),R(3,poly([[x,y-34],[x+6,y-26],[x-6,y-26]])))});
+  // sleigh
+  r.push(R(9,bar(52,176,148,176,5)),R(9,'M148,176Q166,176 166,158L162,158Q160,170 146,171Z'));
+  r.push(R(9,bar(76,176,76,160,4)),R(9,bar(124,176,124,160,4)));
+  r.push(R(5,'M62,158L72,128L84,128L84,158Z'),R(5,'M62,100L56,130L150,130L162,100L150,100Q130,116 100,112Q80,108 62,100Z'));
+  r.push(R(5,'M56,130L150,130L146,160L66,160Z'),R(6,rect(58,138,90,6)),R(6,poly(rell(60,116,6,12,0,0,6.2832))));
+  // gifts
+  [[70,100,24,24,10,6],[102,106,22,18,11,3],[128,98,24,26,12,3]].forEach(([x,y,w,h,c,rb])=>{
+   r.push(R(c,rect(x,y,w,h)),R(rb,rect(x+w/2-3,y,6,h)),R(rb,rect(x,y+h/2-3,w,6)),R(rb,circ(x+w/2,y-3,5)))});
+  // snow flakes and snow dots
+  [[40,52],[110,34],[170,60],[60,96],[146,80],[12,92]].forEach(([x,y])=>r.push(R(3,star(x,y,5,2.2))));
+  r.push(R(3,ell(34,190,14,5)),R(3,ell(176,188,16,5)));
+  add('giftsleigh','Gift Sleigh Night','medium','holidays',['#1c1c5e','#fff3bf','#ffffff','#e7f5ff','#e03131','#ffd43b','#2b9348','#5c3a1e','#8d5524','#339af0','#ae3ec9','#ff922b'],r)})();
+
 })();
 
 // Spring Landscape Rose Garden — vectorized from owner-supplied line art. See LICENSES.md.
